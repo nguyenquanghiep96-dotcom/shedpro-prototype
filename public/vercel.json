@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/v1/shedpro-design/product/garden-shed/index.html",
+      "permanent": false
+    }
+  ]
+}
