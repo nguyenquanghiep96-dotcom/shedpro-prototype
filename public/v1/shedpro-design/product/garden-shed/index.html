@@ -457,6 +457,7 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
                 height: 40vh !important;
                 z-index: 10 !important;
                 background-color: #f4f6f9 !important;
+                overflow: hidden !important;
                 padding: 0 !important;
                 margin: 0 !important;
             }
@@ -465,6 +466,15 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
                 height: 100% !important;
                 width: 100% !important;
                 position: relative !important;
+            }
+
+            
+            #ssb-builder .ssb-model-canvas-wrapper,
+            #ssb-builder canvas {
+                height: 100% !important;
+                max-height: 40vh !important;
+                width: 100% !important;
+                object-fit: contain !important;
             }
 
             /* 2. Fix Panel to bottom 60% */
