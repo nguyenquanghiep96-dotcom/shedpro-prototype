@@ -8,11 +8,6 @@
     <link rel="icon" href="/Favicon.png" sizes="192x192">
     <link rel="apple-touch-icon" href="/Favicon.png">
     
-    <!-- Google Fonts for Proxima Nova equivalent (Inter or modern sans-serif) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    
     <style>
         :root {
             --primary: #ff7048;
@@ -34,7 +29,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Proxima Nova', sans-serif;
             background-color: var(--bg-body);
             color: var(--text-dark);
             height: 100vh;
@@ -47,18 +42,18 @@
         .navbar {
             background-color: var(--bg-white);
             border-bottom: 1px solid var(--border-color);
-            height: 65px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 48px;
+            padding: 10px 20px;
             flex-shrink: 0;
         }
 
         .navbar-brand {
             display: flex;
             align-items: center;
-            gap: 40px;
+            gap: 10px;
         }
 
         .logo {
@@ -69,9 +64,10 @@
 
         .ds-title {
             font-weight: 700;
-            color: var(--secondary);
+            color: var(--text-gray);
             font-size: 14px;
-            letter-spacing: 0.05em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .nav-links {
@@ -111,7 +107,7 @@
         .sidebar {
             background-color: var(--bg-white);
             border: 1px solid var(--border-color);
-            border-radius: 0 12px 12px 12px;
+            border-radius: 12px;
             width: 267px;
             flex-shrink: 0;
             display: flex;
@@ -334,14 +330,12 @@
         }
 
         /* Typography utilities */
-        .fs-display { font-size: 48px; line-height: 3rem; }
-        .fs-h1 { font-size: 32px; line-height: 2rem; }
-        .fs-h2 { font-size: 24px; line-height: 1.5rem; }
-        .fs-h3 { font-size: 20px; line-height: 1.25rem; }
-        .fs-body-lg { font-size: 16px; line-height: 1rem; }
-        .fs-body { font-size: 14px; line-height: 0.875rem; }
-        .fs-caption { font-size: 12px; line-height: 0.75rem; }
-        .fs-overline { font-size: 10px; line-height: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase; }
+        .fs-huge { font-size: 42px; }
+        .fs-large { font-size: 36px; }
+        .fs-medium { font-size: 20px; }
+        .fs-normal { font-size: 16px; }
+        .fs-regular { font-size: 14px; }
+        .fs-small { font-size: 12px; }
         
         .fw-bold { font-weight: 700; }
         .fw-medium { font-weight: 500; }
@@ -394,11 +388,13 @@
         .icon-svg {
             width: 28px;
             height: 28px;
+            color: var(--text-gray);
             stroke: var(--text-gray);
-            transition: stroke 0.2s;
+            transition: all 0.2s;
         }
 
         .icon-card:hover .icon-svg {
+            color: var(--primary);
             stroke: var(--primary);
         }
 
@@ -407,49 +403,13 @@
             font-weight: 500;
             color: var(--text-gray);
             transition: color 0.2s;
+            text-align: center;
         }
 
         .icon-card:hover .icon-label {
             color: var(--primary);
         }
 
-        /* Prototype Page Placeholder */
-        .prototype-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            gap: 16px;
-            padding: 96px 0;
-        }
-
-        .prototype-icon-box {
-            width: 64px;
-            height: 64px;
-            border-radius: 16px;
-            background-color: var(--active-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .prototype-icon-box svg {
-            width: 32px;
-            height: 32px;
-            stroke: var(--primary);
-        }
-
-        .prototype-title {
-            font-weight: 700;
-            color: var(--secondary);
-            font-size: 20px;
-        }
-
-        .prototype-desc {
-            color: var(--text-gray);
-            font-size: 14px;
-        }
     </style>
 </head>
 <body>
@@ -476,8 +436,8 @@
             <span class="ds-title">DESIGN SYSTEM</span>
         </div>
         <div class="nav-links">
-            <button class="nav-link" onclick="switchMainPage('3d')">3D Prototype</button>
-            <button class="nav-link" onclick="switchMainPage('ops')">OPSHub Prototype</button>
+            <a class="nav-link active" href="https://shedpro-prototype.vercel.app/v1/shedpro-design/product/garden-shed/index.html">3D Prototype</a>
+            <a class="nav-link" href="#" style="pointer-events: none; opacity: 0.5;">OPSHub Prototype</a>
         </div>
     </div>
 
@@ -680,67 +640,51 @@
                         
 <div class="typo-card">
   <div class="typo-meta">
-    <span class="typo-name">Display</span>
-    <span>48px / 3rem</span>
+    <span class="typo-name">Huge</span>
+    <span>42px</span>
     <span>Bold</span>
   </div>
-  <p class="typo-sample fs-display fw-bold">The quick brown fox</p>
+  <p class="typo-sample fs-huge fw-bold">Huge Heading</p>
 </div>
 <div class="typo-card">
   <div class="typo-meta">
-    <span class="typo-name">H1</span>
-    <span>32px / 2rem</span>
+    <span class="typo-name">Large</span>
+    <span>36px</span>
     <span>Bold</span>
   </div>
-  <p class="typo-sample fs-h1 fw-bold">Heading One</p>
+  <p class="typo-sample fs-large fw-bold">Large Heading</p>
 </div>
 <div class="typo-card">
   <div class="typo-meta">
-    <span class="typo-name">H2</span>
-    <span>24px / 1.5rem</span>
+    <span class="typo-name">Medium</span>
+    <span>20px</span>
     <span>Bold</span>
   </div>
-  <p class="typo-sample fs-h2 fw-bold">Heading Two</p>
+  <p class="typo-sample fs-medium fw-bold">Medium Heading</p>
 </div>
 <div class="typo-card">
   <div class="typo-meta">
-    <span class="typo-name">H3</span>
-    <span>20px / 1.25rem</span>
-    <span>Bold</span>
-  </div>
-  <p class="typo-sample fs-h3 fw-bold">Heading Three</p>
-</div>
-<div class="typo-card">
-  <div class="typo-meta">
-    <span class="typo-name">Body Large</span>
-    <span>16px / 1rem</span>
+    <span class="typo-name">Normal</span>
+    <span>16px</span>
     <span>Regular</span>
   </div>
-  <p class="typo-sample fs-body-lg fw-reg">Body large text used for paragraphs and main content areas.</p>
+  <p class="typo-sample fs-normal fw-reg">Normal body text</p>
 </div>
 <div class="typo-card">
   <div class="typo-meta">
-    <span class="typo-name">Body</span>
-    <span>14px / 0.875rem</span>
+    <span class="typo-name">Regular</span>
+    <span>14px</span>
     <span>Regular</span>
   </div>
-  <p class="typo-sample fs-body fw-reg">Standard body text for most UI elements and descriptions.</p>
+  <p class="typo-sample fs-regular fw-reg">Regular text often used in UI.</p>
 </div>
 <div class="typo-card">
   <div class="typo-meta">
-    <span class="typo-name">Caption</span>
-    <span>12px / 0.75rem</span>
-    <span>Medium</span>
+    <span class="typo-name">Small</span>
+    <span>12px</span>
+    <span>Regular</span>
   </div>
-  <p class="typo-sample fs-caption fw-medium">Caption and label text for supplementary information.</p>
-</div>
-<div class="typo-card">
-  <div class="typo-meta">
-    <span class="typo-name">Overline</span>
-    <span>10px / 0.625rem</span>
-    <span>Medium</span>
-  </div>
-  <p class="typo-sample fs-overline fw-medium">OVERLINE TEXT — SMALL CAPS LABELS</p>
+  <p class="typo-sample fs-small fw-reg">Small caption text.</p>
 </div>
                     </div>
                 </div>
@@ -750,177 +694,29 @@
                     <input type="text" class="search-input" placeholder="Search icons…" oninput="filterIcons(this.value)">
                     <div class="icons-grid" id="icons-grid">
                         
-<button class="icon-card" data-name="home" onclick="copyToClipboard('Home', this)" title='Copy "Home"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M3 12L12 3l9 9M5 10v9h5v-5h4v5h5v-9" />
-  </svg>
-  <span class="icon-label">Home</span>
+<button class="icon-card" data-name="cart" onclick="copyToClipboard('Cart', this)" title='Copy "Cart"'>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="icon-svg"><path d="M8.22461 15.9834C9.63829 15.9835 10.7881 17.1332 10.7881 18.5469C10.788 19.9605 9.63824 21.1103 8.22461 21.1104C6.81091 21.1104 5.6612 19.9606 5.66113 18.5469C5.66113 17.1331 6.81083 15.9834 8.22461 15.9834ZM17.5459 15.9834C18.9596 15.9834 20.1094 17.1331 20.1094 18.5469C20.1093 19.9606 18.9596 21.1104 17.5459 21.1104C16.1324 21.1101 14.9825 19.9604 14.9824 18.5469C14.9824 17.1333 16.1323 15.9836 17.5459 15.9834ZM7.11523 20.5957C6.98307 20.5239 6.85838 20.4398 6.74316 20.3447C6.8584 20.4398 6.98305 20.5239 7.11523 20.5957ZM16.0654 20.3438L16.0645 20.3447L16.0654 20.3438ZM9.87207 20.1943C9.76654 20.2998 9.6504 20.3947 9.52637 20.4785C9.65039 20.3947 9.76655 20.2999 9.87207 20.1943ZM15.2588 18.1084C15.2316 18.2505 15.2158 18.397 15.2158 18.5469C15.2158 18.9484 15.3185 19.3261 15.498 19.6562C15.3185 19.3262 15.2159 18.9483 15.2158 18.5469C15.2158 18.3971 15.2316 18.2504 15.2588 18.1084ZM18.1768 19.2314C18.1468 19.2591 18.1154 19.2851 18.082 19.3086C18.1154 19.2851 18.1468 19.259 18.1768 19.2314ZM8.22461 17.8477C7.83921 17.8477 7.52539 18.1615 7.52539 18.5469C7.52546 18.9322 7.83926 19.2461 8.22461 19.2461C8.6099 19.246 8.92376 18.9322 8.92383 18.5469C8.92383 18.1615 8.60994 17.8477 8.22461 17.8477ZM17.5459 17.8477C17.1607 17.8479 16.8467 18.1616 16.8467 18.5469C16.8467 18.9321 17.1607 19.2459 17.5459 19.2461C17.9313 19.2461 18.245 18.9322 18.2451 18.5469C18.2451 18.1615 17.9313 17.8477 17.5459 17.8477ZM5.89355 18.5469C5.89357 18.6273 5.89824 18.7068 5.90625 18.7852V18.7842C5.89831 18.7061 5.89454 18.627 5.89453 18.5469H5.89355ZM9.15723 18.5469H9.15625C9.15624 18.5789 9.15454 18.6104 9.15137 18.6416C9.13969 18.7566 9.10639 18.865 9.05664 18.9639C9.11993 18.8382 9.15717 18.6969 9.15723 18.5469ZM15.4971 17.4365C15.4071 17.6019 15.34 17.7804 15.292 17.9668C15.34 17.7804 15.4071 17.6019 15.4971 17.4365ZM8.31934 17.6191C8.35077 17.6223 8.38167 17.6275 8.41211 17.6338C8.56391 17.6649 8.70214 17.7329 8.81738 17.8281V17.8271C8.6562 17.6941 8.44948 17.6143 8.22461 17.6143L8.31934 17.6191ZM17.9902 17.7275C18.0431 17.7563 18.0936 17.7891 18.1396 17.8271C18.0936 17.7891 18.0431 17.7563 17.9902 17.7275ZM7.70312 17.7744C7.66427 17.8007 7.62814 17.8306 7.59375 17.8623C7.62814 17.8306 7.66426 17.8007 7.70312 17.7744ZM17.3584 17.6328V17.6338V17.6328ZM17.5459 17.6143C17.6103 17.6143 17.6737 17.6203 17.7344 17.6328C17.6738 17.6204 17.611 17.6143 17.5469 17.6143H17.5459ZM8.03711 17.6328V17.6338V17.6328ZM4.53223 2C4.98887 2.00018 5.39424 2.30338 5.50391 2.74512L6.15039 5.35645H20.9746C21.279 5.35647 21.5691 5.49197 21.7598 5.72754C21.9504 5.96319 22.0201 6.27217 21.9453 6.56543L20.0781 13.8477C19.9657 14.2858 19.5611 14.585 19.1074 14.585H7.16602C6.70917 14.585 6.30295 14.2813 6.19336 13.8389L3.74414 3.94727H2C1.45557 3.94716 1.00009 3.51888 1 2.97363C1 2.42833 1.45551 2.00008 2 2H4.53223ZM21.3447 5.68262C21.4338 5.73014 21.5139 5.79463 21.5781 5.87402C21.7231 6.05336 21.7751 6.28691 21.7188 6.50781L19.8516 13.7891C19.7775 14.0779 19.5333 14.2918 19.2373 14.3408L19.3613 14.3105C19.6004 14.2298 19.7891 14.0367 19.8525 13.7891L21.7188 6.50781C21.7751 6.28677 21.7233 6.05339 21.5781 5.87402C21.5137 5.79449 21.434 5.73015 21.3447 5.68262ZM7.77051 12.8701H7.77148L6.33496 7.07031H6.33398L7.77051 12.8701ZM7.9541 12.6377H18.3271L19.6943 7.30371H6.63281L7.9541 12.6377ZM21.0615 5.59473C21.0328 5.59154 21.0038 5.58987 20.9746 5.58984H20.9736L21.0615 5.59473ZM5.27734 2.80078L5.96777 5.58984H5.96875L5.27832 2.80176C5.27154 2.7744 5.25973 2.74861 5.25 2.72266C5.25961 2.74835 5.27062 2.77373 5.27734 2.80078ZM1.57129 3.58789C1.65291 3.64108 1.74584 3.67952 1.8457 3.69922C1.74581 3.67961 1.65296 3.641 1.57129 3.58789ZM5.17578 2.57227C5.15291 2.53804 5.12772 2.50547 5.09961 2.47559C5.12776 2.50546 5.15287 2.53804 5.17578 2.57227Z" fill="currentColor"/></svg>
+  <span class="icon-label">Cart</span>
 </button>
-<button class="icon-card" data-name="user" onclick="copyToClipboard('User', this)" title='Copy "User"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" />
-  </svg>
-  <span class="icon-label">User</span>
+<button class="icon-card" data-name="plus circle" onclick="copyToClipboard('Plus Circle', this)" title='Copy "Plus Circle"'>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="icon-svg"><path d="M11.8496 0C18.3895 0 23.7 5.30979 23.7002 11.8496C23.7002 18.3896 18.3896 23.7002 11.8496 23.7002V23.6904C5.30979 23.6902 0 18.3795 0 11.8496C0.000211961 5.31992 5.30992 0.00021204 11.8496 0ZM11.8496 2C6.41992 2.00021 2.00021 6.41992 2 11.8496C2 17.2795 6.41979 21.7 11.8496 21.7002C17.2796 21.7002 21.7002 17.2796 21.7002 11.8496C21.7 6.41979 17.2795 2 11.8496 2ZM12 5.34375C12.5537 5.34375 13.0098 5.79983 13.0098 6.35352V10.9902H17.6465C18.2002 10.9902 18.6563 11.4463 18.6562 12C18.6562 12.5537 18.2002 13.0098 17.6465 13.0098H13.0098L12.998 12.998V17.6348C12.998 18.1885 12.542 18.6445 11.9883 18.6445C11.7117 18.6445 11.458 18.5291 11.2793 18.3506C11.1005 18.1718 10.9854 17.9175 10.9854 17.6406V13.0039H6.34766C6.07085 13.0039 5.81745 12.8878 5.63867 12.709C5.45991 12.5302 5.34375 12.2768 5.34375 12C5.34375 11.4463 5.79983 10.9902 6.35352 10.9902H10.9902V6.35352C10.9902 5.79983 11.4463 5.34375 12 5.34375Z" fill="currentColor"/></svg>
+  <span class="icon-label">Plus Circle</span>
 </button>
-<button class="icon-card" data-name="settings" onclick="copyToClipboard('Settings', this)" title='Copy "Settings"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M12 15a3 3 0 100-6 3 3 0 000 6zM19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" />
-  </svg>
-  <span class="icon-label">Settings</span>
+<button class="icon-card" data-name="close" onclick="copyToClipboard('Close', this)" title='Copy "Close"'>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="icon-svg"><path d="M11.8496 0C18.3895 0 23.7 5.30979 23.7002 11.8496C23.7002 18.3896 18.3896 23.7002 11.8496 23.7002V23.6904C5.30979 23.6902 0 18.3795 0 11.8496C0.000211961 5.31992 5.30992 0.00021204 11.8496 0ZM11.8496 2C6.41992 2.00021 2.00021 6.41992 2 11.8496C2 17.2795 6.41979 21.7 11.8496 21.7002C17.2796 21.7002 21.7002 17.2796 21.7002 11.8496C21.7 6.41979 17.2795 2 11.8496 2ZM15.2793 7.29395C15.6708 6.90245 16.3145 6.90243 16.7061 7.29395C17.0976 7.68546 17.0976 8.32918 16.7061 8.7207L13.4277 12H13.4111L16.6904 15.2793C17.0815 15.6707 17.0815 16.3146 16.6904 16.7061C16.4947 16.9018 16.2333 17 15.9805 17C15.7276 17 15.4663 16.9018 15.2705 16.7061L11.9922 13.4277L8.71289 16.7061C8.51713 16.9018 8.25578 17 8.00293 17C7.75018 16.9999 7.48962 16.9017 7.29395 16.7061C6.90243 16.3145 6.90245 15.6708 7.29395 15.2793L10.5723 12L7.29395 8.7207C6.90244 8.32918 6.90243 7.68546 7.29395 7.29395C7.68546 6.90243 8.32918 6.90244 8.7207 7.29395L12 10.5723L15.2793 7.29395Z" fill="currentColor"/></svg>
+  <span class="icon-label">Close</span>
 </button>
-<button class="icon-card" data-name="bell" onclick="copyToClipboard('Bell', this)" title='Copy "Bell"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" />
-  </svg>
-  <span class="icon-label">Bell</span>
+<button class="icon-card" data-name="center items" onclick="copyToClipboard('Center Items', this)" title='Copy "Center Items"'>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="icon-svg"><path d="M2.26 0H0V24H2.26V0Z" fill="currentColor"/><path d="M24 0H21.74V24H24V0Z" fill="currentColor"/><path d="M17.3901 2.15997H6.62012V21.85H17.3901V2.15997Z" fill="currentColor"/></svg>
+  <span class="icon-label">Center Items</span>
 </button>
-<button class="icon-card" data-name="search" onclick="copyToClipboard('Search', this)" title='Copy "Search"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-  </svg>
-  <span class="icon-label">Search</span>
-</button>
-<button class="icon-card" data-name="filter" onclick="copyToClipboard('Filter', this)" title='Copy "Filter"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z" />
-  </svg>
-  <span class="icon-label">Filter</span>
-</button>
-<button class="icon-card" data-name="edit" onclick="copyToClipboard('Edit', this)" title='Copy "Edit"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
-  </svg>
-  <span class="icon-label">Edit</span>
-</button>
-<button class="icon-card" data-name="trash" onclick="copyToClipboard('Trash', this)" title='Copy "Trash"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M3 6h18M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6M10 11v6M14 11v6M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2" />
-  </svg>
-  <span class="icon-label">Trash</span>
-</button>
-<button class="icon-card" data-name="plus" onclick="copyToClipboard('Plus', this)" title='Copy "Plus"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M12 5v14M5 12h14" />
-  </svg>
-  <span class="icon-label">Plus</span>
-</button>
-<button class="icon-card" data-name="minus" onclick="copyToClipboard('Minus', this)" title='Copy "Minus"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M5 12h14" />
-  </svg>
-  <span class="icon-label">Minus</span>
-</button>
-<button class="icon-card" data-name="check" onclick="copyToClipboard('Check', this)" title='Copy "Check"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M20 6L9 17l-5-5" />
-  </svg>
-  <span class="icon-label">Check</span>
-</button>
-<button class="icon-card" data-name="x" onclick="copyToClipboard('X', this)" title='Copy "X"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M18 6L6 18M6 6l12 12" />
-  </svg>
-  <span class="icon-label">X</span>
-</button>
-<button class="icon-card" data-name="arrow right" onclick="copyToClipboard('Arrow Right', this)" title='Copy "Arrow Right"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M5 12h14M12 5l7 7-7 7" />
-  </svg>
-  <span class="icon-label">Arrow Right</span>
-</button>
-<button class="icon-card" data-name="arrow left" onclick="copyToClipboard('Arrow Left', this)" title='Copy "Arrow Left"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M19 12H5M12 19l-7-7 7-7" />
-  </svg>
-  <span class="icon-label">Arrow Left</span>
-</button>
-<button class="icon-card" data-name="download" onclick="copyToClipboard('Download', this)" title='Copy "Download"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
-  </svg>
-  <span class="icon-label">Download</span>
-</button>
-<button class="icon-card" data-name="upload" onclick="copyToClipboard('Upload', this)" title='Copy "Upload"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" />
-  </svg>
-  <span class="icon-label">Upload</span>
-</button>
-<button class="icon-card" data-name="mail" onclick="copyToClipboard('Mail', this)" title='Copy "Mail"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM22 6l-10 7L2 6" />
-  </svg>
-  <span class="icon-label">Mail</span>
-</button>
-<button class="icon-card" data-name="lock" onclick="copyToClipboard('Lock', this)" title='Copy "Lock"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M19 11H5a2 2 0 00-2 2v7a2 2 0 002 2h14a2 2 0 002-2v-7a2 2 0 00-2-2zM7 11V7a5 5 0 0110 0v4" />
-  </svg>
-  <span class="icon-label">Lock</span>
-</button>
-<button class="icon-card" data-name="info" onclick="copyToClipboard('Info', this)" title='Copy "Info"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10zM12 8v4M12 16h.01" />
-  </svg>
-  <span class="icon-label">Info</span>
-</button>
-<button class="icon-card" data-name="alert" onclick="copyToClipboard('Alert', this)" title='Copy "Alert"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01" />
-  </svg>
-  <span class="icon-label">Alert</span>
-</button>
-<button class="icon-card" data-name="calendar" onclick="copyToClipboard('Calendar', this)" title='Copy "Calendar"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M3 4h18v18H3zM16 2v4M8 2v4M3 10h18" />
-  </svg>
-  <span class="icon-label">Calendar</span>
-</button>
-<button class="icon-card" data-name="clock" onclick="copyToClipboard('Clock', this)" title='Copy "Clock"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10zM12 6v6l4 2" />
-  </svg>
-  <span class="icon-label">Clock</span>
-</button>
-<button class="icon-card" data-name="link" onclick="copyToClipboard('Link', this)" title='Copy "Link"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" />
-  </svg>
-  <span class="icon-label">Link</span>
-</button>
-<button class="icon-card" data-name="copy" onclick="copyToClipboard('Copy', this)" title='Copy "Copy"'>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-svg">
-    <path d="M20 9H11a2 2 0 00-2 2v9a2 2 0 002 2h9a2 2 0 002-2v-9a2 2 0 00-2-2zM5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-  </svg>
-  <span class="icon-label">Copy</span>
+<button class="icon-card" data-name="edit shed" onclick="copyToClipboard('Edit Shed', this)" title='Copy "Edit Shed"'>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-svg"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+  <span class="icon-label">Edit Shed</span>
 </button>
                     </div>
                 </div>
             </div>
-
-            <!-- Prototype Pages -->
-            <div id="page-3d" class="page prototype-placeholder">
-                <div class="prototype-icon-box">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                        <rect x="3" y="3" width="18" height="18" rx="3" />
-                        <path d="M9 9h6M9 12h6M9 15h4" />
-                    </svg>
-                </div>
-                <h2 class="prototype-title">3D Prototype</h2>
-                <p class="prototype-desc">This prototype view is coming soon.</p>
-            </div>
-
-            <div id="page-ops" class="page prototype-placeholder">
-                <div class="prototype-icon-box">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                        <rect x="3" y="3" width="18" height="18" rx="3" />
-                        <path d="M9 9h6M9 12h6M9 15h4" />
-                    </svg>
-                </div>
-                <h2 class="prototype-title">OPSHub Prototype</h2>
-                <p class="prototype-desc">This prototype view is coming soon.</p>
-            </div>
-
         </main>
     </div>
 
@@ -933,29 +729,6 @@
                 el.style.display = 'none';
             }
         }
-
-        function switchMainPage(pageId) {
-            // Deactivate all nav links
-            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-            event.target.classList.add('active');
-
-            // Hide sidebar
-            document.querySelector('.sidebar').style.display = 'none';
-
-            // Hide all pages
-            document.querySelectorAll('main > .page').forEach(p => p.classList.remove('active'));
-            
-            // Show target page
-            document.getElementById('page-' + pageId).classList.add('active');
-        }
-
-        // If clicking on "DESIGN SYSTEM" logo, go back to design page
-        document.querySelector('.navbar-brand').addEventListener('click', function() {
-            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-            document.querySelector('.sidebar').style.display = 'flex';
-            document.querySelectorAll('main > .page').forEach(p => p.classList.remove('active'));
-            document.getElementById('page-design').classList.add('active');
-        });
 
         function switchTab(tabId, btn) {
             // Deactivate all menu items
