@@ -421,6 +421,511 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
 <link rel="stylesheet" id="stripelink_styles-css" href="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce-gateway-stripe/assets/css/stripe-link_ver%3D10.5.2.css" type="text/css" media="all">
 
     <style id="custom-theme-overrides">
+        /* Mobile Customize Panel Styles */
+        
+        .desktop-only { display: block; }
+        @media (max-width: 991px) { .desktop-only { display: none !important; } }
+
+        .mobile-customize-panel {
+            background: var(--gray-6, #F2F3F5) !important;
+            color: var(--secondary, #2B3B63) !important;
+            font-family: "Proxima Nova", sans-serif !important;
+            font-size: 12px !important;
+            font-style: normal !important;
+            font-weight: 700 !important;
+            line-height: 24px !important; /* 200% */
+            text-transform: capitalize !important;
+            display: none !important; /* Hidden by default */
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 10px 15px !important;
+        }
+        
+        /* MOBILE SPLIT-SCREEN LAYOUT (40-60) */
+        @media (max-width: 991px) {
+            /* Prevent body from scrolling so the panel can scroll */
+            body.ssb-page {
+                overflow: hidden !important;
+            }
+
+            /* 1. Fix Canvas to top 40% */
+            .ssb-model-inner {
+                position: fixed !important;
+                top: var(--mobile-nav-height, 60px) !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: 40vh !important;
+                z-index: 10 !important;
+                background-color: #f4f6f9 !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            
+            #ssb-builder {
+                height: 100% !important;
+                width: 100% !important;
+                position: relative !important;
+            }
+
+            /* 2. Fix Panel to bottom 60% */
+            .summary.entry-summary {
+                position: fixed !important;
+                top: calc(40vh + var(--mobile-nav-height, 60px)) !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: auto !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch !important; /* Enable smooth scroll on iOS */
+                z-index: 20 !important;
+                background-color: #ffffff !important;
+                padding: 20px 15px 50px 15px !important;
+                box-shadow: 0 -4px 15px rgba(0,0,0,0.08) !important;
+                border-top-left-radius: 20px !important;
+                border-top-right-radius: 20px !important;
+                margin: 0 !important;
+                transform: none !important; /* Nullify any previous slide transforms */
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            /* 3. Remove old wrapper sliding/positioning logic */
+            .summary-wrapper {
+                position: static !important;
+                transform: none !important;
+                height: auto !important;
+            }
+
+            /* 4. Hide elements no longer needed */
+            .mobile-customize-panel,
+            #mobile-custom-shed {
+                display: none !important;
+            }
+            
+            
+            /* Hide Canvas Text & Logo on Mobile */
+            .shed-link {
+                display: none !important;
+            }
+            
+            /* Align canvas buttons to bottom right */
+            .canvas-top-right-buttons {
+                position: absolute !important;
+                right: 15px !important;
+                bottom: 15px !important;
+                top: auto !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 10px !important;
+            }
+            .canvas-top-right-buttons .description {
+                display: none !important; /* Hide tooltip texts */
+            }
+
+            /* Title & Size inline */
+            .wrap-title-price {
+                display: block;
+            }
+            
+        @media (max-width: 991px) { #mobile-panel-size { display: none !important; } }
+
+            .mobile-title-row {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: baseline !important;
+                margin-bottom: 8px;
+            }
+            .mobile-title-row h1 {
+                margin: 0 !important;
+                font-size: 20px !important;
+            }
+            
+            #mobile-submit-quote-btn {
+                display: block !important;
+                margin-top: 15px !important;
+                margin-bottom: 20px !important;
+                background-color: var(--primary) !important;
+                border-color: var(--primary) !important;
+                color: white !important;
+                font-weight: 700 !important;
+                border-radius: 6px !important;
+                padding: 12px !important;
+                text-align: center !important;
+                text-transform: capitalize !important;
+            }
+
+            /* Sticky Footer CSS */
+            #mobile-sticky-footer {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                position: fixed !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                background: white !important;
+                padding: 15px 20px !important;
+                box-shadow: 0 -4px 15px rgba(0,0,0,0.1) !important;
+                z-index: 9999 !important;
+                transform: translateY(100%);
+                transition: transform 0.3s ease-in-out;
+            }
+            #mobile-sticky-footer.visible {
+                transform: translateY(0);
+            }
+            
+            /* Adjust padding for Panel when sticky footer is active to not cover content */
+            .summary.entry-summary {
+                padding-bottom: 90px !important; /* Extra padding so bottom content isn't covered by sticky footer */
+            }
+
+            
+            /* Remove internal double scrolling and sticky headers */
+            #ssb-configurator-accordion-style,
+            .ssb-configurator-panel-content,
+            #ssb-configurator,
+            .ui-accordion-content {
+                overflow: visible !important;
+                height: auto !important;
+                max-height: none !important;
+            }
+            .ssb-configurator-shed-type {
+                position: static !important;
+                top: auto !important;
+            }
+
+            
+            /* Fix Canvas Size Text Position & Styling */
+            #text-size-canvas {
+                position: absolute !important;
+                bottom: 15px !important;
+                left: 15px !important;
+                right: auto !important;
+                text-align: left !important;
+                font-size: 12px !important;
+                font-weight: 400 !important;
+                color: var(--secondary) !important;
+                z-index: 5 !important;
+            }
+
+            /* Buttons Width & Height */
+
+
+            /* Accordion Tabs Height 44px */
+            .ssb-configurator-panel-heading,
+            .shed-type-dropdown .current,
+            .accordion-toggle {
+                height: 44px !important;
+                display: flex !important;
+                align-items: center !important;
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+                box-sizing: border-box !important;
+            }
+
+            /* Main Submit Quote Button Adjustments */
+            #mobile-submit-quote-btn {
+                height: 44px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                margin-bottom: 16px !important; /* Gap to Types */
+                margin-top: 10px !important;
+            }
+
+            /* Sticky Footer Button Height & Color */
+            #sticky-submit-quote-btn {
+                height: 44px !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                background-color: var(--primary) !important;
+                border-color: var(--primary) !important;
+                color: white !important;
+            }
+
+            /* Font sizes for Prices and Pay as low as */
+            .wrap-price-add-to-cart .price-label,
+            .wrap-price-add-to-cart .price .woocommerce-Price-amount,
+            .wrap-price-add-to-cart .price .woocommerce-Price-amount bdi,
+            .see-monthly-payment {
+                font-size: 14px !important;
+            }
+
+            /* Sticky footer prices */
+            .footer-price,
+            .footer-price #sticky-est-price {
+                font-size: 14px !important;
+            }
+
+            /* Ensure Types section margin is tight */
+            #ssb-configurator-shed-type {
+                margin-top: 0 !important;
+            }
+
+            
+            /* Fix Tab Title Size */
+            .ssb-configurator-panel-heading .ssb-configurator-category,
+            .ssb-configurator-accordion-heading .ssb-configurator-category {
+                font-size: 18px !important;
+            }
+
+            /* Fix Plus/Minus Icon Alignment and Size */
+            .ssb-configurator-panel-heading::after,
+            .ssb-configurator-selected::after,
+            .ssb-configurator-accordion-heading::after {
+                width: 20px !important;
+                height: 20px !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                margin-top: 0 !important;
+                background-size: contain !important;
+            }
+
+            /* Remove extra spacing from wrap-price-add-to-cart */
+            .wrap-price-add-to-cart {
+                margin-bottom: 0 !important;
+                padding-bottom: 0 !important;
+            }
+
+            /* Ensure form.cart doesn't add invisible space */
+            form.cart {
+                margin: 0 !important;
+                padding: 0 !important;
+                height: 0 !important;
+                overflow: hidden !important;
+            }
+
+            
+            /* Style the bottom group-button to match Submit Quote */
+            .group-button-checkout-inner {
+                padding: 15px !important;
+            }
+            button.group-button {
+                background-color: #F06A36 !important; /* Force orange */
+                border-color: #F06A36 !important;
+                color: white !important;
+                height: 44px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                border-radius: 6px !important;
+                font-weight: 700 !important;
+                width: 100% !important;
+                text-transform: capitalize !important;
+                font-size: 0 !important; /* Hide old text */
+            }
+            button.group-button::after {
+                content: "Submit Quote" !important;
+                font-size: 16px !important;
+            }
+            
+            /* Sync the mobile bottom Request Quote button with Design System */
+            .ssb-mobile-button-request-a-quote {
+                background-color: var(--primary) !important;
+                border-color: var(--primary) !important;
+                color: white !important;
+                height: 44px !important;
+                width: 100% !important;
+                border-radius: 6px !important;
+                font-weight: 700 !important;
+                font-size: 0 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                text-transform: capitalize !important;
+                margin-top: 15px !important;
+            }
+            .ssb-mobile-button-request-a-quote::after {
+                content: "Submit Quote" !important;
+                font-size: 16px !important;
+            }
+
+            
+            /* Rename Save for later and Reset model */
+            button.ssb-save-model,
+            button.ssb-reset-btn {
+                font-size: 0 !important;
+            }
+            button.ssb-save-model::after {
+                content: "Save" !important;
+                font-size: 14px !important;
+            }
+            button.ssb-reset-btn::after {
+                content: "Reset" !important;
+                font-size: 14px !important;
+            }
+
+            
+            /* Force exact 40x40px size for canvas tool buttons from Figma */
+            .full-screen-wrapper #fullscreen,
+            .center-item-wrapper #center-item-icon {
+                width: 40px !important;
+                height: 40px !important;
+                min-width: 40px !important;
+                min-height: 40px !important;
+                max-width: 40px !important;
+                max-height: 40px !important;
+                padding: 12px !important;
+                box-sizing: border-box !important;
+                background-color: var(--gray-6, #EDEDED) !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                border-radius: 6px !important;
+                transition: background-color 0.2s ease !important;
+            }
+            .full-screen-wrapper #fullscreen:hover,
+            .center-item-wrapper #center-item-icon:hover {
+                background-color: var(--gray-5, #E0E0E0) !important;
+            }
+            .full-screen-wrapper #fullscreen svg,
+            .center-item-wrapper #center-item-icon svg {
+                width: 16px !important;
+                height: 16px !important;
+            }
+
+            
+            /* BOTTOM SHEET FOR CENTER ITEMS */
+            .center-item-popup-backdrop {
+                position: fixed;
+                top: 0; left: 0; width: 100vw; height: 100vh;
+                background-color: rgba(0,0,0,0.5);
+                z-index: 9998;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s ease;
+            }
+            .center-item-popup-backdrop.visible {
+                opacity: 1;
+                pointer-events: auto;
+            }
+            .center-item-popup {
+                position: fixed !important;
+                bottom: -100% !important;
+                left: 0 !important;
+                top: auto !important;
+                right: auto !important;
+                width: 100vw !important;
+                height: auto !important;
+                padding: 24px !important;
+                background-color: white !important;
+                border-radius: 20px 20px 0 0 !important;
+                z-index: 9999 !important;
+                transition: bottom 0.3s ease-in-out !important;
+                box-shadow: 0 -4px 20px rgba(0,0,0,0.1) !important;
+                box-sizing: border-box !important;
+                display: block !important;
+                transform: none !important;
+                visibility: visible !important;
+            }
+            .center-item-popup.sheet-visible {
+                bottom: 0 !important;
+            }
+            
+            /* Close button inside popup */
+            .center-item-popup .sheet-close-btn {
+                position: absolute;
+                top: 24px;
+                right: 24px;
+                width: 24px;
+                height: 24px;
+                background-image: url('../../assets/icons/ic-close.svg');
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                cursor: pointer;
+            }
+            
+            /* Heading */
+            .center-item-popup h3 {
+                margin-top: 0 !important;
+                margin-bottom: 20px !important;
+                font-size: 18px !important;
+                color: var(--secondary) !important;
+                padding-right: 30px !important;
+            }
+            
+            /* Checkbox Styling */
+            .center-item-popup .wrap-item {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                margin-bottom: 20px;
+                max-height: calc(100vh - 200px);
+                overflow-y: auto;
+            }
+            .center-item-popup .wrap-item label {
+                font-size: 14px !important;
+                font-weight: 600 !important;
+                color: var(--gray-1, #5E6578) !important;
+                display: flex !important;
+                align-items: center !important;
+                cursor: pointer !important;
+                margin: 0 !important;
+            }
+            .center-item-popup .wrap-item input[type="checkbox"] {
+                appearance: none !important;
+                -webkit-appearance: none !important;
+                width: 18px !important;
+                height: 18px !important;
+                border: 1px solid var(--gray-3, #BCBFC8) !important;
+                border-radius: 4px !important;
+                outline: none !important;
+                cursor: pointer !important;
+                background-color: transparent !important;
+                position: relative !important;
+                margin: 0 10px 0 0 !important;
+                flex-shrink: 0 !important;
+            }
+            .center-item-popup .wrap-item input[type="checkbox"]:checked {
+                background-color: var(--primary) !important;
+                border-color: var(--primary) !important;
+            }
+            .center-item-popup .wrap-item input[type="checkbox"]:checked::after {
+                content: "" !important;
+                position: absolute !important;
+                top: 2px !important;
+                left: 2px !important;
+                width: 12px !important;
+                height: 12px !important;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E") !important;
+                background-size: contain !important;
+                background-repeat: no-repeat !important;
+            }
+            
+            /* Primary Button */
+            #center-item-button {
+                background-color: var(--primary) !important;
+                border-color: var(--primary) !important;
+                color: white !important;
+                height: 44px !important;
+                width: 100% !important;
+                border-radius: 6px !important;
+                font-weight: 700 !important;
+                font-size: 16px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                text-transform: capitalize !important;
+            }
+            #center-item-button svg {
+                display: none !important;
+            }
+
+            /* 5. Tweak internal padding for a clean look */
+            .wrap-price-add-to-cart {
+                margin-top: 0 !important;
+                padding-top: 0 !important;
+            }
+        }
+        
+        .mobile-customize-panel .icon-close {
+            /* If ic-close.svg has a hardcoded color inside the SVG, it will be that color.
+               To ensure it's #2B3B63 (Secondary), we can use CSS mask if needed, but the original SVG 
+               might already be white or dark. We will just use the background image for now. */
+        }
+
         /* 1. Title model and price -> Secondary */
         h1.product_title,
         .ssb-estimated-price {
@@ -712,7 +1217,61 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
     .navbar-brand span { font-size: 11px !important; }
 }
 </style>
+
+<style>
+    
+        .desktop-only { display: block; }
+        @media (max-width: 991px) { .desktop-only { display: none !important; } }
+
+        .mobile-customize-panel {
+        display: none;
+    }
+    .summary-wrapper.active 
+        .desktop-only { display: block; }
+        @media (max-width: 991px) { .desktop-only { display: none !important; } }
+
+        .mobile-customize-panel {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        font-weight: bold;
+        font-size: 16px;
+    }
+</style>
+
+<style>
+    /* Global custom close icon */
+    .ui-dialog .ui-dialog-titlebar-close, .close-popup {
+        background-image: url('../../assets/icons/ic-close.svg') !important;
+        background-size: contain !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        background-color: transparent !important;
+        border: none !important;
+        width: 24px !important;
+        height: 24px !important;
+    }
+    .ui-dialog .ui-dialog-titlebar-close span, .close-popup::before, .close-popup::after {
+        display: none !important; /* Hide original icon */
+    }
+    
+    /* Hover effect for Location trigger */
+    #change-location-trigger:hover .location-name {
+        text-decoration: underline;
+    }
+    
+    /* Bulletproof hiding of Location popup on load */
+    #js-wrap-zip-code-popup {
+        display: none !important;
+    }
+    #js-wrap-zip-code-popup.force-show {
+        display: block !important;
+    }
+</style>
 </head>
+
+
 
 
 
@@ -933,7 +1492,7 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
 						<canvas touch-action="none" data-model-brand="62J7J6" data-component-path="https://d1v3nro70bdf57.cloudfront.net/production/component/" data-image-path="https://demo.shedpro.co/wp-content/plugins/seadev-shed-builder-beta/public/img/" data-shed-type="structure_aframe_single_gable" data-shed-chicken-coop="" data-shed-type-version="structure_gardenshed_pergolaroof" data-shed-path="https://d1v3nro70bdf57.cloudfront.net/production/shed/structure_aframe_single_gable/" data-material-cdn="https://d1v3nro70bdf57.cloudfront.net/production/materials/" id="ssb-canvas" data-debug-mode="false" data-model-id="6850" data-model-hinge-type="normal" data-model-roof-shape="box_gable" data-model-roof-angle="30.26" data-model-roof-angle-lower="" data-model-roof-angle-upper="" data-model-size-error-value="0.30" data-model-enable-ar="" data-model-enable-railing="" data-model-enable-porch="" data-model-porch-size-single-option="1" data-model-porch-has-size-options="false" data-model-porch-external="eyJsb2NhdGlvbiI6ImZyb250IiwiZGlzdGFuY2UiOiIiLCJwb3JjaF9wcmljZV90eXBlIjoiZml4ZWQiLCJwb3JjaF9wcmljZSI6IiIsInJhaWxpbmdfcHJpY2VfdHlwZSI6bnVsbCwicmFpbGluZ19wcmljZSI6bnVsbCwicG9zdF9wcmljZV90eXBlIjpudWxsLCJwb3N0X3ByaWNlIjpudWxsLCJzdHlsZSI6InBvcmNoX2V4dF8xMGR4N2hfNGlub3ZoXzMxMnBpdGNoIn0=" data-component-dir="https://demo.shedpro.co/wp-content/uploads/sites/4/ssb_component" data-horizontal-distributed="" data-horizontal-offset="0" data-horizontal-spacing="0" data-set-price-manual="false" data-enable-door-slab="1" data-enable-loft="0" data-side-gable="end_gable" data-enable-manufacturer="false" data-show-net-price="false" data-is-multi-model="false" data-porch-custom-opening-size="false" data-enable-brace="false" data-opening-available-on="false" data-decking-direction="false" data-porch-opening-size="0" data-tack-door="no" data-porch-style="side-right" data-show-upgrade-charge-info="true" data-show-credit-info="true" data-second-floor-height="" data-place-place-component-on-2nd-floor="false" data-loft-height-from-top="0" data-enable-position-component="true" data-enable-vertical-distribute-porch-size="false" data-porch-wraparound-siding="" data-is-manufacture-edit-order="false" custom-items="null" is_expired_price="" data-cnd-url="https://d1v3nro70bdf57.cloudfront.net/production" is-exclude-freight-charge="false" is-enable-kick-board="false">
 						</canvas>
 					</div>
-							<a href="https://shedpro.co/" class="shed-link"><img src="../../../dxm5q5264srx2.cloudfront.net/wp-content/uploads/sites/4/2023/04/Powered-by-ShedPro.svg" alt="[Master] ShedPro Demo"></a><div id="text-size-canvas"></div>	
+							<a href="https://shedpro.co/" class="shed-link desktop-only"><img src="../../../dxm5q5264srx2.cloudfront.net/wp-content/uploads/sites/4/2023/04/Powered-by-ShedPro.svg" alt="[Master] ShedPro Demo"></a><div id="text-size-canvas"></div>	
 	<div class="canvas-top-right-buttons">
 					<div class="full-screen-wrapper">
 				<div id="fullscreen">
@@ -974,9 +1533,140 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
 	
 	
 		<div class="summary entry-summary">
-			<div class="mobile-customize-panel">Customize Panel <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="lucide lucide-x"><path d="M11.8496 0C18.3895 0 23.7 5.30979 23.7002 11.8496C23.7002 18.3896 18.3896 23.7002 11.8496 23.7002V23.6904C5.30979 23.6902 0 18.3795 0 11.8496C0.000211961 5.31992 5.30992 0.00021204 11.8496 0ZM11.8496 2C6.41992 2.00021 2.00021 6.41992 2 11.8496C2 17.2795 6.41979 21.7 11.8496 21.7002C17.2796 21.7002 21.7002 17.2796 21.7002 11.8496C21.7 6.41979 17.2795 2 11.8496 2ZM15.2793 7.29395C15.6708 6.90245 16.3145 6.90243 16.7061 7.29395C17.0976 7.68546 17.0976 8.32918 16.7061 8.7207L13.4277 12H13.4111L16.6904 15.2793C17.0815 15.6707 17.0815 16.3146 16.6904 16.7061C16.4947 16.9018 16.2333 17 15.9805 17C15.7276 17 15.4663 16.9018 15.2705 16.7061L11.9922 13.4277L8.71289 16.7061C8.51713 16.9018 8.25578 17 8.00293 17C7.75018 16.9999 7.48962 16.9017 7.29395 16.7061C6.90243 16.3145 6.90245 15.6708 7.29395 15.2793L10.5723 12L7.29395 8.7207C6.90244 8.32918 6.90243 7.68546 7.29395 7.29395C7.68546 6.90243 8.32918 6.90244 8.7207 7.29395L12 10.5723L15.2793 7.29395Z" fill="currentColor"/></svg></div><div class="wrap-price-add-to-cart "><div class="wrap-title-price "><h1 class="product_title entry-title">Premium Shed</h1>
+			<div class="mobile-customize-panel">
+    Customize Panel
+    <span class="icon-close" style="width: 24px; height: 24px; display: inline-block; cursor: pointer; background-image: url('../../assets/icons/ic-close.svg'); background-size: contain; background-repeat: no-repeat; background-position: center;"></span>
+</div><div class="wrap-price-add-to-cart "><div class="wrap-title-price "><div class="mobile-title-row">
+    <h1 class="product_title entry-title">Premium Shed</h1>
+    <span id="mobile-panel-size" style="font-size: 14px; color: var(--gray-1); font-weight: 700; display: none;"></span>
+</div>
 <p class="price"><span class="price-label">Est Price </span><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>0.00</bdi></span></p>
-<span id="custom-line-items" class="custom-line-items"></span></div>
+<span id="custom-line-items" class="custom-line-items"></span>
+<div><div id="see-monthly-payment" class="see-monthly-payment"><div>Pay as low as <b><span id="amount-monthly-payment"></span>/mo.</b>, <span class="see-details">see details.</span></div></div>		
+<div id="change-location-trigger" style="color: #2B3B63; font-family: 'Proxima Nova', sans-serif; font-size: 14px; font-style: normal; font-weight: 700; line-height: 16px; cursor: pointer; display: flex; align-items: center; gap: 8px; margin-top: 10px; margin-bottom: 15px;">
+    <img src="../../assets/icons/ic-navigation.svg" style="width: 14px; height: 14px;" />
+    <span class="location-name">Change Location</span>
+</div>
+<button class="btn btn-primary w-100" id="mobile-submit-quote-btn" style="display: none;">Submit Quote</button>
+
+<div id="dialog-monthly-payment" style="display: none"
+			title-dialog="Monthly Payment">
+						<div class="custom-number-month-select">
+				<p class="title-select-option">Select a financing option</p>
+				<div class="select-items-month column-3">
+											<div class="item selected-item"
+							custom-value='Shinhan Bank'
+							type='interest-rate'>
+							Shinhan Bank															
+													</div>
+											<div class="item "
+							custom-value='Home Credit'
+							type='divisor'>
+							Home Credit													</div>
+											<div class="item "
+							custom-value='Vietcombank'
+							type='divisor'>
+							Vietcombank													</div>
+											<div class="item "
+							custom-value='FC Credit'
+							type='divisor'>
+							FC Credit													</div>
+									</div>
+			</div>
+			<div class="listing-financing-terms">
+									<div class="financing" data-partner="Shinhan Bank">
+																				<div class="note">
+								<div style="text-align:left;">Choose the financing option that best fits your budget. Complete the short application form to see your monthly payment estimate immediately.</div>
+<br><a href="https://keensbuildings.com/keens-buildings-application-general/?model_name=%5BHUONG%5D+Aframe+Porch+Option+Setting#app_hdr" target="_blank"><button class="button alt">Apply Now</button></a>							</div>
+												<table>
+																<tr class="item-term" data-value=0.5 data-condition="eyJjb25kaXRpb25fd2lkdGgiOnsib3BlcmF0b3IiOiJlcXVhbCIsInZhbHVlIjoiIiwibWF4X3ZhbHVlIjoiIn0sImNvbmRpdGlvbl9kZXB0aCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifSwiY29uZGl0aW9uX2hlaWdodCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifX0=">
+										<td>2 months</td>
+										<td><span class="price-month">0.5</span></td>
+									</tr>
+																	<tr class="item-term" data-value=0.4 data-condition="eyJjb25kaXRpb25fd2lkdGgiOnsib3BlcmF0b3IiOiJlcXVhbCIsInZhbHVlIjoiIiwibWF4X3ZhbHVlIjoiIn0sImNvbmRpdGlvbl9kZXB0aCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifSwiY29uZGl0aW9uX2hlaWdodCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifX0=">
+										<td>4 months</td>
+										<td><span class="price-month">0.4</span></td>
+									</tr>
+																	<tr class="item-term" data-value=0.3 data-condition="eyJjb25kaXRpb25fd2lkdGgiOnsib3BlcmF0b3IiOiJlcXVhbCIsInZhbHVlIjoiIiwibWF4X3ZhbHVlIjoiIn0sImNvbmRpdGlvbl9kZXB0aCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifSwiY29uZGl0aW9uX2hlaWdodCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifX0=">
+										<td>6 months</td>
+										<td><span class="price-month">0.3</span></td>
+									</tr>
+																	<tr class="item-term" data-value=0.2 data-condition="eyJjb25kaXRpb25fd2lkdGgiOnsib3BlcmF0b3IiOiJlcXVhbCIsInZhbHVlIjoiIiwibWF4X3ZhbHVlIjoiIn0sImNvbmRpdGlvbl9kZXB0aCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifSwiY29uZGl0aW9uX2hlaWdodCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifX0=">
+										<td>8 months</td>
+										<td><span class="price-month">0.2</span></td>
+									</tr>
+																	<tr class="item-term" data-value=0.1 data-condition="eyJjb25kaXRpb25fd2lkdGgiOnsib3BlcmF0b3IiOiJlcXVhbCIsInZhbHVlIjoiIiwibWF4X3ZhbHVlIjoiIn0sImNvbmRpdGlvbl9kZXB0aCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifSwiY29uZGl0aW9uX2hlaWdodCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifX0=">
+										<td>10 months</td>
+										<td><span class="price-month">0.1</span></td>
+									</tr>
+																	<tr class="item-term" data-value=0.05 data-condition="eyJjb25kaXRpb25fd2lkdGgiOnsib3BlcmF0b3IiOiJlcXVhbCIsInZhbHVlIjoiIiwibWF4X3ZhbHVlIjoiIn0sImNvbmRpdGlvbl9kZXB0aCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifSwiY29uZGl0aW9uX2hlaWdodCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifX0=">
+										<td>12 months</td>
+										<td><span class="price-month">0.05</span></td>
+									</tr>
+														</table>
+					</div>
+									<div class="financing" data-partner="Home Credit">
+												<table>
+																<tr class="item-term" data-value=2 data-condition="eyJjb25kaXRpb25fd2lkdGgiOnsib3BlcmF0b3IiOiJlcXVhbCIsInZhbHVlIjoiIiwibWF4X3ZhbHVlIjoiIn0sImNvbmRpdGlvbl9kZXB0aCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifSwiY29uZGl0aW9uX2hlaWdodCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifX0=">
+										<td>3 months</td>
+										<td><span class="price-month">2</span></td>
+									</tr>
+																	<tr class="item-term" data-value=1.5 data-condition="eyJjb25kaXRpb25fd2lkdGgiOnsib3BlcmF0b3IiOiJlcXVhbCIsInZhbHVlIjoiIiwibWF4X3ZhbHVlIjoiIn0sImNvbmRpdGlvbl9kZXB0aCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifSwiY29uZGl0aW9uX2hlaWdodCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifX0=">
+										<td>6 months</td>
+										<td><span class="price-month">1.5</span></td>
+									</tr>
+																	<tr class="item-term" data-value=1 data-condition="eyJjb25kaXRpb25fd2lkdGgiOnsib3BlcmF0b3IiOiJlcXVhbCIsInZhbHVlIjoiIiwibWF4X3ZhbHVlIjoiIn0sImNvbmRpdGlvbl9kZXB0aCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifSwiY29uZGl0aW9uX2hlaWdodCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifX0=">
+										<td>12 months</td>
+										<td><span class="price-month">1</span></td>
+									</tr>
+														</table>
+					</div>
+									<div class="financing" data-partner="Vietcombank">
+																				<div class="note">
+								Monthly payments are calculated by using a divisor							</div>
+												<table>
+																<tr class="item-term" data-value=1 data-condition="eyJjb25kaXRpb25fd2lkdGgiOnsib3BlcmF0b3IiOiJlcXVhbCIsInZhbHVlIjoiIiwibWF4X3ZhbHVlIjoiIn0sImNvbmRpdGlvbl9kZXB0aCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifSwiY29uZGl0aW9uX2hlaWdodCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifX0=">
+										<td>2 months</td>
+										<td><span class="price-month">1</span></td>
+									</tr>
+																	<tr class="item-term" data-value=2 data-condition="eyJjb25kaXRpb25fd2lkdGgiOnsib3BlcmF0b3IiOiJlcXVhbCIsInZhbHVlIjoiIiwibWF4X3ZhbHVlIjoiIn0sImNvbmRpdGlvbl9kZXB0aCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifSwiY29uZGl0aW9uX2hlaWdodCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifX0=">
+										<td>4 months</td>
+										<td><span class="price-month">2</span></td>
+									</tr>
+																	<tr class="item-term" data-value=3 data-condition="eyJjb25kaXRpb25fd2lkdGgiOnsib3BlcmF0b3IiOiJlcXVhbCIsInZhbHVlIjoiIiwibWF4X3ZhbHVlIjoiIn0sImNvbmRpdGlvbl9kZXB0aCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifSwiY29uZGl0aW9uX2hlaWdodCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifX0=">
+										<td>6 months</td>
+										<td><span class="price-month">3</span></td>
+									</tr>
+																	<tr class="item-term" data-value=4 data-condition="eyJjb25kaXRpb25fd2lkdGgiOnsib3BlcmF0b3IiOiJlcXVhbCIsInZhbHVlIjoiIiwibWF4X3ZhbHVlIjoiIn0sImNvbmRpdGlvbl9kZXB0aCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifSwiY29uZGl0aW9uX2hlaWdodCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifX0=">
+										<td>8 months</td>
+										<td><span class="price-month">4</span></td>
+									</tr>
+														</table>
+					</div>
+									<div class="financing" data-partner="FC Credit">
+												<table>
+																<tr class="item-term" data-value=1 data-condition="eyJjb25kaXRpb25fd2lkdGgiOnsib3BlcmF0b3IiOiJlcXVhbCIsInZhbHVlIjoiIiwibWF4X3ZhbHVlIjoiIn0sImNvbmRpdGlvbl9kZXB0aCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifSwiY29uZGl0aW9uX2hlaWdodCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifX0=">
+										<td>6 months</td>
+										<td><span class="price-month">1</span></td>
+									</tr>
+																	<tr class="item-term" data-value=11 data-condition="eyJjb25kaXRpb25fd2lkdGgiOnsib3BlcmF0b3IiOiJlcXVhbCIsInZhbHVlIjoiIiwibWF4X3ZhbHVlIjoiIn0sImNvbmRpdGlvbl9kZXB0aCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifSwiY29uZGl0aW9uX2hlaWdodCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifX0=">
+										<td>10 months</td>
+										<td><span class="price-month">11</span></td>
+									</tr>
+																	<tr class="item-term" data-value=12 data-condition="eyJjb25kaXRpb25fd2lkdGgiOnsib3BlcmF0b3IiOiJlcXVhbCIsInZhbHVlIjoiIiwibWF4X3ZhbHVlIjoiIn0sImNvbmRpdGlvbl9kZXB0aCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifSwiY29uZGl0aW9uX2hlaWdodCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifX0=">
+										<td>12 months</td>
+										<td><span class="price-month">12</span></td>
+									</tr>
+																	<tr class="item-term" data-value=13 data-condition="eyJjb25kaXRpb25fd2lkdGgiOnsib3BlcmF0b3IiOiJlcXVhbCIsInZhbHVlIjoiIiwibWF4X3ZhbHVlIjoiIn0sImNvbmRpdGlvbl9kZXB0aCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifSwiY29uZGl0aW9uX2hlaWdodCI6eyJvcGVyYXRvciI6ImVxdWFsIiwidmFsdWUiOiIiLCJtYXhfdmFsdWUiOiIifX0=">
+										<td>24 months</td>
+										<td><span class="price-month">13</span></td>
+									</tr>
+														</table>
+					</div>
+							</div>
+		</div>
+</div>
+</div>
 	
 	<form class="cart" action="https://demo.shedpro.co/product/garden-shed/" method="post" enctype="multipart/form-data">
 			<div class="ssb-hidden hidden" id="js-shed-data">			<input type="hidden" name="ssb-foundation-fee">			<input type="hidden" name="ssb-model-brand" value="62J7J6">			<input type="hidden" name="ssb-model-style" value="LP">			<input type="hidden" name="ssb-model-total-price">			<input type="hidden" name="ssb-model-msrp-price">			<input type="hidden" name="ssb-model-net-price">			<input type="hidden" name="ssb-option-layout">			<input type="hidden" name="ssb-option-size">			<input type="hidden" name="ssb-option-size-height">			<input type="hidden" name="ssb-option-siding-type">			<input type="hidden" name="ssb-option-siding-type-key">			<input type="hidden" name="ssb-option-base-price">			<input type="hidden" name="ssb-option-default-base-price">			<input type="hidden" name="ssb-option-layout-charge-price">			<input type="hidden" name="ssb-option-siding-type-price">			<input type="hidden" name="ssb-option-roof-material-price">			<input type="hidden" name="ssb-option-init-roof">			<input type="hidden" name="ssb-option-roof-type">			<input type="hidden" name="ssb-option-siding-color" data-type="color" data-name="siding">			<input type="hidden" name="ssb-option-siding-color-price">			<input type="hidden" name="ssb-option-trim-color" data-type="color" data-name="trim">			<input type="hidden" name="ssb-option-wainscoting">			<input type="hidden" name="ssb-option-wainscoting-color" data-type="color" data-name="siding">			<input type="hidden" name="ssb-option-wainscoting-color-price" data-type="color" data-name="siding">			<input type="hidden" name="ssb-option-exterior-siding-upgrades">			<input type="hidden" name="ssb-option-frame">			<input type="hidden" name="ssb-option-trim-color-price">			<input type="hidden" name="ssb-option-roof-color" data-type="color" data-name="roof">			<input type="hidden" name="ssb-option-roof-color-price">			<input type="hidden" name="ssb-option-upgrade-door">			<input type="hidden" name="ssb-option-upgrade-windows">			<input type="hidden" name="ssb-option-components">			<input type="hidden" name="ssb-option-components-interior">			<input type="hidden" name="ssb-option-upgrade-porch">			<input type="hidden" name="ssb-option-roof-pitch">			<input type="hidden" name="ssb-option-legs">			<input type="hidden" name="ssb-option-frame-spacing">			<input type="hidden" name="ssb-option-upgrade-package">			<input type="hidden" name="ssb-option-upgrade-other">			<input type="hidden" name="ssb-shed-full-price">			<input type="hidden" name="ssb-shed-url">			<input type="hidden" name="ssb-shed-base-price">			<input type="hidden" name="ssb-option-shutter-color" data-type="color" data-name="shutter">			<input type="hidden" name="ssb-option-shutter-color-price">			<input type="hidden" name="ssb-option-flower_box-color" data-type="color" data-name="flower_box">			<input type="hidden" name="ssb-option-flower_box-color-price">			<input type="hidden" name="ssb-option-has-shutter">			<input type="hidden" name="ssb-option-has-vent">			<input type="hidden" name="ssb-option-has-windows">			<input type="hidden" name="ssb-option-door-color" data-type="color" data-name="door">			<input type="hidden" name="ssb-option-vent-color" data-type="color" data-name="vent">			<input type="hidden" name="ssb-option-rails-color" data-type="color" data-name="rails">			<input type="hidden" name="ssb-option-rails-color-price">			<input type="hidden" name="ssb-option-has-rails">			<input type="hidden" name="ssb-option-windows-color" data-type="color" data-name="windows">			<input type="hidden" name="ssb-option-door-color-price">			<input type="hidden" name="ssb-option-thumbnail">			<input type="hidden" name="ssb-option-thumbnail-front">			<input type="hidden" name="ssb-option-thumbnail-back">			<input type="hidden" name="ssb-option-thumbnail-left">			<input type="hidden" name="ssb-option-thumbnail-right">			<input type="hidden" name="ssb-option-roof-overhang">			<input type="hidden" name="ssb-option-2d-floor-plan">			<input type="hidden" name="ssb-option-shed-color">			<input type="hidden" name="ssb-option-model-name">			<input type="hidden" name="ssb-option-product-sku" value="">			<input type="hidden" name="ssb-option-model-type" value="structure_aframe_single_gable">			<input type="hidden" name="ssb-option-api-type" value="storage_building">			<input type="hidden" name="ssb-option-api-category" value="A Frame">			<input type="hidden" name="ssb-option-owner" value="dealer">			<input type="hidden" name="ssb-option-loft">			<input type="hidden" name="ssb-option-porch-size" value="0">			<input type="hidden" name="ssb-option-porch-data">			<input type="hidden" name="ssb-option-porch-data-color">			<input type="hidden" name="ssb-option-vent-color-price">			<input type="hidden" name="ssb-option-windows-color-price">			<input type="hidden" name="ssb-old-order" value="">			<input type="hidden" name="ssb-option-electrical-package">			<input type="hidden" name="ssb-option-carport-siding-data">			<input type="hidden" name="ssb-option-iframe" value="no">			<input type="hidden" name="ssb-option-floor-material">			<input type="hidden" name="ssb-sizes-display">			<input type="hidden" name="ssb-sizes-display-old">			<input type="hidden" name="ssb-option-custom-line-items">			<input type="hidden" name="ssb-option-custom-line-items-source">			<input type="hidden" name="ssb-model-id" value="6850">			<input type="hidden" name="ssb-product-id" value="6857">			<input type="hidden" name="temporary-data">			<input type="hidden" name="ssb-option-quaker-width">			<input type="hidden" name="ssb-option-mfr-fees">			<input type="hidden" name="ssb-option-dealer-fees">			<input type="hidden" name="ssb-option-credit">			<input type="hidden" name="ssb-option-wall-color" data-type="color" data-name="wall">			<input type="hidden" name="ssb-option-wall-color-price">			<input type="hidden" name="ssb-option-ceiling-color" data-type="color" data-name="ceiling">			<input type="hidden" name="ssb-option-ceiling-color-price">			<input type="hidden" name="ssb-option-countertops-color" data-type="color" data-name="countertops">			<input type="hidden" name="ssb-option-countertops-color-price">			<input type="hidden" name="ssb-option-appliance-color" data-type="color" data-name="appliance">			<input type="hidden" name="ssb-option-appliance-color-price">			<input type="hidden" name="ssb-option-interior-wall-material-type">			<input type="hidden" name="ssb-option-interior-ceiling-material-type">			<input type="hidden" name="ssb-option-insulation-wall-material-type">			<input type="hidden" name="ssb-option-insulation-roof-material-type">			<input type="hidden" name="ssb-option-finishing-interior">			<input type="hidden" name="ssb-option-insulation-interior">			<input type="hidden" name="other-line-items">			<input type="hidden" name="ops-hub-data">			<input type="hidden" name="ssb-option-custom-tax">			<input type="hidden" name="ssb-option-accent-gable">			<input type="hidden" name="ssb-option-corner-trim">			<input type="hidden" name="ssb-option-available-locations-total">			<input type="hidden" name="ssb-option-walls">	</div>
@@ -1015,7 +1705,7 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
 		<button type="button" class="qty-btn plus"></button>
 	</div>
 	        <button type="submit" name="add-to-cart" value="6857" class="single_add_to_cart_button button alt">Request a Quote</button>
-        		<span id="mobile-custom-shed" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>Edit Shed</span>	</form>
+        		<span id="mobile-custom-shed" style="align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>Edit Shed</span>	</form>
 
 	
 		<script>
@@ -3235,4 +3925,200 @@ new Promise( ( resolve ) => {
 <script>
   lucide.createIcons();
 </script>
-</div></body></html>
+</div><div class="wrap-zip-code-popup find-nearest-location" id="js-wrap-zip-code-popup" style="display: none;">
+		<div class="zip-code-popup ar-popup">
+			<div class="ar-content">
+				<span class="close-popup"></span>
+									<h3 class="title">Select the nearest store location</h3>
+													<div class="content">Enter your address to find the nearest store location, or select a location from the list below where you would like to submit your request.</div>
+								<div class="wrap-content">
+					<form action="" method="POST" id="form-location-data">
+						<input type="hidden" name="js-select-location" id="js-select-location"/>
+						<input type="hidden" name="input-user-lat" id="input-user-lat"/>
+						<input type="hidden" name="input-user-lng" id="input-user-lng"/>
+						<div class="wrap-input">
+							<input type="text" class="input-address" placeholder="Enter your address">
+							<button class="button find-location" data-postID="3408" data-ajax-url="https://towncountrysheds.shedpro.co/wp-admin/admin-ajax.php">Find</button>
+						</div>
+					</form>
+					<div class="wrap-use-current-location">
+						<button class="button btn-use-current-location" style="display: flex; align-items: center; justify-content: center; gap: 8px;"><img src="../../assets/icons/ic-navigation.svg" style="width: 14px; height: 14px;" />Use Current Location</button>
+					</div>
+					<p id="js-zip-code-notice" class="message">Outside of our service area.</p>
+					<p id="js-model-not-allow" class="message">
+						Model has some options that are not available at the area. <a
+							href="https://towncountrysheds.shedpro.co/product/lancaster/">
+							Reset model.</a>
+					</p>
+						<div class="container-location-list">
+							<p class="title-list">Browse all locations</p>
+				<div class="wrap-locations-list">					<div class="location-item " location-id="2">
+						<div class="content">
+							<div class="col-left">
+								<p class="location-name">Homer Glen, IL</p>
+								<p class="location-address">15830 S Bell Rd, Homer Glen, IL 60491</p>
+							</div>
+													</div>
+					</div>
+									<div class="location-item " location-id="3">
+						<div class="content">
+							<div class="col-left">
+								<p class="location-name">Montgomery, IL</p>
+								<p class="location-address">400 US-30 Montgomery, IL 60538</p>
+							</div>
+													</div>
+					</div>
+									<div class="location-item " location-id="1">
+						<div class="content">
+							<div class="col-left">
+								<p class="location-name">Romeoville, IL</p>
+								<p class="location-address">451 S Weber Rd, Romeoville, IL 60446</p>
+							</div>
+													</div>
+					</div>
+					<div class="location-item " location-id="4">
+						<div class="content">
+							<div class="col-left">
+								<p class="location-name">Chicago, IL</p>
+								<p class="location-address">100 N State St, Chicago, IL 60602</p>
+							</div>
+						</div>
+					</div>
+					<div class="location-item " location-id="5">
+						<div class="content">
+							<div class="col-left">
+								<p class="location-name">Naperville, IL</p>
+								<p class="location-address">200 S Main St, Naperville, IL 60540</p>
+							</div>
+						</div>
+					</div>
+					<div class="location-item " location-id="6">
+						<div class="content">
+							<div class="col-left">
+								<p class="location-name">Joliet, IL</p>
+								<p class="location-address">300 N Chicago St, Joliet, IL 60432</p>
+							</div>
+						</div>
+					</div>
+
+						</div>
+	</div>
+					</div>
+				<div class="wrap-button">
+					<button id="js-zip-code-submit" class="send button" data-postID="3408" data-ajax_url="https://towncountrysheds.shedpro.co/wp-admin/admin-ajax.php">Start Building</button>
+				</div>
+				<a href="#" class="see-all-availble-location">View all locations</a>
+				<div class="wrap-button-select-later">
+					<button id="select-location-later" class="send button">Select Later</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+    <div id="mobile-sticky-footer" style="display: none;">
+        <div class="footer-price" style="color: var(--gray-1); font-size: 12px; line-height: 1.2;">
+            Est Price:<br><span id="sticky-est-price" style="color: var(--primary); font-size: 18px; font-weight: 700;">$0.00</span>
+        </div>
+        <button class="btn btn-primary" id="sticky-submit-quote-btn" style="padding: 10px 24px; font-weight: 700; border-radius: 6px;">Submit Quote</button>
+    </div>
+
+
+    
+
+
+
+
+
+
+
+    
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var stickyFooter = document.getElementById('mobile-sticky-footer');
+        var estPriceSpan = document.getElementById('sticky-est-price');
+        var stickySubmitBtn = document.getElementById('sticky-submit-quote-btn');
+        var isStickyBound = false;
+
+        function initBottomObserver() {
+            if(!stickyFooter || isStickyBound) return;
+            var topBtn = document.getElementById('mobile-submit-quote-btn');
+            var bottomBtn = document.querySelector('.group-button');
+            if(!topBtn && !bottomBtn) return;
+            
+            isStickyBound = true;
+            var isTopVisible = false;
+            var isBottomVisible = false;
+            
+            function updateSticky() {
+                if (isTopVisible || isBottomVisible) {
+                    stickyFooter.classList.remove('visible');
+                } else {
+                    stickyFooter.classList.add('visible');
+                }
+            }
+            
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.target === topBtn) {
+                        isTopVisible = entry.isIntersecting;
+                    }
+                    if (entry.target === bottomBtn) {
+                        isBottomVisible = entry.isIntersecting;
+                    }
+                });
+                updateSticky();
+            }, {
+                root: document.querySelector('.summary.entry-summary') || document.querySelector('.ps') || null,
+                rootMargin: '0px',
+                threshold: 0.1
+            });
+            
+            if (topBtn) observer.observe(topBtn);
+            if (bottomBtn) observer.observe(bottomBtn);
+            
+            stickySubmitBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (bottomBtn) bottomBtn.click();
+            });
+            
+            setInterval(function() {
+                // Try finding the main Est Price
+                var sourcePrice = document.querySelector('.price .woocommerce-Price-amount');
+                if(sourcePrice && estPriceSpan) {
+                    estPriceSpan.innerHTML = sourcePrice.innerHTML;
+                }
+            }, 500);
+        }
+
+        function checkAndBind() {
+            var bottomBtn = document.querySelector('.group-button');
+            if(bottomBtn) {
+                initBottomObserver();
+                return true;
+            }
+            return false;
+        }
+
+        if(!checkAndBind()) {
+            var domObserver = new MutationObserver(function() {
+                if(checkAndBind()) {
+                    domObserver.disconnect();
+                }
+            });
+            domObserver.observe(document.body, { childList: true, subtree: true });
+        }
+    });
+    </script>
+</body>
+
+
+
+
+
+</html>
