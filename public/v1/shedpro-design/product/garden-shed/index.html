@@ -621,11 +621,12 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
             /* Buttons Width & Height */
 
 
-            /* Accordion Tabs Height 44px */
+            /* Accordion Tabs Height 48px */
             .ssb-configurator-panel-heading,
             .shed-type-dropdown .current,
-            .accordion-toggle {
-                height: 44px !important;
+            .accordion-toggle,
+            .ssb-configurator-accordion-heading {
+                height: 48px !important;
                 display: flex !important;
                 align-items: center !important;
                 padding-top: 0 !important;
@@ -665,7 +666,7 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
             /* Sticky footer prices */
             .footer-price,
             .footer-price #sticky-est-price {
-                font-size: 14px !important;
+                font-size: 16px !important;
             }
 
             /* Ensure Types section margin is tight */
@@ -707,52 +708,20 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
             }
 
             
-            /* Style the bottom group-button to match Submit Quote */
-            .group-button-checkout-inner {
-                padding: 15px !important;
-            }
-            button.group-button {
-                background-color: #F06A36 !important; /* Force orange */
-                border-color: #F06A36 !important;
-                color: white !important;
-                height: 44px !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                border-radius: 6px !important;
-                font-weight: 700 !important;
-                width: 100% !important;
-                text-transform: capitalize !important;
-                font-size: 0 !important; /* Hide old text */
-            }
-            button.group-button::after {
-                content: "Submit Quote" !important;
-                font-size: 16px !important;
-            }
-            
-            /* Sync the mobile bottom Request Quote button with Design System */
-            .ssb-mobile-button-request-a-quote {
-                background-color: var(--primary) !important;
-                border-color: var(--primary) !important;
-                color: white !important;
-                height: 44px !important;
-                width: 100% !important;
-                border-radius: 6px !important;
-                font-weight: 700 !important;
-                font-size: 0 !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                text-transform: capitalize !important;
-                margin-top: 15px !important;
-            }
-            .ssb-mobile-button-request-a-quote::after {
-                content: "Submit Quote" !important;
-                font-size: 16px !important;
+            /* Hide the bottom Submit Quote buttons completely */
+            .group-button-checkout-inner,
+            .ssb-configurator-tools.action-save {
+                display: none !important;
             }
 
             
-            /* Rename Save for later and Reset model */
+            /* Rename Save for later and Reset model and update styling */
+            .ssb-configurator-tools.model-action button {
+                height: 44px !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
             button.ssb-save-model,
             button.ssb-reset-btn {
                 font-size: 0 !important;
@@ -764,6 +733,30 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
             button.ssb-reset-btn::after {
                 content: "Reset" !important;
                 font-size: 14px !important;
+            }
+            button.ssb-save-model::before {
+                content: "" !important;
+                background-image: url('../../assets/icons/ic-saved.svg') !important;
+                background-size: contain !important;
+                background-repeat: no-repeat !important;
+                background-position: center !important;
+                display: inline-block !important;
+                width: 16px !important;
+                height: 16px !important;
+                margin-right: 6px !important;
+                vertical-align: middle !important;
+            }
+            button.ssb-reset-btn::before {
+                content: "" !important;
+                background-image: url('../../assets/icons/ic-reset.svg') !important;
+                background-size: contain !important;
+                background-repeat: no-repeat !important;
+                background-position: center !important;
+                display: inline-block !important;
+                width: 16px !important;
+                height: 16px !important;
+                margin-right: 6px !important;
+                vertical-align: middle !important;
             }
 
             
