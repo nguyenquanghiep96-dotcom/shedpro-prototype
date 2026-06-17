@@ -9,7 +9,18 @@
     <link rel="apple-touch-icon" href="/Favicon.png">
     
     <style>
+        @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
         :root {
+            --gray-0: #2E323D;
+            --gray-1: #5E6578;
+            --gray-2: #959DB1;
+            --gray-3: #BCBFC8;
+            --gray-4: #EAECF0;
+            --gray-5: #E0E0E0;
+            --gray-6: #EDEDED;
+            --gray-7: #F5F5F5;
+            --white: #FFFFFF;
+
             --primary: #ff7048;
             --secondary: #2b3b63;
             --bg-body: #f5f5f5;
@@ -29,7 +40,7 @@
         }
 
         body {
-            font-family: 'Proxima Nova', sans-serif;
+            font-family: 'Proxima Nova', 'Montserrat', sans-serif;
             background-color: var(--bg-body);
             color: var(--text-dark);
             height: 100vh;
@@ -254,40 +265,50 @@
         .color-tile {
             width: 100%;
             text-align: left;
-            border-radius: 6px;
+            border-radius: 0;
             border: none;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.2s;
-            position: relative;
+            transition: background 0.2s;
         }
 
-        .color-tile:hover {
-            transform: scale(1.02);
+        .color-tiles .color-tile:first-child {
+            border-radius: 10px 10px 0 0;
+        }
+
+        .color-tiles .color-tile:last-child {
+            border-radius: 0 0 10px 10px;
         }
 
         .color-tile-content {
             padding: 16px;
             display: flex;
-            flex-direction: column;
-            gap: 24px;
-            min-height: 90px;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .color-name {
             font-weight: 700;
             font-size: 14px;
-            color: white;
         }
 
-        .color-class-label {
-            font-family: monospace;
-            font-size: 10px;
-            color: white;
+        .color-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .copy-text {
+            font-family: 'Proxima Nova', 'Montserrat', sans-serif;
+            font-size: 12px;
+            padding: 4px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
             opacity: 0.9;
         }
 
-        .color-tile:hover .color-class-label {
+        .copy-text:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #ffffff !important;
             opacity: 1;
         }
 
@@ -312,7 +333,7 @@
             display: flex;
             align-items: center;
             gap: 16px;
-            font-family: monospace;
+            font-family: 'Proxima Nova', 'Montserrat', sans-serif;
             font-size: 12px;
             color: var(--text-light-gray);
         }
@@ -392,7 +413,7 @@
             padding: 4px;
             border-radius: 4px;
             font-size: 10px;
-            font-family: 'Proxima Nova', sans-serif;
+            font-family: 'Proxima Nova', 'Montserrat', sans-serif;
             white-space: nowrap;
             opacity: 0;
             visibility: hidden;
@@ -424,7 +445,7 @@
 
         .icon-label {
             font-size: 10px;
-            font-family: 'Proxima Nova', sans-serif;
+            font-family: 'Proxima Nova', 'Montserrat', sans-serif;
             font-weight: 500;
             color: var(--text-gray);
             transition: color 0.2s;
@@ -438,6 +459,74 @@
             color: var(--primary);
         }
 
+
+        .ds-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border-radius: 6px;
+            font-family: 'Proxima Nova', 'Montserrat', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+            border: none;
+        }
+        .ds-btn .icon {
+            width: 16px;
+            height: 16px;
+            background-color: currentColor;
+            flex-shrink: 0;
+        }
+
+        /* Sizes */
+        .ds-btn-32 {
+            height: 32px;
+            padding: 0 16px;
+            font-size: 14px;
+        }
+        .ds-btn-36 {
+            height: 36px;
+            padding: 0 20px;
+            font-size: 14px;
+        }
+        .ds-btn-44 {
+            height: 44px;
+            padding: 0 20px;
+            font-size: 14px;
+        }
+        .ds-btn-48 {
+            height: 48px;
+            padding: 0 24px;
+            font-size: 16px;
+        }
+
+        /* Styles */
+        .ds-btn-primary {
+            background-color: #ff7048; /* primary */
+            color: #ffffff;
+        }
+        .ds-btn-primary:hover {
+            background-color: #ff8765;
+        }
+
+        .ds-btn-secondary {
+            background-color: #EDEDED;
+            color: #5E6578;
+        }
+        .ds-btn-secondary:hover {
+            background-color: #E2E2E2;
+        }
+
+        .ds-btn-outline {
+            background-color: transparent;
+            color: #5E6578;
+            border: 1px solid #E0E0E0;
+        }
+        .ds-btn-outline:hover {
+            background-color: #F8F9FA;
+        }
     </style>
     <link rel="stylesheet" href="assets/icons/icons.css">
 </head>
@@ -506,7 +595,7 @@
                     </span>
                 </button>
                 <div class="menu-items" id="component-menu" style="display: none;">
-                    <button class="menu-item">Buttons</button>
+                    <button class="menu-item" onclick="switchTab('buttons', this)">Buttons</button>
                     <button class="menu-item">Inputs</button>
                     <button class="menu-item">Cards</button>
                     <button class="menu-item">Modals</button>
@@ -521,148 +610,280 @@
                 <div id="tab-color" class="page active">
                     <h1 class="page-header">Colors</h1>
                     <div class="color-grid">
-                        <div class="color-group">
+<div class="color-group">
   <p class="color-group-title">Primary</p>
   <div class="color-tiles">
-
-    <button class="color-tile" style="background-color: #ff7048;" onclick="copyToClipboard('.bg-primary-500', this)" title="Copy .bg-primary-500">
+    <div class="color-tile" style="background-color: #FF7048;">
       <div class="color-tile-content">
-        <span class="color-name">Primary 500</span>
-        <span class="color-class-label">.bg-primary-500</span>
+        <span class="color-name" style="color: #2E323D;">Primary 500</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('#FF7048', this)" title="Copy hex">#FF7048</span>
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('.bg-primary-500', this)" title="Copy class">.bg-primary-500</span>
+        </div>
       </div>
-    </button>
-    <button class="color-tile" style="background-color: #ff8765;" onclick="copyToClipboard('.bg-primary-400', this)" title="Copy .bg-primary-400">
+    </div>
+    <div class="color-tile" style="background-color: #FF8765;">
       <div class="color-tile-content">
-        <span class="color-name">Primary 400</span>
-        <span class="color-class-label">.bg-primary-400</span>
+        <span class="color-name" style="color: #2E323D;">Primary 400</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('#FF8765', this)" title="Copy hex">#FF8765</span>
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('.bg-primary-400', this)" title="Copy class">.bg-primary-400</span>
+        </div>
       </div>
-    </button>
-    <button class="color-tile" style="background-color: #ffa58a;" onclick="copyToClipboard('.bg-primary-300', this)" title="Copy .bg-primary-300">
+    </div>
+    <div class="color-tile" style="background-color: #FF9D82;">
       <div class="color-tile-content">
-        <span class="color-name">Primary 300</span>
-        <span class="color-class-label">.bg-primary-300</span>
+        <span class="color-name" style="color: #2E323D;">Primary 300</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('#FF9D82', this)" title="Copy hex">#FF9D82</span>
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('.bg-primary-300', this)" title="Copy class">.bg-primary-300</span>
+        </div>
       </div>
-    </button>
-    <button class="color-tile" style="background-color: #ffc3ae;" onclick="copyToClipboard('.bg-primary-200', this)" title="Copy .bg-primary-200">
+    </div>
+    <div class="color-tile" style="background-color: #FFB49F;">
       <div class="color-tile-content">
-        <span class="color-name">Primary 200</span>
-        <span class="color-class-label">.bg-primary-200</span>
+        <span class="color-name" style="color: #2E323D;">Primary 200</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('#FFB49F', this)" title="Copy hex">#FFB49F</span>
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('.bg-primary-200', this)" title="Copy class">.bg-primary-200</span>
+        </div>
       </div>
-    </button>
-    <button class="color-tile" style="background-color: #ffe1d7;" onclick="copyToClipboard('.bg-primary-100', this)" title="Copy .bg-primary-100">
+    </div>
+    <div class="color-tile" style="background-color: #FFCABC;">
       <div class="color-tile-content">
-        <span class="color-name">Primary 100</span>
-        <span class="color-class-label">.bg-primary-100</span>
+        <span class="color-name" style="color: #2E323D;">Primary 100</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('#FFCABC', this)" title="Copy hex">#FFCABC</span>
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('.bg-primary-100', this)" title="Copy class">.bg-primary-100</span>
+        </div>
       </div>
-    </button>
+    </div>
+    <div class="color-tile" style="background-color: #FFE1D9;">
+      <div class="color-tile-content">
+        <span class="color-name" style="color: #2E323D;">Primary 50</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('#FFE1D9', this)" title="Copy hex">#FFE1D9</span>
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('.bg-primary-50', this)" title="Copy class">.bg-primary-50</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <div class="color-group">
   <p class="color-group-title">Secondary</p>
   <div class="color-tiles">
-
-    <button class="color-tile" style="background-color: #2b3b63;" onclick="copyToClipboard('.bg-secondary-500', this)" title="Copy .bg-secondary-500">
+    <div class="color-tile" style="background-color: #2B3B63;">
       <div class="color-tile-content">
-        <span class="color-name">Secondary 500</span>
-        <span class="color-class-label">.bg-secondary-500</span>
+        <span class="color-name" style="color: #FFFFFF;">Secondary 500</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('#2B3B63', this)" title="Copy hex">#2B3B63</span>
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('.bg-secondary-500', this)" title="Copy class">.bg-secondary-500</span>
+        </div>
       </div>
-    </button>
-    <button class="color-tile" style="background-color: #556282;" onclick="copyToClipboard('.bg-secondary-400', this)" title="Copy .bg-secondary-400">
+    </div>
+    <div class="color-tile" style="background-color: #404F72;">
       <div class="color-tile-content">
-        <span class="color-name">Secondary 400</span>
-        <span class="color-class-label">.bg-secondary-400</span>
+        <span class="color-name" style="color: #FFFFFF;">Secondary 400</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('#404F72', this)" title="Copy hex">#404F72</span>
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('.bg-secondary-400', this)" title="Copy class">.bg-secondary-400</span>
+        </div>
       </div>
-    </button>
-    <button class="color-tile" style="background-color: #7f8aa1;" onclick="copyToClipboard('.bg-secondary-300', this)" title="Copy .bg-secondary-300">
+    </div>
+    <div class="color-tile" style="background-color: #566281;">
       <div class="color-tile-content">
-        <span class="color-name">Secondary 300</span>
-        <span class="color-class-label">.bg-secondary-300</span>
+        <span class="color-name" style="color: #FFFFFF;">Secondary 300</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('#566281', this)" title="Copy hex">#566281</span>
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('.bg-secondary-300', this)" title="Copy class">.bg-secondary-300</span>
+        </div>
       </div>
-    </button>
-    <button class="color-tile" style="background-color: #aab1c1;" onclick="copyToClipboard('.bg-secondary-200', this)" title="Copy .bg-secondary-200">
+    </div>
+    <div class="color-tile" style="background-color: #6B7691;">
       <div class="color-tile-content">
-        <span class="color-name">Secondary 200</span>
-        <span class="color-class-label">.bg-secondary-200</span>
+        <span class="color-name" style="color: #FFFFFF;">Secondary 200</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('#6B7691', this)" title="Copy hex">#6B7691</span>
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('.bg-secondary-200', this)" title="Copy class">.bg-secondary-200</span>
+        </div>
       </div>
-    </button>
-    <button class="color-tile" style="background-color: #d4d8e0;" onclick="copyToClipboard('.bg-secondary-100', this)" title="Copy .bg-secondary-100">
+    </div>
+    <div class="color-tile" style="background-color: #818BA0;">
       <div class="color-tile-content">
-        <span class="color-name">Secondary 100</span>
-        <span class="color-class-label">.bg-secondary-100</span>
+        <span class="color-name" style="color: #FFFFFF;">Secondary 100</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('#818BA0', this)" title="Copy hex">#818BA0</span>
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('.bg-secondary-100', this)" title="Copy class">.bg-secondary-100</span>
+        </div>
       </div>
-    </button>
+    </div>
+    <div class="color-tile" style="background-color: #969FAF;">
+      <div class="color-tile-content">
+        <span class="color-name" style="color: #2E323D;">Secondary 50</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('#969FAF', this)" title="Copy hex">#969FAF</span>
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('.bg-secondary-50', this)" title="Copy class">.bg-secondary-50</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <div class="color-group">
-  <p class="color-group-title">Neutral</p>
+  <p class="color-group-title">Neutral (Grays)</p>
   <div class="color-tiles">
-
-    <button class="color-tile" style="background-color: #2e323d;" onclick="copyToClipboard('.bg-neutral-900', this)" title="Copy .bg-neutral-900">
+    <div class="color-tile" style="background-color: #FFFFFF; border: 1px solid #E0E0E0;">
       <div class="color-tile-content">
-        <span class="color-name">Neutral 900</span>
-        <span class="color-class-label">.bg-neutral-900</span>
+        <span class="color-name" style="color: #2E323D;">Gray 01</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('#FFFFFF', this)" title="Copy hex">#FFFFFF</span>
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('.bg-gray-1', this)" title="Copy class">.bg-gray-1</span>
+        </div>
       </div>
-    </button>
-    <button class="color-tile" style="background-color: #5e6578;" onclick="copyToClipboard('.bg-neutral-800', this)" title="Copy .bg-neutral-800">
+    </div>
+    <div class="color-tile" style="background-color: #F4F5F6;">
       <div class="color-tile-content">
-        <span class="color-name">Neutral 800</span>
-        <span class="color-class-label">.bg-neutral-800</span>
+        <span class="color-name" style="color: #2E323D;">Gray 02</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('#F4F5F6', this)" title="Copy hex">#F4F5F6</span>
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('.bg-gray-2', this)" title="Copy class">.bg-gray-2</span>
+        </div>
       </div>
-    </button>
-    <button class="color-tile" style="background-color: #8e97b3;" onclick="copyToClipboard('.bg-neutral-700', this)" title="Copy .bg-neutral-700">
+    </div>
+    <div class="color-tile" style="background-color: #E5E6E8;">
       <div class="color-tile-content">
-        <span class="color-name">Neutral 700</span>
-        <span class="color-class-label">.bg-neutral-700</span>
+        <span class="color-name" style="color: #2E323D;">Gray 03</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('#E5E6E8', this)" title="Copy hex">#E5E6E8</span>
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('.bg-gray-3', this)" title="Copy class">.bg-gray-3</span>
+        </div>
       </div>
-    </button>
-    <button class="color-tile" style="background-color: #bec9ee;" onclick="copyToClipboard('.bg-neutral-600', this)" title="Copy .bg-neutral-600">
+    </div>
+    <div class="color-tile" style="background-color: #D5D6D8;">
       <div class="color-tile-content">
-        <span class="color-name">Neutral 600</span>
-        <span class="color-class-label">.bg-neutral-600</span>
+        <span class="color-name" style="color: #2E323D;">Gray 04</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('#D5D6D8', this)" title="Copy hex">#D5D6D8</span>
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('.bg-gray-4', this)" title="Copy class">.bg-gray-4</span>
+        </div>
       </div>
-    </button>
-    <button class="color-tile" style="background-color: #f5f5f5;" onclick="copyToClipboard('.bg-neutral-100', this)" title="Copy .bg-neutral-100">
+    </div>
+    <div class="color-tile" style="background-color: #C0C2C5;">
       <div class="color-tile-content">
-        <span class="color-name">Neutral 100</span>
-        <span class="color-class-label">.bg-neutral-100</span>
+        <span class="color-name" style="color: #2E323D;">Gray 05</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('#C0C2C5', this)" title="Copy hex">#C0C2C5</span>
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('.bg-gray-5', this)" title="Copy class">.bg-gray-5</span>
+        </div>
       </div>
-    </button>
+    </div>
+    <div class="color-tile" style="background-color: #ACADB2;">
+      <div class="color-tile-content">
+        <span class="color-name" style="color: #2E323D;">Gray 06</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('#ACADB2', this)" title="Copy hex">#ACADB2</span>
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('.bg-gray-6', this)" title="Copy class">.bg-gray-6</span>
+        </div>
+      </div>
+    </div>
+    <div class="color-tile" style="background-color: #97999E;">
+      <div class="color-tile-content">
+        <span class="color-name" style="color: #2E323D;">Gray 07</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('#97999E', this)" title="Copy hex">#97999E</span>
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('.bg-gray-7', this)" title="Copy class">.bg-gray-7</span>
+        </div>
+      </div>
+    </div>
+    <div class="color-tile" style="background-color: #82848B;">
+      <div class="color-tile-content">
+        <span class="color-name" style="color: #FFFFFF;">Gray 08</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('#82848B', this)" title="Copy hex">#82848B</span>
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('.bg-gray-8', this)" title="Copy class">.bg-gray-8</span>
+        </div>
+      </div>
+    </div>
+    <div class="color-tile" style="background-color: #6D7077;">
+      <div class="color-tile-content">
+        <span class="color-name" style="color: #FFFFFF;">Gray 09</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('#6D7077', this)" title="Copy hex">#6D7077</span>
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('.bg-gray-9', this)" title="Copy class">.bg-gray-9</span>
+        </div>
+      </div>
+    </div>
+    <div class="color-tile" style="background-color: #585B64;">
+      <div class="color-tile-content">
+        <span class="color-name" style="color: #FFFFFF;">Gray 10</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('#585B64', this)" title="Copy hex">#585B64</span>
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('.bg-gray-10', this)" title="Copy class">.bg-gray-10</span>
+        </div>
+      </div>
+    </div>
+    <div class="color-tile" style="background-color: #434751;">
+      <div class="color-tile-content">
+        <span class="color-name" style="color: #FFFFFF;">Gray 11</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('#434751', this)" title="Copy hex">#434751</span>
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('.bg-gray-11', this)" title="Copy class">.bg-gray-11</span>
+        </div>
+      </div>
+    </div>
+    <div class="color-tile" style="background-color: #2E323D;">
+      <div class="color-tile-content">
+        <span class="color-name" style="color: #FFFFFF;">Gray 12</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('#2E323D', this)" title="Copy hex">#2E323D</span>
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('.bg-gray-12', this)" title="Copy class">.bg-gray-12</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <div class="color-group">
   <p class="color-group-title">Semantic / Status</p>
   <div class="color-tiles">
-
-    <button class="color-tile" style="background-color: #f12428;" onclick="copyToClipboard('.bg-danger-900', this)" title="Copy .bg-danger-900">
+    <div class="color-tile" style="background-color: #22C55E;">
       <div class="color-tile-content">
-        <span class="color-name">Danger</span>
-        <span class="color-class-label">.bg-danger-900</span>
+        <span class="color-name" style="color: #FFFFFF;">Success</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('#22C55E', this)" title="Copy hex">#22C55E</span>
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('.bg-success', this)" title="Copy class">.bg-success</span>
+        </div>
       </div>
-    </button>
-    <button class="color-tile" style="background-color: #f09a11;" onclick="copyToClipboard('.bg-warning-900', this)" title="Copy .bg-warning-900">
+    </div>
+    <div class="color-tile" style="background-color: #F59E0B;">
       <div class="color-tile-content">
-        <span class="color-name">Warning</span>
-        <span class="color-class-label">.bg-warning-900</span>
+        <span class="color-name" style="color: #2E323D;">Warning</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('#F59E0B', this)" title="Copy hex">#F59E0B</span>
+            <span class="copy-text" style="color: #2E323D;" onclick="copyToClipboard('.bg-warning', this)" title="Copy class">.bg-warning</span>
+        </div>
       </div>
-    </button>
-    <button class="color-tile" style="background-color: #22c55e;" onclick="copyToClipboard('.bg-success-500', this)" title="Copy .bg-success-500">
+    </div>
+    <div class="color-tile" style="background-color: #EF4444;">
       <div class="color-tile-content">
-        <span class="color-name">Success</span>
-        <span class="color-class-label">.bg-success-500</span>
+        <span class="color-name" style="color: #FFFFFF;">Error</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('#EF4444', this)" title="Copy hex">#EF4444</span>
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('.bg-error', this)" title="Copy class">.bg-error</span>
+        </div>
       </div>
-    </button>
-    <button class="color-tile" style="background-color: #3b82f6;" onclick="copyToClipboard('.bg-info-500', this)" title="Copy .bg-info-500">
+    </div>
+    <div class="color-tile" style="background-color: #3B82F6;">
       <div class="color-tile-content">
-        <span class="color-name">Info</span>
-        <span class="color-class-label">.bg-info-500</span>
+        <span class="color-name" style="color: #FFFFFF;">Info</span>
+        <div class="color-actions">
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('#3B82F6', this)" title="Copy hex">#3B82F6</span>
+            <span class="copy-text" style="color: #FFFFFF;" onclick="copyToClipboard('.bg-info', this)" title="Copy class">.bg-info</span>
+        </div>
       </div>
-    </button>
+    </div>
   </div>
 </div>
-
                     </div>
                 </div>
-
                 <div id="tab-typography" class="page">
                     <h1 class="page-header">Typography</h1>
                     <div class="typo-list">
@@ -800,6 +1021,241 @@
 </button>
                     </div>
                 </div>
+
+                                <div id="tab-buttons" class="page">
+                    <h1 class="page-header">Buttons</h1>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 32px; margin-top: 32px;">
+                        
+                        <div style="margin-bottom: 24px;">
+                            <h3 style="font-size: 14px; color: var(--gray-2); margin-bottom: 12px; font-weight: 700;">Size 32 (Height 32px, Font 14px, Padding 16px)</h3>
+                            <div style="display: flex; gap: 40px; flex-wrap: wrap;">
+                                <div style="display: flex; flex-direction: column; gap: 12px;">
+                                    <span style="font-size: 12px; color: var(--gray-3);">Primary</span>
+                                    <div style="display: flex; gap: 16px; align-items: center;">
+                                        <button class="ds-btn ds-btn-32 ds-btn-primary">
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-32 ds-btn-primary">
+                                            <i class="icon ic-add"></i>
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-32 ds-btn-primary">
+                                            Button
+                                            <i class="icon ic-arrow_forward"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; flex-direction: column; gap: 12px;">
+                                    <span style="font-size: 12px; color: var(--gray-3);">Secondary</span>
+                                    <div style="display: flex; gap: 16px; align-items: center;">
+                                        <button class="ds-btn ds-btn-32 ds-btn-secondary">
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-32 ds-btn-secondary">
+                                            <i class="icon ic-add"></i>
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-32 ds-btn-secondary">
+                                            Button
+                                            <i class="icon ic-arrow_forward"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; flex-direction: column; gap: 12px;">
+                                    <span style="font-size: 12px; color: var(--gray-3);">Outline</span>
+                                    <div style="display: flex; gap: 16px; align-items: center;">
+                                        <button class="ds-btn ds-btn-32 ds-btn-outline">
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-32 ds-btn-outline">
+                                            <i class="icon ic-add"></i>
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-32 ds-btn-outline">
+                                            Button
+                                            <i class="icon ic-arrow_forward"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 24px;">
+                            <h3 style="font-size: 14px; color: var(--gray-2); margin-bottom: 12px; font-weight: 700;">Size 36 (Height 36px, Font 14px, Padding 20px)</h3>
+                            <div style="display: flex; gap: 40px; flex-wrap: wrap;">
+                                <div style="display: flex; flex-direction: column; gap: 12px;">
+                                    <span style="font-size: 12px; color: var(--gray-3);">Primary</span>
+                                    <div style="display: flex; gap: 16px; align-items: center;">
+                                        <button class="ds-btn ds-btn-36 ds-btn-primary">
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-36 ds-btn-primary">
+                                            <i class="icon ic-add"></i>
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-36 ds-btn-primary">
+                                            Button
+                                            <i class="icon ic-arrow_forward"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; flex-direction: column; gap: 12px;">
+                                    <span style="font-size: 12px; color: var(--gray-3);">Secondary</span>
+                                    <div style="display: flex; gap: 16px; align-items: center;">
+                                        <button class="ds-btn ds-btn-36 ds-btn-secondary">
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-36 ds-btn-secondary">
+                                            <i class="icon ic-add"></i>
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-36 ds-btn-secondary">
+                                            Button
+                                            <i class="icon ic-arrow_forward"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; flex-direction: column; gap: 12px;">
+                                    <span style="font-size: 12px; color: var(--gray-3);">Outline</span>
+                                    <div style="display: flex; gap: 16px; align-items: center;">
+                                        <button class="ds-btn ds-btn-36 ds-btn-outline">
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-36 ds-btn-outline">
+                                            <i class="icon ic-add"></i>
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-36 ds-btn-outline">
+                                            Button
+                                            <i class="icon ic-arrow_forward"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 24px;">
+                            <h3 style="font-size: 14px; color: var(--gray-2); margin-bottom: 12px; font-weight: 700;">Size 44 (Height 44px, Font 14px, Padding 20px)</h3>
+                            <div style="display: flex; gap: 40px; flex-wrap: wrap;">
+                                <div style="display: flex; flex-direction: column; gap: 12px;">
+                                    <span style="font-size: 12px; color: var(--gray-3);">Primary</span>
+                                    <div style="display: flex; gap: 16px; align-items: center;">
+                                        <button class="ds-btn ds-btn-44 ds-btn-primary">
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-44 ds-btn-primary">
+                                            <i class="icon ic-add"></i>
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-44 ds-btn-primary">
+                                            Button
+                                            <i class="icon ic-arrow_forward"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; flex-direction: column; gap: 12px;">
+                                    <span style="font-size: 12px; color: var(--gray-3);">Secondary</span>
+                                    <div style="display: flex; gap: 16px; align-items: center;">
+                                        <button class="ds-btn ds-btn-44 ds-btn-secondary">
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-44 ds-btn-secondary">
+                                            <i class="icon ic-add"></i>
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-44 ds-btn-secondary">
+                                            Button
+                                            <i class="icon ic-arrow_forward"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; flex-direction: column; gap: 12px;">
+                                    <span style="font-size: 12px; color: var(--gray-3);">Outline</span>
+                                    <div style="display: flex; gap: 16px; align-items: center;">
+                                        <button class="ds-btn ds-btn-44 ds-btn-outline">
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-44 ds-btn-outline">
+                                            <i class="icon ic-add"></i>
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-44 ds-btn-outline">
+                                            Button
+                                            <i class="icon ic-arrow_forward"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 24px;">
+                            <h3 style="font-size: 14px; color: var(--gray-2); margin-bottom: 12px; font-weight: 700;">Size 48 (Height 48px, Font 16px, Padding 24px)</h3>
+                            <div style="display: flex; gap: 40px; flex-wrap: wrap;">
+                                <div style="display: flex; flex-direction: column; gap: 12px;">
+                                    <span style="font-size: 12px; color: var(--gray-3);">Primary</span>
+                                    <div style="display: flex; gap: 16px; align-items: center;">
+                                        <button class="ds-btn ds-btn-48 ds-btn-primary">
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-48 ds-btn-primary">
+                                            <i class="icon ic-add"></i>
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-48 ds-btn-primary">
+                                            Button
+                                            <i class="icon ic-arrow_forward"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; flex-direction: column; gap: 12px;">
+                                    <span style="font-size: 12px; color: var(--gray-3);">Secondary</span>
+                                    <div style="display: flex; gap: 16px; align-items: center;">
+                                        <button class="ds-btn ds-btn-48 ds-btn-secondary">
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-48 ds-btn-secondary">
+                                            <i class="icon ic-add"></i>
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-48 ds-btn-secondary">
+                                            Button
+                                            <i class="icon ic-arrow_forward"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; flex-direction: column; gap: 12px;">
+                                    <span style="font-size: 12px; color: var(--gray-3);">Outline</span>
+                                    <div style="display: flex; gap: 16px; align-items: center;">
+                                        <button class="ds-btn ds-btn-48 ds-btn-outline">
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-48 ds-btn-outline">
+                                            <i class="icon ic-add"></i>
+                                            Button
+                                        </button>
+                                        <button class="ds-btn ds-btn-48 ds-btn-outline">
+                                            Button
+                                            <i class="icon ic-arrow_forward"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
@@ -816,16 +1272,19 @@
 
         function switchTab(tabId, btn) {
             // Deactivate all menu items
-            const menuItems = document.getElementById('style-menu').querySelectorAll('.menu-item');
+            const menuItems = document.querySelectorAll('.menu-item');
             menuItems.forEach(item => item.classList.remove('active'));
             
             // Activate clicked
             btn.classList.add('active');
 
-            // Hide all style tabs
-            document.getElementById('tab-color').classList.remove('active');
-            document.getElementById('tab-typography').classList.remove('active');
-            document.getElementById('tab-icons').classList.remove('active');
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.content-area .page');
+            tabs.forEach(tab => {
+                if(tab.id.startsWith('tab-')) {
+                    tab.classList.remove('active');
+                }
+            });
 
             // Show target
             document.getElementById('tab-' + tabId).classList.add('active');
