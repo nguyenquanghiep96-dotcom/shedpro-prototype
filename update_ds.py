@@ -1,0 +1,686 @@
+import json
+
+svg_paths = {
+    "p197c5200": "M57.9425 28.7474H64.0751C68.6364 28.7474 71.9318 25.882 71.9318 21.2116C71.9318 16.5412 68.6364 13.6983 64.0533 13.6983H57.9425V28.7474ZM61.6963 25.3631V17.0827H64.0751C66.7377 17.0827 68.0908 18.8877 68.0908 21.2116C68.0908 23.4453 66.6067 25.3631 64.0533 25.3631H61.6963Z",
+    "p19d42400": "M76.3636 28.7478H80.1113V23.6561H83.641C86.9093 23.6561 88.696 21.4257 88.696 18.7221C88.696 15.996 86.9093 13.7205 83.641 13.7205H76.3636V28.7478ZM84.883 18.6996C84.883 19.7134 84.1422 20.3668 83.1399 20.3668H80.1113V16.9873H83.1399C84.1422 16.9873 84.883 17.6632 84.883 18.6996Z",
+    "p25230c00": "M44.8728 28.7474H55.5448V25.4759H48.6265V22.7684H55.392V19.4743H48.6265V16.9699H55.5448V13.6983H44.8728V28.7474Z",
+    "p259d0100": "M12.5 5.83333H7.5V0.833333C7.5 0.373099 7.1269 0 6.66667 0C6.20643 0 5.83333 0.373099 5.83333 0.833333V5.83333H0.833333C0.373099 5.83333 0 6.20643 0 6.66667C0 7.1269 0.373099 7.5 0.833333 7.5H5.83333V12.5C5.83333 12.9602 6.20643 13.3333 6.66667 13.3333C7.1269 13.3333 7.5 12.9602 7.5 12.5V7.5H12.5C12.9602 7.5 13.3333 7.1269 13.3333 6.66667C13.3333 6.20643 12.9602 5.83333 12.5 5.83333Z",
+    "p29f37d80": "M2.40396 6.50646V2.40396H6.50646V6.50646H2.40396ZM2.40396 11.7627V7.66021H6.50646V11.7627H2.40396ZM7.66021 6.50646V2.40396H11.7627V6.50646H7.66021ZM7.66021 11.7627V7.66021H11.7627V11.7627H7.66021ZM3.65375 5.25646H5.25646V3.65375H3.65375V5.25646ZM8.91021 5.25646H10.5129V3.65375H8.91021V5.25646ZM3.65375 10.5129H5.25646V8.91021H3.65375V10.5129ZM8.91021 10.5129H10.5129V8.91021H8.91021V10.5129ZM1.50646 14.1667C1.08549 14.1667 0.729167 14.0208 0.4375 13.7292C0.145833 13.4375 0 13.0812 0 12.6602V1.50646C0 1.08549 0.145833 0.729167 0.4375 0.4375C0.729167 0.145833 1.08549 0 1.50646 0H12.6602C13.0812 0 13.4375 0.145833 13.7292 0.4375C14.0208 0.729167 14.1667 1.08549 14.1667 1.50646V12.6602C14.1667 13.0812 14.0208 13.4375 13.7292 13.7292C13.4375 14.0208 13.0812 14.1667 12.6602 14.1667H1.50646ZM1.50646 12.9167H12.6602C12.7244 12.9167 12.7831 12.8899 12.8365 12.8365C12.8899 12.7831 12.9167 12.7244 12.9167 12.6602V1.50646C12.9167 1.44229 12.8899 1.38354 12.8365 1.33021C12.7831 1.27674 12.7244 1.25 12.6602 1.25H1.50646C1.44229 1.25 1.38354 1.27674 1.33021 1.33021C1.27674 1.38354 1.25 1.44229 1.25 1.50646V12.6602C1.25 12.7244 1.27674 12.7831 1.33021 12.8365C1.38354 12.8899 1.44229 12.9167 1.50646 12.9167Z",
+    "p3ae3bc80": "M1.40893 13.8261L0.973092 13.6467C0.537259 13.4608 0.245037 13.1455 0.0964257 12.7011C-0.0520465 12.2567 -0.0290603 11.8219 0.165384 11.3967L1.40893 8.70756V13.8261ZM5.06288 15.403C4.60455 15.403 4.21219 15.2398 3.8858 14.9134C3.55941 14.587 3.39622 14.1946 3.39622 13.7363V9.58568L5.29997 14.8613C5.34163 14.9639 5.3833 15.059 5.42497 15.1465C5.46663 15.2342 5.52219 15.3196 5.59163 15.403H5.06288ZM8.82559 14.9832C8.49337 15.1123 8.16969 15.0955 7.85455 14.9326C7.53941 14.7696 7.31719 14.5194 7.18788 14.1819L3.47955 4.01526C3.35025 3.6829 3.36143 3.357 3.51309 3.03756C3.6649 2.71825 3.90691 2.49818 4.23913 2.37735L10.5308 0.0856812C10.863 -0.0434854 11.1841 -0.0266106 11.4939 0.136306C11.8038 0.299223 12.0233 0.54943 12.1525 0.88693L15.8608 11.0376C15.9901 11.3752 15.983 11.7051 15.8393 12.0271C15.6956 12.3492 15.4549 12.5707 15.1173 12.6915L8.82559 14.9832ZM7.77205 5.21151C7.93177 5.05179 8.01163 4.85388 8.01163 4.61776C8.01163 4.38165 7.93177 4.18374 7.77205 4.02401C7.61233 3.86429 7.41441 3.78443 7.1783 3.78443C6.94219 3.78443 6.74427 3.86429 6.58455 4.02401C6.42483 4.18374 6.34497 4.38165 6.34497 4.61776C6.34497 4.85388 6.42483 5.05179 6.58455 5.21151C6.74427 5.37124 6.94219 5.4511 7.1783 5.4511C7.41441 5.4511 7.61233 5.37124 7.77205 5.21151ZM8.38663 13.7844L14.6783 11.4928L10.97 1.28443L4.6783 3.5761L8.38663 13.7844Z",
+    "p3b2a0980": "M38.2773 28.7474H42.031V13.6983H38.2773V19.3164H32.232V13.6983H28.4782V28.7474H32.232V22.7007H38.2773V28.7474Z",
+    "p3d36480": "M98.6878 28.7478H102.98L100.017 23.2281C101.368 22.7324 102.915 21.3356 102.915 18.7221C102.915 15.9284 101.085 13.7205 97.8598 13.7205H90.5824V28.7478H94.3301V23.6561H96.2475L98.6878 28.7478ZM99.1018 18.6771C99.1018 19.7134 98.2738 20.3668 97.2933 20.3668H94.3301V16.9873H97.2933C98.2738 16.9873 99.1018 17.6407 99.1018 18.6771Z",
+    "p7084140": "M13.9773 26.6266C15.4395 28.0706 17.491 29.0182 20.4372 29.0182C24.3437 29.0182 26.5043 27.0101 26.5043 23.9868C26.5043 20.5799 23.1871 19.8579 20.7864 19.3389C19.1714 19.0231 18.2766 18.7523 18.2766 17.9626C18.2766 17.3083 18.7568 16.7894 20.0007 16.7894C21.2884 16.7894 22.8815 17.3083 24.1037 18.3462L26.1552 15.571C24.6056 14.1947 22.576 13.4727 20.2408 13.4727C16.5089 13.4727 14.4356 15.6613 14.4356 18.1882C14.4356 21.7531 17.7965 22.3848 20.1972 22.8812C21.7467 23.2197 22.6851 23.5581 22.6851 24.4155C22.6851 25.1374 21.8994 25.7015 20.6118 25.7015C18.6258 25.7015 17.0108 24.799 15.9633 23.716L13.9773 26.6266Z",
+    "p88ca800": "M104.465 21.2454C104.465 25.819 107.798 29.0182 112.243 29.0182C116.688 29.0182 120 25.819 120 21.2454C120 16.6719 116.688 13.4727 112.243 13.4727C107.798 13.4727 104.465 16.6719 104.465 21.2454ZM116.187 21.2454C116.187 23.6786 114.64 25.5937 112.243 25.5937C109.825 25.5937 108.278 23.6786 108.278 21.2454C108.278 18.7897 109.825 16.8972 112.243 16.8972C114.64 16.8972 116.187 18.7897 116.187 21.2454Z",
+    "pf15ab80": "M17.9091 0L30.3409 6.04945L29.3106 8.20857L17.9091 2.66047L6.82667 8.05326L2.3734 15.5301V35.6033H30.1421V38H0V14.8649L5.15803 6.20477L17.9091 0Z"
+}
+
+icon_set = [
+    {"name": "Cart", "svg": '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="icon-svg"><path d="M8.22461 15.9834C9.63829 15.9835 10.7881 17.1332 10.7881 18.5469C10.788 19.9605 9.63824 21.1103 8.22461 21.1104C6.81091 21.1104 5.6612 19.9606 5.66113 18.5469C5.66113 17.1331 6.81083 15.9834 8.22461 15.9834ZM17.5459 15.9834C18.9596 15.9834 20.1094 17.1331 20.1094 18.5469C20.1093 19.9606 18.9596 21.1104 17.5459 21.1104C16.1324 21.1101 14.9825 19.9604 14.9824 18.5469C14.9824 17.1333 16.1323 15.9836 17.5459 15.9834ZM7.11523 20.5957C6.98307 20.5239 6.85838 20.4398 6.74316 20.3447C6.8584 20.4398 6.98305 20.5239 7.11523 20.5957ZM16.0654 20.3438L16.0645 20.3447L16.0654 20.3438ZM9.87207 20.1943C9.76654 20.2998 9.6504 20.3947 9.52637 20.4785C9.65039 20.3947 9.76655 20.2999 9.87207 20.1943ZM15.2588 18.1084C15.2316 18.2505 15.2158 18.397 15.2158 18.5469C15.2158 18.9484 15.3185 19.3261 15.498 19.6562C15.3185 19.3262 15.2159 18.9483 15.2158 18.5469C15.2158 18.3971 15.2316 18.2504 15.2588 18.1084ZM18.1768 19.2314C18.1468 19.2591 18.1154 19.2851 18.082 19.3086C18.1154 19.2851 18.1468 19.259 18.1768 19.2314ZM8.22461 17.8477C7.83921 17.8477 7.52539 18.1615 7.52539 18.5469C7.52546 18.9322 7.83926 19.2461 8.22461 19.2461C8.6099 19.246 8.92376 18.9322 8.92383 18.5469C8.92383 18.1615 8.60994 17.8477 8.22461 17.8477ZM17.5459 17.8477C17.1607 17.8479 16.8467 18.1616 16.8467 18.5469C16.8467 18.9321 17.1607 19.2459 17.5459 19.2461C17.9313 19.2461 18.245 18.9322 18.2451 18.5469C18.2451 18.1615 17.9313 17.8477 17.5459 17.8477ZM5.89355 18.5469C5.89357 18.6273 5.89824 18.7068 5.90625 18.7852V18.7842C5.89831 18.7061 5.89454 18.627 5.89453 18.5469H5.89355ZM9.15723 18.5469H9.15625C9.15624 18.5789 9.15454 18.6104 9.15137 18.6416C9.13969 18.7566 9.10639 18.865 9.05664 18.9639C9.11993 18.8382 9.15717 18.6969 9.15723 18.5469ZM15.4971 17.4365C15.4071 17.6019 15.34 17.7804 15.292 17.9668C15.34 17.7804 15.4071 17.6019 15.4971 17.4365ZM8.31934 17.6191C8.35077 17.6223 8.38167 17.6275 8.41211 17.6338C8.56391 17.6649 8.70214 17.7329 8.81738 17.8281V17.8271C8.6562 17.6941 8.44948 17.6143 8.22461 17.6143L8.31934 17.6191ZM17.9902 17.7275C18.0431 17.7563 18.0936 17.7891 18.1396 17.8271C18.0936 17.7891 18.0431 17.7563 17.9902 17.7275ZM7.70312 17.7744C7.66427 17.8007 7.62814 17.8306 7.59375 17.8623C7.62814 17.8306 7.66426 17.8007 7.70312 17.7744ZM17.3584 17.6328V17.6338V17.6328ZM17.5459 17.6143C17.6103 17.6143 17.6737 17.6203 17.7344 17.6328C17.6738 17.6204 17.611 17.6143 17.5469 17.6143H17.5459ZM8.03711 17.6328V17.6338V17.6328ZM4.53223 2C4.98887 2.00018 5.39424 2.30338 5.50391 2.74512L6.15039 5.35645H20.9746C21.279 5.35647 21.5691 5.49197 21.7598 5.72754C21.9504 5.96319 22.0201 6.27217 21.9453 6.56543L20.0781 13.8477C19.9657 14.2858 19.5611 14.585 19.1074 14.585H7.16602C6.70917 14.585 6.30295 14.2813 6.19336 13.8389L3.74414 3.94727H2C1.45557 3.94716 1.00009 3.51888 1 2.97363C1 2.42833 1.45551 2.00008 2 2H4.53223ZM21.3447 5.68262C21.4338 5.73014 21.5139 5.79463 21.5781 5.87402C21.7231 6.05336 21.7751 6.28691 21.7188 6.50781L19.8516 13.7891C19.7775 14.0779 19.5333 14.2918 19.2373 14.3408L19.3613 14.3105C19.6004 14.2298 19.7891 14.0367 19.8525 13.7891L21.7188 6.50781C21.7751 6.28677 21.7233 6.05339 21.5781 5.87402C21.5137 5.79449 21.434 5.73015 21.3447 5.68262ZM7.77051 12.8701H7.77148L6.33496 7.07031H6.33398L7.77051 12.8701ZM7.9541 12.6377H18.3271L19.6943 7.30371H6.63281L7.9541 12.6377ZM21.0615 5.59473C21.0328 5.59154 21.0038 5.58987 20.9746 5.58984H20.9736L21.0615 5.59473ZM5.27734 2.80078L5.96777 5.58984H5.96875L5.27832 2.80176C5.27154 2.7744 5.25973 2.74861 5.25 2.72266C5.25961 2.74835 5.27062 2.77373 5.27734 2.80078ZM1.57129 3.58789C1.65291 3.64108 1.74584 3.67952 1.8457 3.69922C1.74581 3.67961 1.65296 3.641 1.57129 3.58789ZM5.17578 2.57227C5.15291 2.53804 5.12772 2.50547 5.09961 2.47559C5.12776 2.50546 5.15287 2.53804 5.17578 2.57227Z" fill="currentColor"/></svg>'},
+    {"name": "Plus Circle", "svg": '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="icon-svg"><path d="M11.8496 0C18.3895 0 23.7 5.30979 23.7002 11.8496C23.7002 18.3896 18.3896 23.7002 11.8496 23.7002V23.6904C5.30979 23.6902 0 18.3795 0 11.8496C0.000211961 5.31992 5.30992 0.00021204 11.8496 0ZM11.8496 2C6.41992 2.00021 2.00021 6.41992 2 11.8496C2 17.2795 6.41979 21.7 11.8496 21.7002C17.2796 21.7002 21.7002 17.2796 21.7002 11.8496C21.7 6.41979 17.2795 2 11.8496 2ZM12 5.34375C12.5537 5.34375 13.0098 5.79983 13.0098 6.35352V10.9902H17.6465C18.2002 10.9902 18.6563 11.4463 18.6562 12C18.6562 12.5537 18.2002 13.0098 17.6465 13.0098H13.0098L12.998 12.998V17.6348C12.998 18.1885 12.542 18.6445 11.9883 18.6445C11.7117 18.6445 11.458 18.5291 11.2793 18.3506C11.1005 18.1718 10.9854 17.9175 10.9854 17.6406V13.0039H6.34766C6.07085 13.0039 5.81745 12.8878 5.63867 12.709C5.45991 12.5302 5.34375 12.2768 5.34375 12C5.34375 11.4463 5.79983 10.9902 6.35352 10.9902H10.9902V6.35352C10.9902 5.79983 11.4463 5.34375 12 5.34375Z" fill="currentColor"/></svg>'},
+    {"name": "Close", "svg": '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="icon-svg"><path d="M11.8496 0C18.3895 0 23.7 5.30979 23.7002 11.8496C23.7002 18.3896 18.3896 23.7002 11.8496 23.7002V23.6904C5.30979 23.6902 0 18.3795 0 11.8496C0.000211961 5.31992 5.30992 0.00021204 11.8496 0ZM11.8496 2C6.41992 2.00021 2.00021 6.41992 2 11.8496C2 17.2795 6.41979 21.7 11.8496 21.7002C17.2796 21.7002 21.7002 17.2796 21.7002 11.8496C21.7 6.41979 17.2795 2 11.8496 2ZM15.2793 7.29395C15.6708 6.90245 16.3145 6.90243 16.7061 7.29395C17.0976 7.68546 17.0976 8.32918 16.7061 8.7207L13.4277 12H13.4111L16.6904 15.2793C17.0815 15.6707 17.0815 16.3146 16.6904 16.7061C16.4947 16.9018 16.2333 17 15.9805 17C15.7276 17 15.4663 16.9018 15.2705 16.7061L11.9922 13.4277L8.71289 16.7061C8.51713 16.9018 8.25578 17 8.00293 17C7.75018 16.9999 7.48962 16.9017 7.29395 16.7061C6.90243 16.3145 6.90245 15.6708 7.29395 15.2793L10.5723 12L7.29395 8.7207C6.90244 8.32918 6.90243 7.68546 7.29395 7.29395C7.68546 6.90243 8.32918 6.90244 8.7207 7.29395L12 10.5723L15.2793 7.29395Z" fill="currentColor"/></svg>'},
+    {"name": "Center Items", "svg": '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="icon-svg"><path d="M2.26 0H0V24H2.26V0Z" fill="currentColor"/><path d="M24 0H21.74V24H24V0Z" fill="currentColor"/><path d="M17.3901 2.15997H6.62012V21.85H17.3901V2.15997Z" fill="currentColor"/></svg>'},
+    {"name": "Edit Shed", "svg": '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-svg"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>'}
+]
+
+colors = [
+    {"title": "Primary", "items": [
+      {"name": "Primary 500", "hex": "#ff7048", "cssClass": ".bg-primary-500"},
+      {"name": "Primary 400", "hex": "#ff8765", "cssClass": ".bg-primary-400"},
+      {"name": "Primary 300", "hex": "#ffa58a", "cssClass": ".bg-primary-300"},
+      {"name": "Primary 200", "hex": "#ffc3ae", "cssClass": ".bg-primary-200"},
+      {"name": "Primary 100", "hex": "#ffe1d7", "cssClass": ".bg-primary-100"}
+    ]},
+    {"title": "Secondary", "items": [
+      {"name": "Secondary 500", "hex": "#2b3b63", "cssClass": ".bg-secondary-500"},
+      {"name": "Secondary 400", "hex": "#556282", "cssClass": ".bg-secondary-400"},
+      {"name": "Secondary 300", "hex": "#7f8aa1", "cssClass": ".bg-secondary-300"},
+      {"name": "Secondary 200", "hex": "#aab1c1", "cssClass": ".bg-secondary-200"},
+      {"name": "Secondary 100", "hex": "#d4d8e0", "cssClass": ".bg-secondary-100"}
+    ]},
+    {"title": "Neutral", "items": [
+      {"name": "Neutral 900", "hex": "#2e323d", "cssClass": ".bg-neutral-900"},
+      {"name": "Neutral 800", "hex": "#5e6578", "cssClass": ".bg-neutral-800"},
+      {"name": "Neutral 700", "hex": "#8e97b3", "cssClass": ".bg-neutral-700"},
+      {"name": "Neutral 600", "hex": "#bec9ee", "cssClass": ".bg-neutral-600"},
+      {"name": "Neutral 100", "hex": "#f5f5f5", "cssClass": ".bg-neutral-100"}
+    ]},
+    {"title": "Semantic / Status", "items": [
+      {"name": "Danger", "hex": "#f12428", "cssClass": ".bg-danger-900"},
+      {"name": "Warning", "hex": "#f09a11", "cssClass": ".bg-warning-900"},
+      {"name": "Success", "hex": "#22c55e", "cssClass": ".bg-success-500"},
+      {"name": "Info", "hex": "#3b82f6", "cssClass": ".bg-info-500"}
+    ]}
+]
+
+typography = [
+    {"name": "Huge", "size": "42px", "weight": "Bold", "sample": "Huge Heading", "cssClass": "fs-huge fw-bold"},
+    {"name": "Large", "size": "36px", "weight": "Bold", "sample": "Large Heading", "cssClass": "fs-large fw-bold"},
+    {"name": "Medium", "size": "20px", "weight": "Bold", "sample": "Medium Heading", "cssClass": "fs-medium fw-bold"},
+    {"name": "Normal", "size": "16px", "weight": "Regular", "sample": "Normal body text", "cssClass": "fs-normal fw-reg"},
+    {"name": "Regular", "size": "14px", "weight": "Regular", "sample": "Regular text often used in UI.", "cssClass": "fs-regular fw-reg"},
+    {"name": "Small", "size": "12px", "weight": "Regular", "sample": "Small caption text.", "cssClass": "fs-small fw-reg"}
+]
+
+# Generate Color HTML
+color_html = ""
+for group in colors:
+    color_html += f'<div class="color-group">\n  <p class="color-group-title">{group["title"]}</p>\n  <div class="color-tiles">\n'
+    for color in group["items"]:
+        color_html += f'''
+    <button class="color-tile" style="background-color: {color["hex"]};" onclick="copyToClipboard('{color["cssClass"]}', this)" title="Copy {color["cssClass"]}">
+      <div class="color-tile-content">
+        <span class="color-name">{color["name"]}</span>
+        <span class="color-class-label">{color["cssClass"]}</span>
+      </div>
+    </button>'''
+    color_html += "\n  </div>\n</div>\n"
+
+# Generate Typography HTML
+typo_html = ""
+for t in typography:
+    typo_html += f'''
+<div class="typo-card">
+  <div class="typo-meta">
+    <span class="typo-name">{t["name"]}</span>
+    <span>{t["size"]}</span>
+    <span>{t["weight"]}</span>
+  </div>
+  <p class="typo-sample {t["cssClass"]}">{t["sample"]}</p>
+</div>'''
+
+# Generate Icons HTML
+icon_html = ""
+for i in icon_set:
+    icon_html += f'''
+<button class="icon-card" data-name="{i["name"].lower()}" onclick="copyToClipboard('{i["name"]}', this)" title='Copy "{i["name"]}"'>
+  {i["svg"]}
+  <span class="icon-label">{i["name"]}</span>
+</button>'''
+
+html_content = f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design System</title>
+    <link rel="icon" href="/Favicon.png" sizes="32x32">
+    <link rel="icon" href="/Favicon.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="/Favicon.png">
+    
+    <style>
+        :root {{
+            --primary: #ff7048;
+            --secondary: #2b3b63;
+            --bg-body: #f5f5f5;
+            --bg-white: #ffffff;
+            --border-color: #ededed;
+            --text-dark: #2b3b63;
+            --text-gray: #5e6578;
+            --text-light-gray: #8e97b3;
+            --hover-bg: #f9fafb;
+            --active-bg: #ffdbd1;
+        }}
+
+        * {{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }}
+
+        body {{
+            font-family: 'Proxima Nova', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }}
+
+        /* Navbar */
+        .navbar {{
+            background-color: var(--bg-white);
+            border-bottom: 1px solid var(--border-color);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            flex-shrink: 0;
+        }}
+
+        .navbar-brand {{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }}
+
+        .logo {{
+            height: 38px;
+            width: 120px;
+            position: relative;
+        }}
+
+        .ds-title {{
+            font-weight: 700;
+            color: var(--text-gray);
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }}
+
+        .nav-links {{
+            display: flex;
+            gap: 24px;
+        }}
+
+        .nav-link {{
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--secondary);
+            text-decoration: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: color 0.2s;
+        }}
+
+        .nav-link:hover {{
+            color: var(--primary);
+        }}
+
+        .nav-link.active {{
+            color: var(--primary);
+        }}
+
+        /* Layout */
+        .main-container {{
+            display: flex;
+            flex: 1;
+            gap: 24px;
+            padding: 24px;
+            overflow: hidden;
+        }}
+
+        /* Sidebar */
+        .sidebar {{
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            width: 267px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }}
+
+        .sidebar-content {{
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }}
+
+        .menu-section-btn {{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 12px;
+            background: var(--bg-white);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }}
+
+        .menu-section-btn:hover {{
+            background-color: var(--hover-bg);
+        }}
+
+        .menu-icon {{
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }}
+
+        .menu-text {{
+            flex: 1;
+            text-align: left;
+            font-weight: 700;
+            color: var(--text-gray);
+            font-size: 16px;
+        }}
+
+        .menu-indicator {{
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }}
+
+        .menu-indicator-line {{
+            width: 13px;
+            height: 1.5px;
+            background-color: var(--text-gray);
+            border-radius: 2px;
+        }}
+
+        .menu-items {{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }}
+
+        .menu-item {{
+            width: 100%;
+            text-align: left;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: none;
+            background: var(--bg-white);
+            color: var(--text-gray);
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }}
+
+        .menu-item:hover {{
+            background-color: var(--hover-bg);
+        }}
+
+        .menu-item.active {{
+            background-color: var(--active-bg);
+            color: var(--primary);
+        }}
+
+        /* Content Area */
+        .content-area {{
+            flex: 1;
+            min-width: 0;
+            overflow-y: auto;
+            padding-right: 12px;
+        }}
+
+        .page-header {{
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 24px;
+            margin-bottom: 24px;
+        }}
+
+        /* Pages */
+        .page {{
+            display: none;
+            flex-direction: column;
+            gap: 24px;
+        }}
+
+        .page.active {{
+            display: flex;
+        }}
+
+        /* Color Page */
+        .color-grid {{
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 24px;
+        }}
+
+        @media (min-width: 640px) {{ .color-grid {{ grid-template-columns: repeat(2, 1fr); }} }}
+        @media (min-width: 1024px) {{ .color-grid {{ grid-template-columns: repeat(4, 1fr); }} }}
+
+        .color-group {{
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }}
+
+        .color-group-title {{
+            font-weight: 700;
+            color: var(--text-gray);
+            font-size: 14px;
+        }}
+
+        .color-tiles {{
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }}
+
+        .color-tile {{
+            width: 100%;
+            text-align: left;
+            border-radius: 6px;
+            border: none;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s;
+            position: relative;
+        }}
+
+        .color-tile:hover {{
+            transform: scale(1.02);
+        }}
+
+        .color-tile-content {{
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            min-height: 90px;
+        }}
+
+        .color-name {{
+            font-weight: 700;
+            font-size: 14px;
+            color: white;
+        }}
+
+        .color-class-label {{
+            font-family: monospace;
+            font-size: 10px;
+            color: white;
+            opacity: 0.9;
+        }}
+
+        .color-tile:hover .color-class-label {{
+            opacity: 1;
+        }}
+
+        /* Typography Page */
+        .typo-list {{
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }}
+
+        .typo-card {{
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }}
+
+        .typo-meta {{
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-family: monospace;
+            font-size: 12px;
+            color: var(--text-light-gray);
+        }}
+
+        .typo-name {{
+            font-weight: 700;
+            color: var(--text-gray);
+            font-size: 14px;
+            width: 112px;
+        }}
+
+        .typo-sample {{
+            color: var(--text-dark);
+            margin: 0;
+        }}
+
+        /* Typography utilities */
+        .fs-huge {{ font-size: 42px; }}
+        .fs-large {{ font-size: 36px; }}
+        .fs-medium {{ font-size: 20px; }}
+        .fs-normal {{ font-size: 16px; }}
+        .fs-regular {{ font-size: 14px; }}
+        .fs-small {{ font-size: 12px; }}
+        
+        .fw-bold {{ font-weight: 700; }}
+        .fw-medium {{ font-weight: 500; }}
+        .fw-reg {{ font-weight: 400; }}
+
+        /* Icons Page */
+        .search-input {{
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 14px;
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+            width: 100%;
+            max-width: 320px;
+            outline: none;
+        }}
+
+        .search-input:focus {{
+            border-color: var(--primary);
+        }}
+
+        .icons-grid {{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }}
+
+        @media (min-width: 640px) {{ .icons-grid {{ grid-template-columns: repeat(6, 1fr); }} }}
+        @media (min-width: 1024px) {{ .icons-grid {{ grid-template-columns: repeat(8, 1fr); }} }}
+
+        .icon-card {{
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }}
+
+        .icon-card:hover {{
+            border-color: var(--primary);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }}
+
+        .icon-svg {{
+            width: 28px;
+            height: 28px;
+            color: var(--text-gray);
+            stroke: var(--text-gray);
+            transition: all 0.2s;
+        }}
+
+        .icon-card:hover .icon-svg {{
+            color: var(--primary);
+            stroke: var(--primary);
+        }}
+
+        .icon-label {{
+            font-size: 10px;
+            font-weight: 500;
+            color: var(--text-gray);
+            transition: color 0.2s;
+            text-align: center;
+        }}
+
+        .icon-card:hover .icon-label {{
+            color: var(--primary);
+        }}
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-brand">
+            <div class="logo">
+                <svg class="logo-svg" style="width: 100%; height: 100%; position: absolute; inset: 0;" fill="none" preserveAspectRatio="none" viewBox="0 0 120 38">
+                    <g>
+                        <g>
+                            <path d="{svg_paths["p19d42400"]}" fill="#2B3B63" />
+                            <path d="{svg_paths["p3d36480"]}" fill="#2B3B63" />
+                            <path d="{svg_paths["p88ca800"]}" fill="#2B3B63" />
+                        </g>
+                        <path clip-rule="evenodd" d="{svg_paths["pf15ab80"]}" fill="#2B3B63" fill-rule="evenodd" />
+                        <g>
+                            <path d="{svg_paths["p7084140"]}" fill="#2B3B63" />
+                            <path d="{svg_paths["p3b2a0980"]}" fill="#2B3B63" />
+                            <path d="{svg_paths["p25230c00"]}" fill="#2B3B63" />
+                            <path d="{svg_paths["p197c5200"]}" fill="#2B3B63" />
+                        </g>
+                    </g>
+                </svg>
+            </div>
+            <span class="ds-title">DESIGN SYSTEM</span>
+        </div>
+        <div class="nav-links">
+            <a class="nav-link active" href="https://shedpro-prototype.vercel.app/v1/shedpro-design/product/garden-shed/index.html">3D Prototype</a>
+            <a class="nav-link" href="#" style="pointer-events: none; opacity: 0.5;">OPSHub Prototype</a>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <!-- Style Section -->
+                <button class="menu-section-btn" onclick="toggleMenuSection('style-menu')">
+                    <span class="menu-icon">
+                        <svg style="width: 100%; height: 100%;" fill="none" viewBox="0 0 16 16">
+                            <path d="{svg_paths["p3ae3bc80"]}" fill="#5E6578" />
+                        </svg>
+                    </span>
+                    <span class="menu-text">Style</span>
+                    <span class="menu-indicator">
+                        <span class="menu-indicator-line"></span>
+                    </span>
+                </button>
+                <div class="menu-items" id="style-menu">
+                    <button class="menu-item active" onclick="switchTab('color', this)">Color</button>
+                    <button class="menu-item" onclick="switchTab('typography', this)">Typography</button>
+                    <button class="menu-item" onclick="switchTab('icons', this)">Icons</button>
+                </div>
+
+                <!-- Component Section -->
+                <button class="menu-section-btn" onclick="toggleMenuSection('component-menu')">
+                    <span class="menu-icon">
+                        <svg style="width: 100%; height: 100%;" fill="none" viewBox="0 0 14.17 14.17">
+                            <path d="{svg_paths["p29f37d80"]}" fill="#5E6578" />
+                        </svg>
+                    </span>
+                    <span class="menu-text">Component</span>
+                    <span class="menu-indicator">
+                        <svg style="width: 100%; height: 100%;" fill="none" viewBox="0 0 13.33 13.33">
+                            <path d="{svg_paths["p259d0100"]}" fill="#5E6578" />
+                        </svg>
+                    </span>
+                </button>
+                <div class="menu-items" id="component-menu" style="display: none;">
+                    <button class="menu-item">Buttons</button>
+                    <button class="menu-item">Inputs</button>
+                    <button class="menu-item">Cards</button>
+                    <button class="menu-item">Modals</button>
+                    <button class="menu-item">Tables</button>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <!-- Style Pages -->
+            <div id="page-design" class="page active">
+                <div id="tab-color" class="page active">
+                    <h1 class="page-header">Colors</h1>
+                    <div class="color-grid">
+                        {color_html}
+                    </div>
+                </div>
+
+                <div id="tab-typography" class="page">
+                    <h1 class="page-header">Typography</h1>
+                    <div class="typo-list">
+                        {typo_html}
+                    </div>
+                </div>
+
+                <div id="tab-icons" class="page">
+                    <h1 class="page-header">Icons</h1>
+                    <input type="text" class="search-input" placeholder="Search icons…" oninput="filterIcons(this.value)">
+                    <div class="icons-grid" id="icons-grid">
+                        {icon_html}
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleMenuSection(id) {{
+            const el = document.getElementById(id);
+            if (el.style.display === 'none') {{
+                el.style.display = 'flex';
+            }} else {{
+                el.style.display = 'none';
+            }}
+        }}
+
+        function switchTab(tabId, btn) {{
+            // Deactivate all menu items
+            const menuItems = document.getElementById('style-menu').querySelectorAll('.menu-item');
+            menuItems.forEach(item => item.classList.remove('active'));
+            
+            // Activate clicked
+            btn.classList.add('active');
+
+            // Hide all style tabs
+            document.getElementById('tab-color').classList.remove('active');
+            document.getElementById('tab-typography').classList.remove('active');
+            document.getElementById('tab-icons').classList.remove('active');
+
+            // Show target
+            document.getElementById('tab-' + tabId).classList.add('active');
+        }}
+
+        function copyToClipboard(text, btn) {{
+            navigator.clipboard.writeText(text).then(() => {{
+                // Find the label element inside the button
+                let labelEl;
+                let originalText;
+                
+                if(btn.classList.contains('color-tile')) {{
+                    labelEl = btn.querySelector('.color-class-label');
+                }} else if(btn.classList.contains('icon-card')) {{
+                    labelEl = btn.querySelector('.icon-label');
+                }}
+                
+                if(labelEl) {{
+                    originalText = labelEl.innerText;
+                    labelEl.innerText = "Copied!";
+                    setTimeout(() => {{
+                        labelEl.innerText = originalText;
+                    }}, 1500);
+                }}
+            }});
+        }}
+
+        function filterIcons(query) {{
+            query = query.toLowerCase();
+            const icons = document.querySelectorAll('.icon-card');
+            icons.forEach(icon => {{
+                const name = icon.getAttribute('data-name');
+                if (name.includes(query)) {{
+                    icon.style.display = 'flex';
+                }} else {{
+                    icon.style.display = 'none';
+                }}
+            }});
+        }}
+    </script>
+</body>
+</html>
+'''
+
+target_path = '/Users/hiep/Sites/shedpro-static-clone/public/v1/shedpro-design/design-system.html'
+with open(target_path, 'w') as f:
+    f.write(html_content)
+
+print("Updated design-system.html successfully.")
