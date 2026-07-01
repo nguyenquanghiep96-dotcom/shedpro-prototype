@@ -1607,8 +1607,8 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
 <button class="button alt group-button" type="button">Submit A Request</button>
 <div class="group-buttons">
 <div class="checkout-options-title">Checkout options</div>
-<a class="wc-standard-checkout">Request a Quote</a>
-<a class="wc-quick-checkout">Save Quote</a>
+<a class="wc-standard-checkout" onclick="event.stopPropagation(); event.preventDefault(); return false;" style="cursor: not-allowed !important;">Request a Quote</a>
+<a class="wc-quick-checkout" onclick="event.stopPropagation(); event.preventDefault(); return false;" style="cursor: not-allowed !important;">Save Quote</a>
 </div>
 </div>
 <div class="wc-deposits-wrapper wc-deposits-optional">
@@ -1633,7 +1633,7 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
 <input class="input-text qty text" id="quantity_6a18599b0820c" inputmode="numeric" max="" min="1" name="quantity" size="4" step="1" title="Qty" type="number" value="1"/>
 <button class="qty-btn plus" type="button"></button>
 </div>
-<button class="single_add_to_cart_button button alt" name="add-to-cart" type="submit" value="6857">Request a Quote</button>
+<button class="single_add_to_cart_button button alt" name="add-to-cart" onclick="event.stopPropagation(); event.preventDefault(); return false;" style="cursor: not-allowed !important;" type="submit" value="6857">Request a Quote</button>
 <span id="mobile-custom-shed" style="align-items:center;justify-content:center;gap:6px;"><i class="icon ic-center-items"></i>Edit Shed</span> </form>
 <script>
 			jQuery('form.cart [name="add-to-cart"]').prop('disabled', true);    
@@ -2574,12 +2574,12 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
 </div>
 <input name="ssb-option-save-model-id" type="hidden" value=""/>
 <div class="ssb-configurator-tools model-action">
-<button class="button ssb-save-btn ssb-share-model not_login" data-copy-on-click="Copied Text"><i class="icon ic-duplicate" style="width: 16px; height: 16px; margin-right: 6px;"></i>Share</button>
+<button class="button ssb-save-btn ssb-share-model not_login" data-copy-on-click="Copied Text" onclick="event.stopPropagation(); event.preventDefault(); return false;" style="cursor: not-allowed !important;"><i class="icon ic-duplicate" style="width: 16px; height: 16px; margin-right: 6px;"></i>Share</button>
 <button class="button ssb-save-model not_login" data-ajax_url="https://demo.shedpro.co/wp-admin/admin-ajax.php" data-title="Garden Shed"><i class="icon ic-favorite" style="width: 16px; height: 16px; margin-right: 6px;"></i>Save<span class="btn-text-full"> for later</span></button>
 <button class="button ssb-reset-btn"><i class="icon ic-refresh" style="width: 16px; height: 16px; margin-right: 6px;"></i>Reset<span class="btn-text-full"> model</span></button>
 </div>
 <div class="ssb-configurator-tools action-save">
-<button class="button ssb-mobile-button-request-a-quote">Request a Quote</button>
+<button class="button ssb-mobile-button-request-a-quote" onclick="event.stopPropagation(); event.preventDefault(); return false;" style="cursor: not-allowed !important;">Request a Quote</button>
 </div>
 <div class="shed-note">
 <p style="text-align: left;">The depiction on the 3D configurator is an approximation of the building. The actual building’s options, colors, textures, and components may vary slightly from this rendering.</p>
