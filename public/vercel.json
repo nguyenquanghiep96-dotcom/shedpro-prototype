@@ -10,25 +10,21 @@
       ]
     }
   ],
-  "rewrites": [
+  "redirects": [
     {
       "source": "/",
-      "destination": "/v1/product/premium-shed/index.html"
-    },
-    {
-      "source": "/v1/product/premium-shed",
-      "destination": "/v1/product/premium-shed/index.html"
-    },
-    {
-      "source": "/v1/product/premium-shed/",
-      "destination": "/v1/product/premium-shed/index.html"
+      "destination": "/v1/product/premium-shed/index.html",
+      "statusCode": 302
     },
     {
       "source": "/v1/garden-shed",
-      "destination": "/v1/product/premium-shed/index.html"
-    },
+      "destination": "/v1/product/premium-shed/index.html",
+      "statusCode": 301
+    }
+  ],
+  "rewrites": [
     {
-      "source": "/v1/garden-shed/",
+      "source": "/v1/product/premium-shed",
       "destination": "/v1/product/premium-shed/index.html"
     }
   ]
