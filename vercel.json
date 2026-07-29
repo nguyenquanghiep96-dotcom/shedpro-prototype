@@ -13,7 +13,7 @@
   "redirects": [
     {
       "source": "/",
-      "destination": "/v1/product/premium-shed/",
+      "destination": "/v1/shedpro-design/product/garden-shed/index.html",
       "statusCode": 302
     }
   ],
