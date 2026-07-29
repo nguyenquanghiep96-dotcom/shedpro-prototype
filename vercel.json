@@ -1,0 +1,31 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/v1/product/premium-shed/index.html",
+      "statusCode": 302
+    },
+    {
+      "source": "/v1/garden-shed",
+      "destination": "/v1/product/premium-shed/index.html",
+      "statusCode": 301
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/v1/product/premium-shed",
+      "destination": "/v1/product/premium-shed/index.html"
+    }
+  ]
+}
