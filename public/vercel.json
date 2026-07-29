@@ -11,17 +11,25 @@
     }
   ],
   "rewrites": [
-    { 
-      "source": "/", 
-      "destination": "/v1/shedpro-design/product/garden-shed/index.html" 
+    {
+      "source": "/",
+      "destination": "/v1/product/premium-shed/index.html"
     },
-    { 
-      "source": "/v1/garden-shed", 
-      "destination": "/v1/shedpro-design/product/garden-shed/index.html" 
+    {
+      "source": "/v1/product/premium-shed",
+      "destination": "/v1/product/premium-shed/index.html"
     },
-    { 
-      "source": "/v1/garden-shed/", 
-      "destination": "/v1/shedpro-design/product/garden-shed/index.html" 
+    {
+      "source": "/v1/product/premium-shed/",
+      "destination": "/v1/product/premium-shed/index.html"
+    },
+    {
+      "source": "/v1/garden-shed",
+      "destination": "/v1/product/premium-shed/index.html"
+    },
+    {
+      "source": "/v1/garden-shed/",
+      "destination": "/v1/product/premium-shed/index.html"
     }
   ]
 }
