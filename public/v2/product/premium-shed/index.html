@@ -1,17 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en-US"><head>
-<script>
-(function() {
-    var base = document.createElement('base');
-    if (window.location.href.indexOf('/public/') !== -1) {
-        base.href = '/public/v1/shedpro-design/product/garden-shed/';
-    } else {
-        base.href = '/v1/shedpro-design/product/garden-shed/';
-    }
-    document.head.appendChild(base);
-})();
-</script>
+<base href="../../../v1/shedpro-design/product/garden-shed/"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
 <link href="http://gmpg.org/xfn/11" rel="profile"/>
@@ -1336,7 +1326,7 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
     <ul class="navbar-nav ml-auto" id="main-menu">
         <li class="nav-item"><a class="nav-link" href="../../design-system.html">Design System</a></li>
         <li class="nav-item dropdown">
-            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdownVersion" role="button">Version 1</a>
+            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdownVersion" role="button">Version 2</a>
             <div aria-labelledby="navbarDropdownVersion" class="dropdown-menu">
                 <a class="dropdown-item" href="javascript:void(0)" onclick="switchVersion('v1')">Version 1</a>
                 <a class="dropdown-item" href="javascript:void(0)" onclick="switchVersion('v2')">Version 2</a>
@@ -1352,6 +1342,7 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
 <button aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler collapsed" data-target="#navbarNavDropdown" data-toggle="collapse" type="button">
 <span></span><span></span><span></span>
 </button>
+</nav><!-- .site-navigation -->
 <script>
 function switchVersion(version) {
     if (window.location.href.includes('/public/')) {
@@ -1363,7 +1354,6 @@ function switchVersion(version) {
     }
 }
 </script>
-</nav><!-- .site-navigation -->
 </div><!-- #wrapper-navbar end -->
 <div class="wrapper" id="woocommerce-wrapper"><div class="container-fluid" id="content" tabindex="-1"><div class="row">
 <div class="col-md content-area" id="primary">
@@ -1479,6 +1469,29 @@ function switchVersion(version) {
 </form>
 </div>
 <div class="ssb-model-canvas-wrapper">
+<style>
+@media (max-width: 991px) {
+    .ssb-model-canvas-wrapper { position: relative; }
+    #ssb-builder { position: relative; }
+}
+@media (min-width: 992px) {
+    .v2-mobile-canvas-overlay { display: none !important; }
+}
+@media (max-width: 991px) {
+    /* Unhid title, price, and monthly payment so user can scroll to them */
+
+    .canvas-top-right-buttons .full-screen-wrapper #fullscreen,
+    .canvas-top-right-buttons .center-item-wrapper #center-item-icon {
+        width: 36px !important;
+        height: 36px !important;
+        min-width: 36px !important;
+        min-height: 36px !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+}
+</style>
 <div class="location-wrapper">
 <div class="location-inner">
 </div>
@@ -1486,6 +1499,31 @@ function switchVersion(version) {
 <div class="ssb-model-inner">
 <div class="ssb-model-builder-inner">
 <div id="ssb-builder">
+<div class="v2-mobile-canvas-overlay" style="width: 100%; padding-left: 16px; padding-right: 16px; padding-top: 10px; padding-bottom: 10px; position: absolute; left: 0; top: 16px; display: inline-flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 2px; z-index: 9999; pointer-events: none;">
+    <!-- First Row: Title and Size -->
+    <div style="width: 100%; justify-content: space-between; align-items: center; display: inline-flex; max-width: 334px;">
+        <div style="flex: 1 1 0; display: flex; flex-direction: column; color: #5E6578; font-size: 16px; font-weight: 700; word-wrap: break-word; text-align: left;">Premium Shed</div>
+        <div style="display: flex; flex-direction: column; color: #5E6578; font-size: 14px; font-weight: 500; word-wrap: break-word; text-align: right;">12x20</div>
+    </div>
+    
+    <!-- Second Row: Est Price -->
+    <div style="width: 100%; display: flex; flex-direction: column; max-width: 334px;">
+        <div style="display: inline-flex; align-items: center; gap: 6px;">
+            <div style="display: flex; flex-direction: column; color: #5E6578; font-size: 12px; font-weight: 400; word-wrap: break-word;">Est Price:</div>
+            <div style="display: flex; flex-direction: column; color: #FF7048; font-size: 12px; font-weight: 700; word-wrap: break-word;">$21,625.00</div>
+        </div>
+    </div>
+    
+    <!-- Third Row: Pay as low as -->
+    <div style="width: 100%; display: flex; flex-direction: column; max-width: 334px;">
+        <div style="display: inline-flex; align-items: center; gap: 6px;">
+            <div style="display: flex; flex-direction: column; color: #5E6578; font-size: 12px; font-weight: 400; word-wrap: break-word;">Pay as low as:</div>
+            <div style="display: flex; flex-direction: column; color: #FF7048; font-size: 12px; font-weight: 700; word-wrap: break-word;">$132.00/mo</div>
+        </div>
+    </div>
+
+
+</div>
 <canvas custom-items="null" data-cnd-url="https://d1v3nro70bdf57.cloudfront.net/production" data-component-dir="https://demo.shedpro.co/wp-content/uploads/sites/4/ssb_component" data-component-path="https://d1v3nro70bdf57.cloudfront.net/production/component/" data-debug-mode="false" data-decking-direction="false" data-enable-brace="false" data-enable-door-slab="1" data-enable-loft="0" data-enable-manufacturer="false" data-enable-position-component="true" data-enable-vertical-distribute-porch-size="false" data-horizontal-distributed="" data-horizontal-offset="0" data-horizontal-spacing="0" data-image-path="https://demo.shedpro.co/wp-content/plugins/seadev-shed-builder-beta/public/img/" data-is-manufacture-edit-order="false" data-is-multi-model="false" data-loft-height-from-top="0" data-material-cdn="https://d1v3nro70bdf57.cloudfront.net/production/materials/" data-model-brand="62J7J6" data-model-enable-ar="" data-model-enable-porch="" data-model-enable-railing="" data-model-hinge-type="normal" data-model-id="6850" data-model-porch-external="eyJsb2NhdGlvbiI6ImZyb250IiwiZGlzdGFuY2UiOiIiLCJwb3JjaF9wcmljZV90eXBlIjoiZml4ZWQiLCJwb3JjaF9wcmljZSI6IiIsInJhaWxpbmdfcHJpY2VfdHlwZSI6bnVsbCwicmFpbGluZ19wcmljZSI6bnVsbCwicG9zdF9wcmljZV90eXBlIjpudWxsLCJwb3N0X3ByaWNlIjpudWxsLCJzdHlsZSI6InBvcmNoX2V4dF8xMGR4N2hfNGlub3ZoXzMxMnBpdGNoIn0=" data-model-porch-has-size-options="false" data-model-porch-size-single-option="1" data-model-roof-angle="30.26" data-model-roof-angle-lower="" data-model-roof-angle-upper="" data-model-roof-shape="box_gable" data-model-size-error-value="0.30" data-opening-available-on="false" data-place-place-component-on-2nd-floor="false" data-porch-custom-opening-size="false" data-porch-opening-size="0" data-porch-style="side-right" data-porch-wraparound-siding="" data-second-floor-height="" data-set-price-manual="false" data-shed-chicken-coop="" data-shed-path="https://d1v3nro70bdf57.cloudfront.net/production/shed/structure_aframe_single_gable/" data-shed-type="structure_aframe_single_gable" data-shed-type-version="structure_gardenshed_pergolaroof" data-show-credit-info="true" data-show-net-price="false" data-show-upgrade-charge-info="true" data-side-gable="end_gable" data-tack-door="no" id="ssb-canvas" is-enable-kick-board="false" is-exclude-freight-charge="false" is_expired_price="" touch-action="none">
 </canvas>
 </div>
@@ -1523,10 +1561,10 @@ function switchVersion(version) {
 <span class="custom-line-items" id="custom-line-items"></span>
 <div><div class="see-monthly-payment" id="see-monthly-payment"><div>Pay as low as <b><span id="amount-monthly-payment"></span>/mo.</b>, <span class="see-details">see details.</span></div></div>
 <div id="change-location-trigger" style="color: #2B3B63; font-family: 'Proxima Nova', sans-serif; font-size: 14px; font-style: normal; font-weight: 700; line-height: 16px; cursor: pointer; display: flex; align-items: center; gap: 8px; margin-top: 10px; margin-bottom: 15px;">
-<i class="icon ic-navigation" style="width: 16px; height: 16px;"></i>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C9.62663 0 7.30655 0.703788 5.33316 2.02236C3.35977 3.34094 1.8217 5.21509 0.913451 7.4078C0.00519943 9.60051 -0.232441 12.0133 0.230582 14.3411C0.693605 16.6689 1.83649 18.8071 3.51472 20.4853C5.19295 22.1635 7.33115 23.3064 9.65892 23.7694C11.9867 24.2324 14.3995 23.9948 16.5922 23.0866C18.7849 22.1783 20.6591 20.6402 21.9776 18.6668C23.2962 16.6935 24 14.3734 24 12C23.9966 8.81846 22.7312 5.76821 20.4815 3.51852C18.2318 1.26883 15.1815 0.00344108 12 0ZM12 21C10.22 21 8.47992 20.4722 6.99987 19.4832C5.51983 18.4943 4.36628 17.0887 3.68509 15.4442C3.0039 13.7996 2.82567 11.99 3.17294 10.2442C3.5202 8.49836 4.37737 6.89471 5.63604 5.63604C6.89472 4.37737 8.49836 3.5202 10.2442 3.17293C11.99 2.82567 13.7996 3.0039 15.4442 3.68508C17.0887 4.36627 18.4943 5.51983 19.4832 6.99987C20.4722 8.47991 21 10.22 21 12C20.9974 14.3861 20.0483 16.6738 18.361 18.361C16.6738 20.0483 14.3861 20.9974 12 21ZM6.73001 10.076L16.5 7.5L13.95 17.27C13.8914 17.4796 13.7659 17.6643 13.5928 17.7961C13.4197 17.9279 13.2083 17.9997 12.9907 18.0005C12.773 18.0013 12.5611 17.931 12.387 17.8005C12.2129 17.6699 12.0862 17.4861 12.026 17.277L10.5 13.5L6.72301 12C6.51388 11.9398 6.33009 11.8131 6.19952 11.639C6.06896 11.4649 5.99875 11.253 5.99954 11.0354C6.00033 10.8177 6.07208 10.6063 6.20391 10.4332C6.33574 10.2601 6.52045 10.1347 6.73001 10.076Z" fill="#2B3B63"/></svg>
 <span class="location-name">Change Location</span>
 </div>
-<button class="btn btn-primary w-100" id="mobile-submit-quote-btn" style="display: none;">Submit Quote</button>
+<button class="btn btn-primary w-100" id="mobile-submit-quote-btn" style="display: none; height: 44px; display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 6px;">Submit Quote</button>
 <div id="dialog-monthly-payment" style="display: none" title-dialog="Monthly Payment">
 <div class="custom-number-month-select">
 <p class="title-select-option">Select a financing option</p>
@@ -1767,7 +1805,17 @@ function switchVersion(version) {
 <option class="ssb-option display-text select size-area" data-configurator-type="size" data-option-key="ssb-option-size" data-price-type="base" data-size-depth="16" data-size-width="10" data-sizes="W3siaGVpZ2h0IjoiNy4zIiwicHJpY2VzIjp7InByaWNlIjoxMjU5NSwibHBfc21hcnQiOjAsImxwX2xhcCI6MCwiYm9hcmRfYmF0dGVuXzE2X3Rlc3QiOjB9LCJyb29mUHJpY2VzIjpbXSwibmFtZSI6IjEweDE2IiwiY29uZGl0aW9uWm9uZSI6WyI0IiwiMiIsIjEiLCIzIl19XQ==" value="10x16">10x16</option>
 <option class="ssb-option display-text select size-area" data-configurator-type="size" data-option-key="ssb-option-size" data-price-type="base" data-size-depth="16" data-size-width="12" data-sizes="W3siaGVpZ2h0IjoiNy4zIiwicHJpY2VzIjp7InByaWNlIjoxNDk5NSwibHBfc21hcnQiOjAsImxwX2xhcCI6MCwiYm9hcmRfYmF0dGVuXzE2X3Rlc3QiOjB9LCJyb29mUHJpY2VzIjpbXSwibmFtZSI6IjEyeDE2IiwiY29uZGl0aW9uWm9uZSI6WyI0IiwiMiIsIjEiLCIzIl19XQ==" value="12x16">12x16</option>
 <option class="ssb-option display-text select size-area" data-configurator-type="size" data-option-key="ssb-option-size" data-price-type="base" data-size-depth="20" data-size-width="12" data-sizes="W3siaGVpZ2h0IjoiNy4zIiwicHJpY2VzIjp7InByaWNlIjoxODM0NSwibHBfc21hcnQiOjAsImxwX2xhcCI6MCwiYm9hcmRfYmF0dGVuXzE2X3Rlc3QiOjB9LCJyb29mUHJpY2VzIjpbXSwibmFtZSI6IjEyeDIwIiwiY29uZGl0aW9uWm9uZSI6WyI0IiwiMiIsIjEiLCIzIl19XQ==" is-default="true" selected="selected" value="12x20">12x20</option>
-<option class="ssb-option display-text select size-area" data-configurator-type="size" data-option-key="ssb-option-size" data-price-type="base" data-size-depth="28" data-size-width="12" data-sizes="W3siaGVpZ2h0IjoiNy4zIiwicHJpY2VzIjp7InByaWNlIjoyNTE0NSwibHBfc21hcnQiOjAsImxwX2xhcCI6MCwiYm9hcmRfYmF0dGVuXzE2X3Rlc3QiOjB9LCJyb29mUHJpY2VzIjpbXSwibmFtZSI6IjEyeDI4IiwiY29uZGl0aW9uWm9uZSI6WyI0IiwiMiIsIjEiLCIzIl19XQ==" value="12x28">12x28</option> </select>
+<option class="ssb-option display-text select size-area" data-configurator-type="size" data-option-key="ssb-option-size" data-price-type="base" data-size-depth="28" data-size-width="12" data-sizes="W3siaGVpZ2h0IjoiNy4zIiwicHJpY2VzIjp7InByaWNlIjoyNTE0NSwibHBfc21hcnQiOjAsImxwX2xhcCI6MCwiYm9hcmRfYmF0dGVuXzE2X3Rlc3QiOjB9LCJyb29mUHJpY2VzIjpbXSwibmFtZSI6IjEyeDI4IiwiY29uZGl0aW9uWm9uZSI6WyI0IiwiMiIsIjEiLCIzIl19XQ==" value="12x28">12x28</option>
+<option class="ssb-option display-text select size-area" data-configurator-type="size" data-option-key="ssb-option-size" data-price-type="base" data-size-depth="24" data-size-width="12" data-sizes="W3siaGVpZ2h0IjoiNy4zIiwicHJpY2VzIjp7InByaWNlIjoyMTc0NSwibHBfc21hcnQiOjAsImxwX2xhcCI6MCwiYm9hcmRfYmF0dGVuXzE2X3Rlc3QiOjB9LCJyb29mUHJpY2VzIjpbXSwibmFtZSI6IjEyeDI0IiwiY29uZGl0aW9uWm9uZSI6WyI0IiwiMiIsIjEiLCIzIl19XQ==" value="12x24">12x24</option>
+<option class="ssb-option display-text select size-area" data-configurator-type="size" data-option-key="ssb-option-size" data-price-type="base" data-size-depth="30" data-size-width="12" data-sizes="W3siaGVpZ2h0IjoiNy4zIiwicHJpY2VzIjp7InByaWNlIjoyNjk0NSwibHBfc21hcnQiOjAsImxwX2xhcCI6MCwiYm9hcmRfYmF0dGVuXzE2X3Rlc3QiOjB9LCJyb29mUHJpY2VzIjpbXSwibmFtZSI6IjEyeDMwIiwiY29uZGl0aW9uWm9uZSI6WyI0IiwiMiIsIjEiLCIzIl19XQ==" value="12x30">12x30</option>
+<option class="ssb-option display-text select size-area" data-configurator-type="size" data-option-key="ssb-option-size" data-price-type="base" data-size-depth="32" data-size-width="12" data-sizes="W3siaGVpZ2h0IjoiNy4zIiwicHJpY2VzIjp7InByaWNlIjoyODc0NSwibHBfc21hcnQiOjAsImxwX2xhcCI6MCwiYm9hcmRfYmF0dGVuXzE2X3Rlc3QiOjB9LCJyb29mUHJpY2VzIjpbXSwibmFtZSI6IjEyeDMyIiwiY29uZGl0aW9uWm9uZSI6WyI0IiwiMiIsIjEiLCIzIl19XQ==" value="12x32">12x32</option>
+<option class="ssb-option display-text select size-area" data-configurator-type="size" data-option-key="ssb-option-size" data-price-type="base" data-size-depth="34" data-size-width="12" data-sizes="W3siaGVpZ2h0IjoiNy4zIiwicHJpY2VzIjp7InByaWNlIjozMDU0NSwibHBfc21hcnQiOjAsImxwX2xhcCI6MCwiYm9hcmRfYmF0dGVuXzE2X3Rlc3QiOjB9LCJyb29mUHJpY2VzIjpbXSwibmFtZSI6IjEyeDM0IiwiY29uZGl0aW9uWm9uZSI6WyI0IiwiMiIsIjEiLCIzIl19XQ==" value="12x34">12x34</option>
+<option class="ssb-option display-text select size-area" data-configurator-type="size" data-option-key="ssb-option-size" data-price-type="base" data-size-depth="36" data-size-width="12" data-sizes="W3siaGVpZ2h0IjoiNy4zIiwicHJpY2VzIjp7InByaWNlIjozMjM0NSwibHBfc21hcnQiOjAsImxwX2xhcCI6MCwiYm9hcmRfYmF0dGVuXzE2X3Rlc3QiOjB9LCJyb29mUHJpY2VzIjpbXSwibmFtZSI6IjEyeDM2IiwiY29uZGl0aW9uWm9uZSI6WyI0IiwiMiIsIjEiLCIzIl19XQ==" value="12x36">12x36</option>
+<option class="ssb-option display-text select size-area" data-configurator-type="size" data-option-key="ssb-option-size" data-price-type="base" data-size-depth="38" data-size-width="12" data-sizes="W3siaGVpZ2h0IjoiNy4zIiwicHJpY2VzIjp7InByaWNlIjozNDE0NSwibHBfc21hcnQiOjAsImxwX2xhcCI6MCwiYm9hcmRfYmF0dGVuXzE2X3Rlc3QiOjB9LCJyb29mUHJpY2VzIjpbXSwibmFtZSI6IjEyeDM4IiwiY29uZGl0aW9uWm9uZSI6WyI0IiwiMiIsIjEiLCIzIl19XQ==" value="12x38">12x38</option>
+<option class="ssb-option display-text select size-area" data-configurator-type="size" data-option-key="ssb-option-size" data-price-type="base" data-size-depth="40" data-size-width="12" data-sizes="W3siaGVpZ2h0IjoiNy4zIiwicHJpY2VzIjp7InByaWNlIjozNTk0NSwibHBfc21hcnQiOjAsImxwX2xhcCI6MCwiYm9hcmRfYmF0dGVuXzE2X3Rlc3QiOjB9LCJyb29mUHJpY2VzIjpbXSwibmFtZSI6IjEyeDQwIiwiY29uZGl0aW9uWm9uZSI6WyI0IiwiMiIsIjEiLCIzIl19XQ==" value="12x40">12x40</option>
+<option class="ssb-option display-text select size-area" data-configurator-type="size" data-option-key="ssb-option-size" data-price-type="base" data-size-depth="44" data-size-width="12" data-sizes="W3siaGVpZ2h0IjoiNy4zIiwicHJpY2VzIjp7InByaWNlIjozOTU0NSwibHBfc21hcnQiOjAsImxwX2xhcCI6MCwiYm9hcmRfYmF0dGVuXzE2X3Rlc3QiOjB9LCJyb29mUHJpY2VzIjpbXSwibmFtZSI6IjEyeDQ0IiwiY29uZGl0aW9uWm9uZSI6WyI0IiwiMiIsIjEiLCIzIl19XQ==" value="12x44">12x44</option>
+<option class="ssb-option display-text select size-area" data-configurator-type="size" data-option-key="ssb-option-size" data-price-type="base" data-size-depth="48" data-size-width="12" data-sizes="W3siaGVpZ2h0IjoiNy4zIiwicHJpY2VzIjp7InByaWNlIjo0MzE0NSwibHBfc21hcnQiOjAsImxwX2xhcCI6MCwiYm9hcmRfYmF0dGVuXzE2X3Rlc3QiOjB9LCJyb29mUHJpY2VzIjpbXSwibmFtZSI6IjEyeDQ4IiwiY29uZGl0aW9uWm9uZSI6WyI0IiwiMiIsIjEiLCIzIl19XQ==" value="12x48">12x48</option>
+<option class="ssb-option display-text select size-area" data-configurator-type="size" data-option-key="ssb-option-size" data-price-type="base" data-size-depth="52" data-size-width="12" data-sizes="W3siaGVpZ2h0IjoiNy4zIiwicHJpY2VzIjp7InByaWNlIjo0Njc0NSwibHBfc21hcnQiOjAsImxwX2xhcCI6MCwiYm9hcmRfYmF0dGVuXzE2X3Rlc3QiOjB9LCJyb29mUHJpY2VzIjpbXSwibmFtZSI6IjEyeDUyIiwiY29uZGl0aW9uWm9uZSI6WyI0IiwiMiIsIjEiLCIzIl19XQ==" value="12x52">12x52</option> </select>
 <i class="icon ic-arrow-down" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); pointer-events: none; width: 16px; height: 16px;"></i></div>
 </div>
 <div class="ssb-configurator-options has-default" id="ssb-configurator-height" style="display: none">
@@ -3531,7 +3579,7 @@ new Promise( ( resolve ) => {
 <div class="footer-price" style="color: var(--gray-1); font-size: 12px; line-height: 1.2;">
             Est Price:<br/><span id="sticky-est-price" style="color: var(--primary); font-size: 18px; font-weight: 700;">$0.00</span>
 </div>
-<button class="btn btn-primary" id="sticky-submit-quote-btn" style="padding: 10px 24px; font-weight: 700; border-radius: 6px;">Submit Quote</button>
+<button class="btn btn-primary" id="sticky-submit-quote-btn" style="height: 44px; padding: 0 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 6px;">Submit Quote</button>
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -3634,19 +3682,27 @@ span.icon-close {
 </style>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // Move Change Location to Canvas
+    // Change Location stays in wrap-price-add-to-cart compact bar (no longer moved to canvas overlay)
     if (window.jQuery) {
         var cl = jQuery('#change-location-trigger');
         if (cl.length) {
-            jQuery('.ssb-model-canvas-wrapper').css('position', 'relative');
-            cl.appendTo('.ssb-model-canvas-wrapper');
-            cl.css({
-                'position': 'absolute',
-                'top': '20px',
-                'left': '50%',
-                'transform': 'translateX(-50%)',
-                'z-index': '100'
-            });
+            if (window.innerWidth <= 991) {
+                // Mobile: keep in compact bar, just reset positioning
+                cl.css({
+                    'position': 'relative',
+                    'top': 'auto',
+                    'left': 'auto',
+                    'transform': 'none'
+                });
+            } else {
+                // Desktop: leave it in .wrap-title-price (where it is right below Pay as low as)
+                cl.css({
+                    'position': 'relative',
+                    'top': 'auto',
+                    'left': 'auto',
+                    'transform': 'none'
+                });
+            }
         }
         
         // Update Size text dynamically
@@ -3661,5 +3717,1213 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 </script>
+
+<!-- V2 Mobile Override: Tab Bar + Bottom Sheets + Shed Details + Price Recap -->
+<style id="v2-mobile-override">
+@media (max-width: 991px) {
+    /* === FULL-PAGE SCROLL OVERRIDES === */
+    /* Lock body to prevent native scroll. Scroll happens inside .summary.entry-summary */
+    body.ssb-page, html {
+        overflow: hidden !important;
+        height: 100% !important;
+    }
+
+    /* Canvas: fixed to top so it's always sticky, content scrolls under */
+    .ssb-model-inner {
+        position: fixed !important;
+        top: var(--mobile-nav-height, 16px) !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 40vh !important;
+        z-index: 100 !important;
+        background-color: #edf2f6 !important;
+        transition: height 0.3s ease !important;
+    }
+    
+    #ssb-builder, 
+    #ssb-builder .ssb-model-canvas-wrapper,
+    #ssb-builder canvas {
+        background-color: #edf2f6 !important;
+    }
+
+    /* Hide canvas overlay text - info is now in compact bar below canvas */
+    .v2-mobile-canvas-overlay {
+        display: none !important;
+    }
+
+    #ssb-builder .ssb-model-canvas-wrapper,
+    #ssb-builder canvas {
+        max-height: 40vh !important;
+    }
+
+    /* Panel: Fixed to bottom 60%, handles its own scroll */
+    .summary.entry-summary {
+        position: fixed !important;
+        top: calc(var(--mobile-nav-height, 16px) + 40vh) !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding-top: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        z-index: 20 !important;
+        padding-bottom: 80px !important;
+        transition: top 0.3s ease !important;
+    }
+
+    .is-scrolled .summary.entry-summary {
+        top: calc(var(--mobile-nav-height, 16px) + 25vh) !important;
+    }
+
+    /* Fix Premium Shed title alignment */
+    h1.product_title.entry-title {
+        text-align: left !important;
+    }
+
+    /* Phase 1: Fix Canvas Overlay */
+    .v2-mobile-canvas-overlay > div {
+        max-width: none !important;
+    }
+    #mobile-submit-quote-btn {
+        display: none !important;
+    }
+    
+    #text-size-canvas {
+        display: block !important;
+        position: absolute !important;
+        top: 12px !important;
+        bottom: auto !important;
+        right: 12px !important;
+        z-index: 20 !important;
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        color: #5E6578 !important;
+        pointer-events: none !important;
+    }
+
+    /* Phase 2: Hide Original Elements */
+    #ssb-configurator,
+    .ssb-configurator-shed-type {
+        display: none !important;
+    }
+
+    /* Hide original customize panel header on mobile */
+    .mobile-customize-panel {
+        display: none !important;
+    }
+
+    /* Force hide sticky footer by default in V2 */
+    #mobile-sticky-footer {
+        transform: translateY(100%) !important;
+    }
+    #mobile-sticky-footer.v2-active {
+        transform: translateY(0) !important;
+    }
+
+    /* V2 Compact Info Bar: show wrap-price-add-to-cart between canvas and tabs */
+    .wrap-price-add-to-cart {
+        display: block !important;
+        padding: 10px 0 0 0 !important; /* Removed all side padding */
+        margin: 0 0 10px 0 !important;
+        background: #fff;
+    }
+    .wrap-price-add-to-cart .wrap-title-price {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    /* Row 1: Title + Size on same line */
+    .wrap-price-add-to-cart .mobile-title-row {
+        display: flex !important;
+        align-items: baseline !important;
+        justify-content: flex-start !important;
+        gap: 12px !important;
+        margin-bottom: 2px !important;
+    }
+    .wrap-price-add-to-cart .product_title.entry-title {
+        font-size: 16px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1.3 !important;
+        text-align: left !important;
+    }
+    .wrap-price-add-to-cart #mobile-panel-size {
+        display: inline-block !important;
+        font-size: 14px !important;
+        color: var(--gray-1, #5E6578) !important;
+        font-weight: 700 !important;
+        white-space: nowrap !important;
+    }
+    /* Row 2: Price - block, left-aligned */
+    .wrap-price-add-to-cart .price {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 14px !important;
+        text-align: left !important;
+    }
+    .wrap-price-add-to-cart .price-label {
+        font-size: 13px !important;
+        color: #5E6578 !important;
+    }
+    .wrap-price-add-to-cart .price .woocommerce-Price-amount,
+    .wrap-price-add-to-cart .price .woocommerce-Price-amount bdi {
+        font-size: 15px !important;
+        font-weight: 700 !important;
+        color: #FF7048 !important;
+    }
+    .wrap-price-add-to-cart #custom-line-items {
+        display: none !important;
+    }
+    /* Row 3: Pay as low as - block, left-aligned */
+    .wrap-price-add-to-cart #see-monthly-payment {
+        display: block !important;
+        font-size: 13px !important;
+        margin-left: 0 !important;
+        margin-top: 2px !important;
+    }
+    .wrap-price-add-to-cart #see-monthly-payment > div {
+        display: block !important;
+    }
+    .wrap-price-add-to-cart #see-monthly-payment b {
+        color: #FF7048 !important;
+        font-size: 13px !important;
+    }
+    /* Row 4: Change Location - compact, left-aligned */
+    .wrap-price-add-to-cart #change-location-trigger {
+        margin-top: 4px !important;
+        margin-bottom: 6px !important;
+        font-size: 13px !important;
+    }
+    /* Show Submit Quote button in this section */
+    .wrap-price-add-to-cart #mobile-submit-quote-btn {
+        display: block !important;
+        margin-bottom: 15px !important;
+    }
+    /* Hide monthly dialog in this section */
+    .wrap-price-add-to-cart #dialog-monthly-payment {
+        display: none !important;
+    }
+    /* Phase 2: Horizontal Tab Bar */
+    .v2-mobile-tabs-container {
+        position: relative !important;
+        background: #fff;
+        border-top: 1px solid #E0E0E0;
+        border-bottom: 1px solid #E0E0E0;
+        margin: 0 -15px;
+        padding: 0 15px;
+    }
+    .v2-mobile-tabs-scroll {
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .v2-mobile-tabs-scroll::-webkit-scrollbar {
+        display: none;
+    }
+    .v2-mobile-tab {
+        padding: 12px 16px;
+        font-family: 'Proxima Nova', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: #5E6578;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        text-transform: capitalize;
+        flex-shrink: 0;
+    }
+    .v2-mobile-tab.active {
+        color: #FF7048;
+        border-bottom: 2px solid #FF7048;
+    }
+
+    /* Phase 3: Tab Content Areas */
+    .v2-mobile-tab-content-area {
+        display: none;
+        padding: 16px 0;
+    }
+    .v2-mobile-tab-content-area.active {
+        display: block;
+    }
+
+    /* Style Tab - Filter Row */
+    .v2-mobile-filter-row {
+        display: flex;
+        overflow-x: auto;
+        gap: 8px;
+        margin-bottom: 16px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+    }
+    .v2-mobile-filter-row::-webkit-scrollbar {
+        display: none;
+    }
+    .v2-mobile-filter-pill {
+        border-radius: 20px;
+        padding: 6px 16px;
+        border: 1px solid #E0E0E0;
+        background: #fff;
+        color: #5E6578;
+        font-size: 13px;
+        font-weight: 600;
+        white-space: nowrap;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+    .v2-mobile-filter-pill.active {
+        background: #2B3B63;
+        color: #fff;
+        border-color: #2B3B63;
+    }
+
+    /* Style Tab - Grid */
+    .v2-mobile-grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+    .v2-mobile-style-card {
+        border: 1px solid #E0E0E0;
+        border-radius: 8px;
+        overflow: hidden;
+        text-align: center;
+        padding: 4px;
+        position: relative;
+        cursor: pointer;
+        background: #fff;
+    }
+    .v2-mobile-style-card.active {
+        border: 2px solid #FF7048;
+        padding: 3px;
+    }
+    .v2-mobile-style-card.active::after {
+        content: '\2713';
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        background: #FF7048;
+        color: white;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        font-size: 11px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+    }
+    .v2-mobile-style-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+        display: block;
+    }
+    .v2-mobile-style-card span {
+        display: block;
+        font-size: 10px;
+        font-weight: 600;
+        color: #5E6578;
+        margin-top: 4px;
+        line-height: 1.2;
+        word-wrap: break-word;
+        white-space: normal;
+    }
+
+    /* Size Tab */
+    .v2-mobile-size-grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 8px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+    }
+    .v2-mobile-size-grid::-webkit-scrollbar {
+        display: none;
+    }
+    .v2-mobile-size-card {
+        border: 1px solid #E0E0E0;
+        border-radius: 8px;
+        padding: 14px 16px;
+        text-align: center;
+        cursor: pointer;
+        font-weight: 600;
+        color: #2B3B63;
+        font-size: 14px;
+        background: #fff;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    .v2-mobile-size-card.active {
+        border: 2px solid #FF7048;
+        padding: 13px 11px;
+        background: #FFF5F2;
+    }
+
+    /* List Rows (Material, Color, Exterior) */
+    .v2-mobile-list-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 16px;
+        border: 1px solid #E0E0E0;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        cursor: pointer;
+        background: #fff;
+    }
+    .v2-mobile-list-row:active {
+        background: #F9FAFB;
+    }
+    .v2-mobile-list-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex: 1;
+        min-width: 0;
+    }
+    .v2-mobile-list-swatch {
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+        border: 1px solid #E0E0E0;
+        background-size: cover;
+        background-position: center;
+        flex-shrink: 0;
+    }
+    .v2-mobile-list-icon {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #E0E0E0;
+        border-radius: 6px;
+        flex-shrink: 0;
+    }
+    .v2-mobile-list-text {
+        font-size: 14px;
+        font-weight: 600;
+        color: #2B3B63;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .v2-mobile-list-badge {
+        background: #F2F3F5;
+        color: #FF7048;
+        font-size: 12px;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-weight: 700;
+        margin-left: 8px;
+        flex-shrink: 0;
+    }
+    .v2-mobile-list-chevron {
+        color: #5E6578;
+        font-size: 16px;
+        margin-left: 8px;
+        flex-shrink: 0;
+    }
+
+    /* Phase 4: Bottom Sheet */
+    .v2-mobile-bottom-sheet-overlay {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 99998;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+    }
+    .v2-mobile-bottom-sheet-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .v2-mobile-bottom-sheet {
+        position: fixed;
+        bottom: 0;
+        left: 0; right: 0;
+        background: #fff;
+        border-radius: 16px 16px 0 0;
+        z-index: 99999;
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+    }
+    .v2-mobile-bottom-sheet.active {
+        transform: translateY(0);
+    }
+    .v2-mobile-bs-header {
+        padding: 16px;
+        border-bottom: 1px solid #E0E0E0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-shrink: 0;
+    }
+    .v2-mobile-bs-back {
+        font-size: 14px;
+        font-weight: 700;
+        color: #2B3B63;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .v2-mobile-bs-value {
+        font-size: 14px;
+        color: #5E6578;
+    }
+    .v2-mobile-bs-body {
+        padding: 16px;
+        overflow-y: auto;
+        flex: 1;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Phase 5: Shed Details */
+    .v2-mobile-details-section {
+        margin-top: 24px;
+        border-top: 8px solid #F2F3F5;
+        padding-top: 20px;
+    }
+    .v2-mobile-section-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #2B3B63;
+        margin-bottom: 8px;
+    }
+
+    /* Phase 7: Sticky Scroll UX */
+    .is-scrolled .ssb-model-inner {
+        height: 25vh !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
+    }
+    .is-scrolled .ssb-model-canvas-wrapper,
+    .is-scrolled #ssb-builder canvas {
+        max-height: 25vh !important;
+    }
+    .is-scrolled #text-size-canvas {
+        display: none !important;
+    }
+    .ssb-model-inner {
+        transition: height 0.3s ease !important;
+        will-change: height;
+    }
+
+    /* Phase 8: Fixed Bottom Bar (Appears when scrolling past compact info) */
+    .v2-sticky-bottom-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #FFFFFF;
+        box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
+        padding: 16px 20px 24px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+    }
+    .v2-sticky-bottom-bar.active {
+        transform: translateY(0);
+    }
+    .v2-sbb-price-col {
+        display: flex;
+        flex-direction: column;
+    }
+    .v2-sbb-price {
+        font-weight: 700;
+        font-size: 18px;
+        color: #2B3B63;
+    }
+    .v2-sbb-monthly {
+        font-size: 13px;
+        color: #FF7048;
+        font-weight: 700;
+    }
+    .v2-sbb-btn {
+        background-color: #FF7048;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-weight: 700;
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    .v2-mobile-detail-accordion {
+        border-bottom: 1px solid #E0E0E0;
+    }
+    .v2-mobile-detail-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 0;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 600;
+        color: #2B3B63;
+    }
+    .v2-mobile-detail-header .v2-detail-icon {
+        font-size: 20px;
+        color: #5E6578;
+        transition: transform 0.2s;
+    }
+    .v2-mobile-detail-header.open .v2-detail-icon {
+        transform: rotate(45deg);
+    }
+    .v2-mobile-detail-body {
+        display: none;
+        padding: 0 0 16px 0;
+        font-size: 14px;
+        color: #5E6578;
+        line-height: 1.6;
+    }
+
+    /* Phase 6: Price Recap (static section at bottom of page) */
+    .v2-mobile-recap-section {
+        position: relative;
+        background-color: #FFFFFF;
+        box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
+        padding: 16px 20px 24px 20px;
+        text-align: center;
+        border-radius: 16px 16px 0 0;
+        border-top: none;
+        margin-top: 16px;
+    }
+    .v2-mobile-recap-monthly {
+        font-size: 14px;
+        color: #5E6578;
+        margin-bottom: 4px;
+    }
+    .v2-mobile-recap-monthly strong {
+        color: #FF7048;
+        font-size: 18px;
+    }
+    .v2-mobile-recap-see-details {
+        color: #FF7048;
+        font-weight: 700;
+        font-size: 14px;
+        text-decoration: none;
+        display: inline-block;
+        margin-bottom: 16px;
+        cursor: pointer;
+    }
+    .v2-mobile-recap-location {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        font-size: 14px;
+        color: #5E6578;
+        margin-bottom: 20px;
+    }
+    .v2-mobile-recap-location strong {
+        text-decoration: underline;
+    }
+    #v2-price-recap-submit {
+        background-color: #FF7048;
+        color: white;
+        border: none;
+        width: 100%;
+        padding: 14px;
+        border-radius: 25px;
+        font-weight: 700;
+        font-size: 16px;
+        cursor: pointer;
+        margin-bottom: 12px;
+    }
+    #v2-price-recap-submit:active {
+        background-color: #e5603a;
+    }
+    .v2-mobile-recap-save {
+        color: #2B3B63;
+        font-weight: 700;
+        font-size: 14px;
+        text-decoration: underline;
+        cursor: pointer;
+        display: inline-block;
+    }
+    .v2-mobile-placeholder {
+        text-align: center;
+        padding: 40px 20px;
+        color: #5E6578;
+        font-size: 14px;
+    }
+
+    /* Hide shed detail panel in original location on mobile */
+    #ssb-shed-detail {
+        display: none !important;
+    }
+    /* Hide other old elements */
+    .ssb-configurator-tools.model-action,
+    .shed-note {
+        display: none !important;
+    }
+}
+
+/* Desktop: hide all V2 mobile elements */
+@media (min-width: 992px) {
+    .v2-mobile-tabs-container,
+    .v2-mobile-tab-contents,
+    .v2-mobile-details-section,
+    .v2-mobile-recap-section,
+    .v2-mobile-bottom-sheet-overlay,
+    .v2-mobile-bottom-sheet,
+    #v2-bs-container {
+        display: none !important;
+    }
+}
+</style>
+
+<script id="v2-mobile-js">
+(function($) {
+    // Don't check window.innerWidth here - CSS handles desktop hiding.
+    // This allows the JS to work even when page loads at desktop width
+    // then user switches to mobile via DevTools.
+
+    $(document).ready(function() {
+
+        // ============================================================
+        // PHASE 2: HORIZONTAL TAB BAR
+        // ============================================================
+        var tabs = ['Style', 'Size', 'Material', 'Color', 'Exterior', 'Interior', 'Upgrades'];
+        var tabHtml = '<div class="v2-mobile-tabs-container"><div class="v2-mobile-tabs-scroll">';
+        tabs.forEach(function(tab, index) {
+            tabHtml += '<div class="v2-mobile-tab ' + (index === 0 ? 'active' : '') + '" data-tab="' + tab + '">' + tab + '</div>';
+        });
+        tabHtml += '</div></div><div class="v2-mobile-tab-contents"></div>';
+
+        // Inject after wrap-price-add-to-cart
+        $('.wrap-price-add-to-cart').after(tabHtml);
+
+        var $contentContainer = $('.v2-mobile-tab-contents');
+        tabs.forEach(function(tab, index) {
+            $contentContainer.append('<div class="v2-mobile-tab-content-area ' + (index === 0 ? 'active' : '') + '" id="v2-tab-' + tab + '"></div>');
+        });
+
+        // Tab Switching
+        $('.v2-mobile-tab').on('click', function() {
+            $('.v2-mobile-tab').removeClass('active');
+            $(this).addClass('active');
+            var target = $(this).data('tab');
+            $('.v2-mobile-tab-content-area').removeClass('active');
+            $('#v2-tab-' + target).addClass('active');
+            this.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        });
+
+        // ============================================================
+        // BOTTOM SHEET CONTAINER
+        // ============================================================
+        $('body').append('<div id="v2-bs-container"><div class="v2-mobile-bottom-sheet-overlay"></div></div>');
+
+        function createBottomSheet(id, title, content, value) {
+            var bs = '<div class="v2-mobile-bottom-sheet" id="v2-bs-' + id + '">' +
+                '<div class="v2-mobile-bs-header">' +
+                    '<div class="v2-mobile-bs-back">\u2190 ' + title + '</div>' +
+                    '<span class="v2-mobile-bs-value">' + (value || '') + '</span>' +
+                '</div>' +
+                '<div class="v2-mobile-bs-body">' + content + '</div>' +
+            '</div>';
+            $('#v2-bs-container').append(bs);
+        }
+
+        function openBottomSheet(id) {
+            $('.v2-mobile-bottom-sheet-overlay').addClass('active');
+            $('#v2-bs-' + id).addClass('active');
+        }
+
+        function closeBottomSheet() {
+            $('.v2-mobile-bottom-sheet-overlay').removeClass('active');
+            $('.v2-mobile-bottom-sheet').removeClass('active');
+        }
+
+        $('body').on('click', '.v2-open-bs', function() {
+            openBottomSheet($(this).data('bs-target'));
+        });
+        $('body').on('click', '.v2-mobile-bs-back, .v2-mobile-bottom-sheet-overlay', function() {
+            closeBottomSheet();
+        });
+
+        // ============================================================
+        // PHASE 3: TAB CONTENT
+        // ============================================================
+        function buildAllTabs() {
+            buildStyleTab();
+            buildSizeTab();
+            buildMaterialTab();
+            buildColorTab();
+            buildExteriorTab();
+            buildInteriorTab();
+            buildUpgradesTab();
+            buildShedDetails();
+            buildPriceRecap();
+        }
+
+        // --- STYLE TAB ---
+        function buildStyleTab() {
+            var styleHtml = '<div class="v2-mobile-filter-row">';
+            $('#shed-type-dropdown .dropdown-shed').each(function() {
+                var name = $.trim($(this).text());
+                var isAll = $(this).data('id') === 'all';
+                styleHtml += '<div class="v2-mobile-filter-pill ' + (isAll ? 'active' : '') + '" data-type-id="' + $(this).data('id') + '">' + name + '</div>';
+            });
+            styleHtml += '</div><div class="v2-mobile-grid-4 v2-style-grid"></div>';
+            $('#v2-tab-Style').html(styleHtml);
+            populateStyleGrid();
+
+            $('#v2-tab-Style').on('click', '.v2-mobile-filter-pill', function() {
+                $('#v2-tab-Style .v2-mobile-filter-pill').removeClass('active');
+                $(this).addClass('active');
+                var typeId = $(this).data('type-id');
+                $('#shed-type-dropdown .dropdown-shed[data-id="' + typeId + '"]').trigger('click');
+                setTimeout(populateStyleGrid, 300);
+            });
+
+            $('#v2-tab-Style').on('click', '.v2-mobile-style-card', function() {
+                var idx = $(this).data('index');
+                var $opt = $('#ssb-configurator-accordion-style .ssb-option.display-thumbnail').eq(idx);
+                $opt.find('a, span, img').first().trigger('click');
+                $('.v2-mobile-style-card').removeClass('active');
+                $(this).addClass('active');
+            });
+        }
+
+        function populateStyleGrid() {
+            var gridHtml = '';
+            $('#ssb-configurator-accordion-style .ssb-option.display-thumbnail').each(function(index) {
+                var name = $(this).find('.ssb-option-name').text();
+                var imgSrc = $(this).find('img').attr('src');
+                var isActive = $(this).hasClass('active');
+                gridHtml += '<div class="v2-mobile-style-card ' + (isActive ? 'active' : '') + '" data-index="' + index + '">' +
+                    '<img src="' + imgSrc + '" alt="' + name + '">' +
+                    '<span>' + name + '</span>' +
+                '</div>';
+            });
+            $('#v2-tab-Style .v2-style-grid').html(gridHtml);
+        }
+
+        // --- SIZE TAB ---
+        function buildSizeTab() {
+            var widthMap = {};
+            $('#ssb-configurator-size-area option').each(function() {
+                var w = $(this).data('size-width');
+                if (w) {
+                    if (!widthMap[w]) widthMap[w] = [];
+                    widthMap[w].push({
+                        val: $(this).val(),
+                        text: $(this).text(),
+                        selected: $(this).is(':selected')
+                    });
+                }
+            });
+
+            var widths = Object.keys(widthMap).sort(function(a, b) { return a - b; });
+            var firstWidth = widths[0];
+
+            var sizeHtml = '<div class="v2-mobile-filter-row">';
+            widths.forEach(function(w, i) {
+                sizeHtml += '<div class="v2-mobile-filter-pill ' + (i === 0 ? 'active' : '') + '" data-width="' + w + '">' + w + ' Wide</div>';
+            });
+            sizeHtml += '</div><div class="v2-mobile-size-grid" id="v2-size-grid"></div>';
+            $('#v2-tab-Size').html(sizeHtml);
+
+            function renderSizeGrid(width) {
+                var items = widthMap[width] || [];
+                var gridHtml = '';
+                items.forEach(function(item) {
+                    gridHtml += '<div class="v2-mobile-size-card ' + (item.selected ? 'active' : '') + '" data-val="' + item.val + '">' + item.text + '</div>';
+                });
+                $('#v2-size-grid').html(gridHtml);
+            }
+
+            if (firstWidth) renderSizeGrid(firstWidth);
+
+            $('#v2-tab-Size').on('click', '.v2-mobile-filter-pill', function() {
+                $('#v2-tab-Size .v2-mobile-filter-pill').removeClass('active');
+                $(this).addClass('active');
+                renderSizeGrid($(this).data('width'));
+            });
+
+            $('#v2-tab-Size').on('click', '.v2-mobile-size-card', function() {
+                var val = $(this).data('val');
+                $('#ssb-configurator-size-area').val(val).trigger('change');
+                $('.v2-mobile-size-card').removeClass('active');
+                $(this).addClass('active');
+            });
+        }
+
+        // --- MATERIAL TAB ---
+        function buildMaterialTab() {
+            var matHtml = '';
+            $('#ssb-configurator-accordion-materials .ssb-configurator-group').each(function(gIdx) {
+                var title = $.trim($(this).find('.ssb-configurator-group-name').text());
+                var $opts = $(this).find('.ssb-option');
+                var $active = $(this).find('.ssb-option.active, .ssb-option input:checked').closest('.ssb-option').first();
+                var activeName = $active.length ? $active.find('.ssb-option-name').text() : 'Default';
+                var $thumb = $active.find('.ssb-thumbnail img, .ssb-option-swatch');
+                var swatchStyle = '';
+                if ($thumb.is('img')) {
+                    swatchStyle = 'background-image: url(' + $thumb.attr('src') + '); background-size: cover;';
+                } else if ($thumb.length) {
+                    swatchStyle = $thumb.attr('style') || '';
+                }
+
+                matHtml += '<div class="v2-mobile-list-row v2-open-bs" data-bs-target="mat-' + gIdx + '">' +
+                    '<div class="v2-mobile-list-left">' +
+                        '<div class="v2-mobile-list-swatch" style="' + swatchStyle + '"></div>' +
+                        '<div class="v2-mobile-list-text">' + title + ': ' + activeName + '</div>' +
+                    '</div>' +
+                    '<span class="v2-mobile-list-chevron">\u203A</span>' +
+                '</div>';
+
+                var bsContent = '<div class="v2-mobile-grid-4">';
+                $opts.each(function(oIdx) {
+                    var optName = $(this).find('.ssb-option-name').text();
+                    var $oThumb = $(this).find('.ssb-thumbnail img');
+                    var imgSrc = $oThumb.length ? $oThumb.attr('src') : '';
+                    bsContent += '<div class="v2-mobile-style-card v2-bs-mat-opt" data-group="' + gIdx + '" data-opt="' + oIdx + '">' +
+                        (imgSrc ? '<img src="' + imgSrc + '" alt="' + optName + '">' : '<div class="v2-mobile-list-swatch" style="width:100%;height:50px;border-radius:4px;"></div>') +
+                        '<span>' + optName + '</span>' +
+                    '</div>';
+                });
+                bsContent += '</div>';
+                createBottomSheet('mat-' + gIdx, title, bsContent, activeName);
+            });
+            $('#v2-tab-Material').html(matHtml || '<div class="v2-mobile-placeholder">No material options available</div>');
+
+            $('body').on('click', '.v2-bs-mat-opt', function() {
+                var gIdx = $(this).data('group');
+                var oIdx = $(this).data('opt');
+                var $target = $('#ssb-configurator-accordion-materials .ssb-configurator-group').eq(gIdx).find('.ssb-option').eq(oIdx);
+                $target.find('input, label, a, img').first().trigger('click');
+                closeBottomSheet();
+                setTimeout(buildMaterialTab, 500);
+            });
+        }
+
+        // --- COLOR TAB ---
+        function buildColorTab() {
+            var colHtml = '';
+            $('#ssb-configurator-accordion-colors .ssb-configurator-group').each(function(gIdx) {
+                var $titleEl = $(this).find('.ssb-configurator-group-name');
+                var title = $.trim($titleEl.clone().children().remove().end().text()) || $.trim($titleEl.text());
+                var $active = $(this).find('.ssb-option.active, .ssb-option input:checked').closest('.ssb-option').first();
+                if (!$active.length) $active = $(this).find('.ssb-option').first();
+                var activeName = $active.find('.ssb-option-name').text() || 'Default';
+                var $swatch = $active.find('.ssb-option-swatch');
+                var bgColor = $swatch.length ? ($swatch.css('background-color') || '#ccc') : '#ccc';
+                var bgImage = $swatch.length ? ($swatch.css('background-image') || '') : '';
+                var swatchStyle = bgImage && bgImage !== 'none' ? 'background-image:' + bgImage + ';background-size:cover;' : 'background-color:' + bgColor + ';';
+
+                colHtml += '<div class="v2-mobile-list-row v2-open-bs" data-bs-target="col-' + gIdx + '">' +
+                    '<div class="v2-mobile-list-left">' +
+                        '<div class="v2-mobile-list-swatch" style="' + swatchStyle + '"></div>' +
+                        '<div class="v2-mobile-list-text">' + title + ': ' + activeName + '</div>' +
+                    '</div>' +
+                    '<span class="v2-mobile-list-chevron">\u203A</span>' +
+                '</div>';
+
+                var bsContent = '<div class="v2-mobile-filter-row">' +
+                    '<div class="v2-mobile-filter-pill active" data-color-filter="all">All</div>' +
+                    '<div class="v2-mobile-filter-pill" data-color-filter="normal">Normal</div>' +
+                    '<div class="v2-mobile-filter-pill" data-color-filter="premium">Premium</div>' +
+                '</div>';
+                bsContent += '<div class="v2-mobile-grid-4 v2-color-grid" data-group="' + gIdx + '">';
+                $(this).find('.ssb-option').each(function(oIdx) {
+                    var optName = $(this).find('.ssb-option-name').text();
+                    var $oSwatch = $(this).find('.ssb-option-swatch');
+                    var oBg = $oSwatch.length ? ($oSwatch.css('background-color') || '#ccc') : '#ccc';
+                    var oBgImg = $oSwatch.length ? ($oSwatch.css('background-image') || '') : '';
+                    var oStyle = oBgImg && oBgImg !== 'none' ? 'background-image:' + oBgImg + ';background-size:cover;' : 'background-color:' + oBg + ';';
+                    var isOActive = $(this).hasClass('active') || $(this).find('input:checked').length > 0;
+
+                    bsContent += '<div class="v2-mobile-style-card v2-bs-col-opt ' + (isOActive ? 'active' : '') + '" data-group="' + gIdx + '" data-opt="' + oIdx + '">' +
+                        '<div class="v2-mobile-list-swatch" style="width:100%;height:40px;border-radius:4px;' + oStyle + '"></div>' +
+                        '<span>' + optName + '</span>' +
+                    '</div>';
+                });
+                bsContent += '</div>';
+                createBottomSheet('col-' + gIdx, title, bsContent, activeName);
+            });
+            $('#v2-tab-Color').html(colHtml || '<div class="v2-mobile-placeholder">No color options available</div>');
+
+            $('body').on('click', '.v2-bs-col-opt', function() {
+                var gIdx = $(this).data('group');
+                var oIdx = $(this).data('opt');
+                var $target = $('#ssb-configurator-accordion-colors .ssb-configurator-group').eq(gIdx).find('.ssb-option').eq(oIdx);
+                $target.find('input, label, a').first().trigger('click');
+                closeBottomSheet();
+                setTimeout(buildColorTab, 500);
+            });
+        }
+
+        // --- EXTERIOR TAB ---
+        function buildExteriorTab() {
+            var extHtml = '';
+            $('#ssb-configurator-accordion-upgrades .ssb-configurator-group').each(function(gIdx) {
+                var $titleEl = $(this).find('.ssb-configurator-group-name');
+                var title = $.trim($titleEl.clone().children().remove().end().text()) || $.trim($titleEl.text());
+                var count = $(this).find('.ssb-option').length;
+                var $countBadge = $titleEl.find('.ssb-option-upgrade-count');
+                var badgeNum = $countBadge.length ? $countBadge.text() : count;
+
+                extHtml += '<div class="v2-mobile-list-row v2-open-bs" data-bs-target="ext-' + gIdx + '">' +
+                    '<div class="v2-mobile-list-left">' +
+                        '<div class="v2-mobile-list-icon"><i class="icon ic-door" style="width:20px;height:20px;"></i></div>' +
+                        '<div class="v2-mobile-list-text">' + title + '</div>' +
+                        '<span class="v2-mobile-list-badge">' + badgeNum + '</span>' +
+                    '</div>' +
+                    '<span class="v2-mobile-list-chevron">\u203A</span>' +
+                '</div>';
+
+                var bsContent = '<div class="v2-mobile-grid-4">';
+                $(this).find('.ssb-option').each(function(oIdx) {
+                    var optName = $(this).find('.ssb-option-name').text();
+                    var $thumb = $(this).find('.ssb-thumbnail img');
+                    var imgSrc = $thumb.length ? $thumb.attr('src') : '';
+                    var isActive = $(this).hasClass('active');
+                    bsContent += '<div class="v2-mobile-style-card v2-bs-ext-opt ' + (isActive ? 'active' : '') + '" data-group="' + gIdx + '" data-opt="' + oIdx + '">' +
+                        (imgSrc ? '<img src="' + imgSrc + '" alt="' + optName + '">' : '') +
+                        '<span>' + optName + '</span>' +
+                    '</div>';
+                });
+                bsContent += '</div>';
+                createBottomSheet('ext-' + gIdx, title, bsContent);
+            });
+            $('#v2-tab-Exterior').html(extHtml || '<div class="v2-mobile-placeholder">No exterior options available</div>');
+
+            $('body').on('click', '.v2-bs-ext-opt', function() {
+                var gIdx = $(this).data('group');
+                var oIdx = $(this).data('opt');
+                var $target = $('#ssb-configurator-accordion-upgrades .ssb-configurator-group').eq(gIdx).find('.ssb-option').eq(oIdx);
+                $target.find('input, label, a, .ssb-thumbnail').first().trigger('click');
+                closeBottomSheet();
+                setTimeout(buildExteriorTab, 500);
+            });
+        }
+
+        // --- INTERIOR TAB ---
+        function buildInteriorTab() {
+            var content = $('#ssb-configurator-accordion-interior .ssb-configurator-panel-content').html();
+            $('#v2-tab-Interior').html(content || '<div class="v2-mobile-placeholder">No interior options available</div>');
+        }
+
+        // --- UPGRADES TAB ---
+        function buildUpgradesTab() {
+            $('#v2-tab-Upgrades').html('<div class="v2-mobile-placeholder">Coming soon</div>');
+        }
+
+        // ============================================================
+        // PHASE 5: SHED DETAILS
+        // ============================================================
+        function buildShedDetails() {
+            var detailsHtml = '<div class="v2-mobile-details-section">' +
+                '<h2 class="v2-mobile-section-title">Your Shed Details</h2>' +
+                '<div style="margin-bottom:16px;"><span class="ssb-2d-floor-plan" style="color:#FF7048;font-weight:700;cursor:pointer;text-decoration:underline;">2D Floorplan</span></div>' +
+                '<div class="v2-mobile-detail-accordion">' +
+                    '<div class="v2-mobile-detail-header"><span>Structure details</span><span class="v2-detail-icon">+</span></div>' +
+                    '<div class="v2-mobile-detail-body" id="v2-detail-structure"></div>' +
+                '</div>' +
+                '<div class="v2-mobile-detail-accordion">' +
+                    '<div class="v2-mobile-detail-header"><span>Exteriors</span><span class="v2-detail-icon">+</span></div>' +
+                    '<div class="v2-mobile-detail-body" id="v2-detail-exteriors"></div>' +
+                '</div>' +
+                '<div class="v2-mobile-detail-accordion">' +
+                    '<div class="v2-mobile-detail-header"><span>Upgrades, Flooring & Interior</span><span class="v2-detail-icon">+</span></div>' +
+                    '<div class="v2-mobile-detail-body" id="v2-detail-upgrades"></div>' +
+                '</div>' +
+            '</div>';
+            $('.v2-mobile-tab-contents').after(detailsHtml);
+
+            // Clone data from original shed details
+            var $origDetail = $('#ssb-shed-detail .ssb-configurator-panel-content');
+            if ($origDetail.length) {
+                var structureHtml = '';
+                $origDetail.find('#js-layout-content, #js-size-content, #js-siding-trim-content, #js-roof-content, #js-porch-content').each(function() {
+                    structureHtml += $(this).prop('outerHTML');
+                });
+                $('#v2-detail-structure').html(structureHtml || 'Loading...');
+                $('#v2-detail-exteriors').html($origDetail.find('#js-exterior-content').html() || 'Loading...');
+                $('#v2-detail-upgrades').html(
+                    ($origDetail.find('#js-interior-content').html() || '') +
+                    ($origDetail.find('#js-credit-content').html() || '')
+                    || 'Loading...'
+                );
+            }
+
+            // Accordion toggle
+            $('body').on('click', '.v2-mobile-detail-header', function() {
+                $(this).toggleClass('open');
+                $(this).next('.v2-mobile-detail-body').slideToggle(200);
+            });
+        }
+
+        // ============================================================
+        // PHASE 6: PRICE RECAP
+        // ============================================================
+        function buildPriceRecap() {
+            var monthlyText = $('#amount-monthly-payment').text() || '$132.00';
+            var locationText = $('.location-name').first().text() || 'Change Location';
+
+            var recapHtml = '<div class="v2-mobile-recap-section" id="v2-price-recap">' +
+                '<div class="v2-mobile-recap-monthly">Pay as low as: <strong>' + monthlyText + '/mo</strong></div>' +
+                '<a class="v2-mobile-recap-see-details">See Details</a>' +
+                '<div class="v2-mobile-recap-location">' +
+                    '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 0C4.6868 0 2 2.6868 2 6C2 10.5 8 16 8 16C8 16 14 10.5 14 6C14 2.6868 11.3132 0 8 0ZM8 8.5C6.619 8.5 5.5 7.381 5.5 6C5.5 4.619 6.619 3.5 8 3.5C9.381 3.5 10.5 4.619 10.5 6C10.5 7.381 9.381 8.5 8 8.5Z" fill="#5E6578"/></svg>' +
+                    'Delivery: <strong>' + locationText + '</strong>' +
+                '</div>' +
+                '<button id="v2-price-recap-submit">Submit Quote</button>' +
+                '<div><span class="v2-mobile-recap-save">Save Model</span></div>' +
+            '</div>';
+            $('.v2-mobile-details-section').after(recapHtml);
+
+            // Bind buttons
+            $('#v2-price-recap-submit').on('click', function() {
+                $('.group-button').trigger('click');
+            });
+            $('.v2-mobile-recap-save').on('click', function() {
+                $('.ssb-save-btn').trigger('click');
+            });
+            $('.v2-mobile-recap-see-details').on('click', function() {
+                $('#see-monthly-payment .see-details').trigger('click');
+            });
+            
+            // Price recap is now a static element at the bottom of the page (no scroll show/hide)
+        }
+
+        // ============================================================
+        // PHASE 7: STICKY SCROLL UX & BOTTOM BAR
+        // ============================================================
+        function initScrollUX() {
+            // Strip 'Size: ' from the canvas text
+            var sizeEl = document.getElementById('text-size-canvas');
+            if (sizeEl) {
+                var formatSize = function() {
+                    var t = sizeEl.innerText;
+                    if (t.indexOf('Size: ') > -1 || t.indexOf('Current Size: ') > -1) {
+                        sizeEl.innerText = t.replace('Size: ', '').replace('Current Size: ', '');
+                    }
+                };
+                formatSize();
+                var observer = new MutationObserver(formatSize);
+                observer.observe(sizeEl, { childList: true, characterData: true, subtree: true });
+            }
+
+            // Bind existing mobile-sticky-footer
+            var $stickyBar = $('#mobile-sticky-footer');
+            if ($stickyBar.length) {
+                // Move it to body to avoid any z-index/stacking context issues
+                $('body').append($stickyBar);
+                // Ensure it acts as our fixed bar and removes inline styles that might hide it
+                $stickyBar.css({
+                    'display': 'flex'
+                });
+            }
+
+            // Bind submit button
+            $('#v2-sticky-bar .v2-sbb-btn').on('click', function() {
+                $('.group-button').trigger('click');
+            });
+
+            // Scroll listener
+            var scrollHandler = function() {
+                if (window.innerWidth > 991) return;
+
+                var $summary = $('.summary.entry-summary');
+                var scrollY = $summary.scrollTop() || 0;
+                var $body = $('body');
+                
+                // 1. Shrink Canvas
+                if (scrollY > 50) {
+                    if (!$body.hasClass('is-scrolled')) {
+                        $body.addClass('is-scrolled');
+                        // Trigger resize for webgl to adjust
+                        setTimeout(function(){ window.dispatchEvent(new Event('resize')); }, 300);
+                    }
+                } else {
+                    if ($body.hasClass('is-scrolled')) {
+                        $body.removeClass('is-scrolled');
+                        setTimeout(function(){ window.dispatchEvent(new Event('resize')); }, 300);
+                    }
+                }
+
+                // 2. Show/Hide Sticky Bottom Bar
+                var $compactInfo = $('.wrap-price-add-to-cart');
+                var $bottomRecap = $('#v2-price-recap');
+                var $canvasInner = $('.ssb-model-inner');
+
+                var compactInfoHeight = $compactInfo.length ? $compactInfo.outerHeight() : 150;
+                
+                // Always show sticky footer in V2 unless reached bottom recap
+                var isPastCompactInfo = true;
+                
+                if ($stickyBar.length) {
+                    // For debugging, force it active always
+                    $stickyBar.addClass('v2-active');
+                }
+            };
+            
+            var $summary = $('.summary.entry-summary');
+            $summary.on('scroll', scrollHandler);
+            // Touchmove is also useful but maybe unnecessary with internal scroll, keep for safety
+            if ($summary.length) {
+                $summary[0].addEventListener('touchmove', scrollHandler, {passive: true});
+            }
+            // Trigger immediately to set initial state
+            scrollHandler();
+        }
+
+        // ============================================================
+        // INITIALIZE - Wait for 3D configurator to load
+        // ============================================================
+        var initInterval = setInterval(function() {
+            if ($('#ssb-configurator-accordion-style .ssb-option').length > 0) {
+                clearInterval(initInterval);
+                buildAllTabs();
+            }
+        }, 500);
+
+        // Fallback: build after 3 seconds even if not fully loaded
+        setTimeout(function() {
+            if ($('.v2-mobile-tab-contents .v2-mobile-tab-content-area').first().children().length === 0) {
+                clearInterval(initInterval);
+                buildAllTabs();
+            }
+        }, 3000);
+
+        // Also call initScrollUX
+        var scrollUXInitialized = false;
+        function initUX() {
+            if (!scrollUXInitialized) {
+                scrollUXInitialized = true;
+                initScrollUX();
+            }
+        }
+        
+        // Hook into buildAllTabs completion
+        var originalBuildAllTabs = buildAllTabs;
+        buildAllTabs = function() {
+            originalBuildAllTabs();
+            initUX();
+        };
+
+    });
+})(jQuery);
+</script>
+
 </body>
 </html>

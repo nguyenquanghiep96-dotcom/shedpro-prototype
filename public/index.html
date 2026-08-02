@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShedPro Design — Prototype Hub</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ─────────────────────────────────────
+           SHEDPRO DESIGN TOKENS
+           ───────────────────────────────────── */
+        :root {
+            --primary: #FF7048;
+            --primary-hover: #FF8765;
+            --primary-light: #FFB7A3;
+            --primary-bg: rgba(255,112,72,0.06);
+            --secondary: #2B3B63;
+            --secondary-hover: #3D5080;
+            --secondary-dark: #1E2A47;
+            --gray-0: #1D1D1F;
+            --gray-1: #5E6578;
+            --gray-2: #959DB1;
+            --gray-3: #BCBFC8;
+            --gray-4: #E5E5E5;
+            --gray-5: #F5F5F7;
+            --white: #FFFFFF;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+        }
+
+        /* ─────────────────────────────────────
+           RESET & BASE
+           ───────────────────────────────────── */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Google Sans Flex', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--white);
+            color: var(--gray-0);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ─────────────────────────────────────
+           NAVBAR COMPONENT
+           Shared across all pages via copy.
+           Variations: home, configurator
+           ───────────────────────────────────── */
+        .sp-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--gray-4);
+        }
+
+        .sp-navbar-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sp-navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .sp-navbar-logo svg {
+            height: 26px;
+            width: auto;
+        }
+
+        .sp-navbar-badge {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            color: var(--primary);
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: var(--primary-bg);
+        }
+
+        .sp-navbar-nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+        }
+
+        .sp-navbar-nav li a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-1);
+            padding: 6px 14px;
+            border-radius: var(--radius-sm);
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .sp-navbar-nav li a:hover {
+            background: var(--gray-5);
+            color: var(--gray-0);
+        }
+
+        .sp-navbar-nav .sp-nav-divider {
+            width: 1px;
+            height: 20px;
+            background: var(--gray-4);
+            margin: 0 4px;
+        }
+
+        .sp-navbar-nav .sp-nav-login a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Dropdown */
+        .sp-nav-dropdown {
+            position: relative;
+        }
+
+        .sp-nav-dropdown-trigger {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-1);
+            padding: 6px 14px;
+            border-radius: var(--radius-sm);
+            transition: background 0.2s, color 0.2s;
+            background: none;
+            border: none;
+            font-family: inherit;
+        }
+
+        .sp-nav-dropdown-trigger:hover {
+            background: var(--gray-5);
+            color: var(--gray-0);
+        }
+
+        .sp-nav-dropdown-trigger svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.2s;
+        }
+
+        .sp-nav-dropdown:hover .sp-nav-dropdown-trigger svg {
+            transform: rotate(180deg);
+        }
+
+        .sp-nav-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            min-width: 160px;
+            background: var(--white);
+            border: 1px solid var(--gray-4);
+            border-radius: var(--radius-md);
+            padding: 6px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .sp-nav-dropdown:hover .sp-nav-dropdown-menu {
+            display: block;
+        }
+
+        .sp-nav-dropdown-menu a {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-1);
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            transition: background 0.15s;
+        }
+
+        .sp-nav-dropdown-menu a:hover {
+            background: var(--gray-5);
+            color: var(--gray-0);
+        }
+
+        /* Mobile hamburger */
+        .sp-navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            width: 32px;
+            height: 32px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .sp-navbar-toggle span {
+            width: 18px;
+            height: 2px;
+            background: var(--gray-0);
+            border-radius: 2px;
+            transition: transform 0.2s;
+        }
+
+        @media (max-width: 640px) {
+            .sp-navbar-nav {
+                display: none;
+            }
+            .sp-navbar-toggle {
+                display: flex;
+            }
+        }
+
+        /* ─────────────────────────────────────
+           HERO
+           ───────────────────────────────────── */
+        .hero {
+            padding: 120px 24px 48px;
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            font-weight: 600;
+            line-height: 1.15;
+            color: var(--gray-0);
+            letter-spacing: -1.2px;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            line-height: 1.65;
+            color: var(--gray-1);
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* ─────────────────────────────────────
+           CONTENT CONTAINER
+           ───────────────────────────────────── */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ─────────────────────────────────────
+           SECTION LABEL (Figma-style small caps)
+           ───────────────────────────────────── */
+        .section-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: var(--gray-2);
+            margin-bottom: 20px;
+        }
+
+        /* ─────────────────────────────────────
+           VERSION GRID (Figma Pricing Style)
+           ───────────────────────────────────── */
+        .version-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 64px;
+        }
+
+        .version-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--gray-4);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.25s, box-shadow 0.25s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .version-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 1px var(--primary);
+        }
+
+        .version-card.is-disabled {
+            opacity: 0.55;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        /* Card badge */
+        .card-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            padding: 4px 12px;
+            border-radius: 100px;
+            margin-bottom: 20px;
+            width: fit-content;
+        }
+
+        .card-badge.badge-v1 {
+            background: rgba(43,59,99,0.06);
+            color: var(--secondary);
+        }
+
+        .card-badge.badge-v2 {
+            background: var(--primary-bg);
+            color: var(--primary);
+        }
+
+        .card-badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        /* Card content */
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--gray-0);
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+
+        .card-desc {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--gray-1);
+            margin-bottom: 16px;
+        }
+
+        .card-updated {
+            font-size: 13px;
+            color: var(--gray-2);
+            margin-bottom: 24px;
+        }
+
+        /* Feature list */
+        .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-4);
+        }
+
+        .feature-list li {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--gray-0);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .feature-check {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            margin-top: 1px;
+            color: var(--primary);
+        }
+
+        /* Card CTA */
+        .card-cta {
+            margin-top: 24px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: var(--radius-sm);
+            background: var(--primary-bg);
+            transition: background 0.2s, gap 0.2s;
+            width: fit-content;
+        }
+
+        .version-card:hover .card-cta {
+            background: rgba(255,112,72,0.12);
+            gap: 10px;
+        }
+
+        .card-cta svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .card-cta.is-disabled {
+            color: var(--gray-2);
+            background: var(--gray-5);
+        }
+
+        /* ─────────────────────────────────────
+           DESIGN SYSTEM CARD
+           ───────────────────────────────────── */
+        .ds-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
+            padding: 32px;
+            background: var(--gray-5);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--gray-4);
+            transition: border-color 0.25s, box-shadow 0.25s;
+            margin-bottom: 80px;
+        }
+
+        .ds-card:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 1px var(--secondary);
+        }
+
+        .ds-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--secondary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .ds-icon svg {
+            width: 22px;
+            height: 22px;
+            color: var(--white);
+        }
+
+        .ds-content {
+            flex: 1;
+        }
+
+        .ds-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--gray-2);
+            margin-bottom: 4px;
+        }
+
+        .ds-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--gray-0);
+        }
+
+        .ds-arrow {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--gray-2);
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .ds-card:hover .ds-arrow {
+            color: var(--secondary);
+            transform: translateX(4px);
+        }
+
+        .ds-arrow svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ─────────────────────────────────────
+           FOOTER
+           ───────────────────────────────────── */
+        footer {
+            text-align: center;
+            padding: 32px 24px;
+            color: var(--gray-2);
+            font-size: 13px;
+            border-top: 1px solid var(--gray-4);
+        }
+
+        footer a {
+            color: var(--primary);
+        }
+
+        /* ─────────────────────────────────────
+           RESPONSIVE
+           ───────────────────────────────────── */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 100px 20px 36px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+                letter-spacing: -0.8px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .version-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .version-card {
+                padding: 24px;
+            }
+
+            .ds-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .ds-arrow {
+                align-self: flex-end;
+            }
+        }
+
+        /* ─────────────────────────────────────
+           FADE-IN ANIMATION
+           ───────────────────────────────────── */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .fade-in-d1 { animation-delay: 0.05s; }
+        .fade-in-d2 { animation-delay: 0.15s; }
+        .fade-in-d3 { animation-delay: 0.25s; }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════
+         NAVBAR COMPONENT — variation: home
+         ═══════════════════════════════════ -->
+    <nav class="sp-navbar" data-variant="home">
+        <div class="sp-navbar-left">
+            <a href="/" class="sp-navbar-logo">
+                <svg viewBox="0 0 870 273" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M553.578 206.138H580.708V169.763H606.26C629.92 169.763 642.854 153.829 642.854 134.515C642.854 115.04 629.92 98.7839 606.26 98.7839H553.578V206.138ZM615.251 134.354C615.251 141.597 609.888 146.264 602.633 146.264H580.708V122.122H602.633C609.888 122.122 615.251 126.95 615.251 134.354Z" fill="#FF7048"/>
+                    <path d="M715.187 206.138H746.26L724.809 166.705C734.588 163.164 745.787 153.185 745.787 134.515C745.787 114.557 732.538 98.7839 709.193 98.7839H656.511V206.138H683.641V169.763H697.521L715.187 206.138ZM718.184 134.193C718.184 141.597 712.19 146.264 705.092 146.264H683.641V122.122H705.092C712.19 122.122 718.184 126.789 718.184 134.193Z" fill="#FF7048"/>
+                    <path d="M757.007 152.542C757.007 185.215 781.14 208.07 813.318 208.07C845.495 208.07 869.471 185.215 869.471 152.542C869.471 119.868 845.495 97.0134 813.318 97.0134C781.14 97.0134 757.007 119.868 757.007 152.542ZM841.867 152.542C841.867 169.924 830.668 183.605 813.318 183.605C795.81 183.605 784.61 169.924 784.61 152.542C784.61 134.998 795.81 121.478 813.318 121.478C830.668 121.478 841.867 134.998 841.867 152.542Z" fill="#FF7048"/>
+                    <path clip-rule="evenodd" d="M130.412 0.764648L220.409 43.9817L212.95 59.4064L130.412 19.7709L50.1844 58.2968L17.9462 111.711V255.113H218.97V272.235H0.764648V106.959L38.1047 45.0913L130.412 0.764648Z" fill="#FF7048" fill-rule="evenodd"/>
+                    <path d="M101.949 190.984C112.535 201.3 127.386 208.07 148.714 208.07C176.994 208.07 192.635 193.724 192.635 172.125C192.635 147.787 168.621 142.629 151.242 138.921C139.551 136.665 133.073 134.731 133.073 129.089C133.073 124.415 136.549 120.708 145.555 120.708C154.876 120.708 166.409 124.415 175.257 131.829L190.108 112.004C178.89 102.171 164.197 97.0134 147.292 97.0134C120.276 97.0134 105.267 112.648 105.267 130.701C105.267 156.168 129.598 160.681 146.976 164.227C158.194 166.645 164.987 169.063 164.987 175.188C164.987 180.346 159.3 184.375 149.978 184.375C135.601 184.375 123.91 177.928 116.326 170.191L101.949 190.984Z" fill="#2B3B63"/>
+                    <path d="M277.862 206.135H305.037V98.6253H277.862V138.76H234.099V98.6253H206.925V206.135H234.099V162.938H277.862V206.135Z" fill="#2B3B63"/>
+                    <path d="M325.609 206.135H402.865V182.764H352.783V163.421H401.76V139.889H352.783V121.997H402.865V98.6253H325.609V206.135Z" fill="#2B3B63"/>
+                    <path d="M420.223 206.135H464.618C497.638 206.135 521.495 185.665 521.495 152.3C521.495 118.935 497.638 98.6253 464.46 98.6253H420.223V206.135ZM447.398 181.958V122.803H464.618C483.893 122.803 493.689 135.698 493.689 152.3C493.689 168.257 482.945 181.958 464.46 181.958H447.398Z" fill="#2B3B63"/>
+                </svg>
+            </a>
+            <span class="sp-navbar-badge">PROTOTYPE</span>
+        </div>
+
+        <ul class="sp-navbar-nav">
+            <li><a href="/v1/shedpro-design/design-system.html">Design System</a></li>
+            <li class="sp-nav-dropdown">
+                <button class="sp-nav-dropdown-trigger">
+                    Version
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+                </button>
+                <div class="sp-nav-dropdown-menu">
+                    <a href="/v1/product/premium-shed/">Version 1</a>
+                    <a href="/v2/product/premium-shed/">Version 2</a>
+                </div>
+            </li>
+            <li class="sp-nav-divider"></li>
+            <li class="sp-nav-login"><a href="#">Login</a></li>
+        </ul>
+
+        <button class="sp-navbar-toggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- ═══════════════════════════════════
+         HERO
+         ═══════════════════════════════════ -->
+    <section class="hero fade-in fade-in-d1">
+        <h1>👋 Welcome to the<br>UI/UX Design Space</h1>
+        <p>Explore user experience improvements and the ShedPro design library. ✨ A resource hub crafted by the Product Design team.</p>
+    </section>
+
+    <!-- ═══════════════════════════════════
+         VERSION LISTING
+         ═══════════════════════════════════ -->
+    <div class="container">
+        <p class="section-label">🧪 Prototypes</p>
+        <div class="version-grid">
+
+            <!-- V1 -->
+            <a href="/v1/product/premium-shed/" class="version-card fade-in fade-in-d2">
+                <span class="card-badge badge-v1"><span class="card-badge-dot"></span> Version 1</span>
+                <h2 class="card-title">3D Configurator Prototype V1</h2>
+                <p class="card-desc">Một số cải tiến nhỏ về UI/UX dựa trên nền phiên bản chính thức.</p>
+                <p class="card-updated">🕐 Updated: Jul 29, 2026</p>
+                <ul class="feature-list">
+                    <li>
+                        <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+                        Thiết kế lại trải nghiệm Mobile
+                    </li>
+                    <li>
+                        <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+                        Cải tiến cụm Summary Price
+                    </li>
+                    <li>
+                        <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+                        Tối ưu các màn hình nhỏ
+                    </li>
+                </ul>
+                <span class="card-cta">
+                    Open Prototype
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg>
+                </span>
+            </a>
+
+            <!-- V2 -->
+            <a href="/v2/product/premium-shed/" class="version-card fade-in fade-in-d3">
+                <span class="card-badge badge-v2"><span class="card-badge-dot"></span> Version 2 · Phase 1</span>
+                <h2 class="card-title">3D Configurator Prototype V2</h2>
+                <p class="card-desc">Một phiên bản trải nghiệm người dùng hoàn toàn mới.</p>
+                <p class="card-updated">🕐 Updated: Jul 29, 2026</p>
+                <ul class="feature-list">
+                    <li>
+                        <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+                        Thiết kế mới hoàn toàn trải nghiệm Mobile
+                    </li>
+                    <li>
+                        <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+                        Horizontal tabs & swipe navigation
+                    </li>
+                    <li>
+                        <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+                        Bottom sheets cho Color & Exterior
+                    </li>
+                    <li>
+                        <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+                        50/50 split screen layout
+                    </li>
+                </ul>
+                <span class="card-cta">
+                    Open Prototype
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg>
+                </span>
+            </a>
+
+        </div>
+
+        <!-- ═══════════════════════════════════
+             DESIGN SYSTEM CARD
+             ═══════════════════════════════════ -->
+        <p class="section-label">📚 Resources</p>
+        <a href="/v1/shedpro-design/design-system.html" class="ds-card fade-in fade-in-d3">
+            <div class="ds-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <div class="ds-content">
+                <p class="ds-label">Design System</p>
+                <p class="ds-title">ShedPro Design System</p>
+            </div>
+            <div class="ds-arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg>
+            </div>
+        </a>
+    </div>
+
+    <!-- ═══════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════ -->
+    <footer>
+        <p>© 2026 <a href="https://shedpro.co" target="_blank">ShedPro</a> · Internal Prototype · Not for distribution</p>
+    </footer>
+
+</body>
+</html>
