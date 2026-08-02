@@ -4212,6 +4212,11 @@ document.addEventListener("DOMContentLoaded", function() {
     .is-scrolled #ssb-builder canvas {
         max-height: 25vh !important;
     }
+    .ssb-model-canvas-wrapper,
+    #ssb-builder canvas {
+        transition: max-height 0.3s ease !important;
+        will-change: max-height;
+    }
     .is-scrolled #text-size-canvas {
         display: none !important;
     }
@@ -4848,7 +4853,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 var $body = $('body');
                 
                 // 1. Shrink Canvas
-                if (scrollY > 50) {
+                var shrinkThreshold = $('.wrap-price-add-to-cart').outerHeight() || 150;
+                if (scrollY > shrinkThreshold) {
                     if (!$body.hasClass('is-scrolled')) {
                         $body.addClass('is-scrolled');
                         // Trigger resize for webgl to adjust
