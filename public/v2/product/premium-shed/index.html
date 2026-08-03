@@ -3851,7 +3851,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     #ssb-builder .ssb-model-canvas-wrapper,
     #ssb-builder canvas {
-        max-height: 40vh !important;
+        height: 40vh !important;
     }
 
     /* Panel: Fixed to bottom 60%, handles its own scroll */
@@ -3926,7 +3926,7 @@ document.addEventListener("DOMContentLoaded", function() {
     .wrap-price-add-to-cart {
         display: block !important;
         padding: 10px 0 0 0 !important; /* Removed all side padding */
-        margin: 0 0 10px 0 !important;
+        margin: 0 !important;
         background: #fff;
     }
     .wrap-price-add-to-cart .wrap-title-price {
@@ -4312,12 +4312,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     .is-scrolled .ssb-model-canvas-wrapper,
     .is-scrolled #ssb-builder canvas {
-        max-height: 25vh !important;
+        height: 25vh !important;
     }
     .ssb-model-canvas-wrapper,
     #ssb-builder canvas {
-        transition: max-height 0.3s ease !important;
-        will-change: max-height;
+        transition: height 0.3s ease !important;
+        will-change: height;
     }
     .is-scrolled #text-size-canvas {
         display: none !important;
@@ -4888,33 +4888,38 @@ document.addEventListener("DOMContentLoaded", function() {
         // PHASE 6: PRICE RECAP
         // ============================================================
         function buildPriceRecap() {
-            var monthlyText = $('#amount-monthly-payment').text() || '$132.00';
-            var locationText = $('.location-name').first().text() || 'Change Location';
-
-            var recapHtml = '<div class="v2-mobile-recap-section" id="v2-price-recap">' +
-                '<div class="v2-mobile-recap-monthly">Pay as low as: <strong>' + monthlyText + '/mo</strong></div>' +
-                '<a class="v2-mobile-recap-see-details">See Details</a>' +
-                '<div class="v2-mobile-recap-location">' +
-                    '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 0C4.6868 0 2 2.6868 2 6C2 10.5 8 16 8 16C8 16 14 10.5 14 6C14 2.6868 11.3132 0 8 0ZM8 8.5C6.619 8.5 5.5 7.381 5.5 6C5.5 4.619 6.619 3.5 8 3.5C9.381 3.5 10.5 4.619 10.5 6C10.5 7.381 9.381 8.5 8 8.5Z" fill="#5E6578"/></svg>' +
-                    'Delivery: <strong>' + locationText + '</strong>' +
+            var recapHtml = '<div class="v2-mobile-recap-section wrap-price-add-to-cart" id="v2-price-recap" style="margin: 0 !important; padding: 15px 20px !important;">' +
+                '<p class="price" style="margin-bottom: 4px !important;"><span class="price-label">Est Price </span><span class="woocommerce-Price-amount amount" id="recap-price-amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>0.00</bdi></span></p>' +
+                '<div class="see-monthly-payment" style="display: block !important; margin-bottom: 8px !important; margin-left: 0 !important; font-size: 13px !important;"><div>Pay as low as <b><span id="recap-amount-monthly-payment"></span>/mo.</b>, <span class="see-details recap-see-details" style="color: #FF7048; cursor: pointer;">see details.</span></div></div>' +
+                '<div class="recap-change-location-trigger" style="color: #2B3B63; font-family: \'Proxima Nova\', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; margin-bottom: 15px;">' +
+                    '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C9.62663 0 7.30655 0.703788 5.33316 2.02236C3.35977 3.34094 1.8217 5.21509 0.913451 7.4078C0.00519943 9.60051 -0.232441 12.0133 0.230582 14.3411C0.693605 16.6689 1.83649 18.8071 3.51472 20.4853C5.19295 22.1635 7.33115 23.3064 9.65892 23.7694C11.9867 24.2324 14.3995 23.9948 16.5922 23.0866C18.7849 22.1783 20.6591 20.6402 21.9776 18.6668C23.2962 16.6935 24 14.3734 24 12C23.9966 8.81846 22.7312 5.76821 20.4815 3.51852C18.2318 1.26883 15.1815 0.00344108 12 0ZM12 21C10.22 21 8.47992 20.4722 6.99987 19.4832C5.51983 18.4943 4.36628 17.0887 3.68509 15.4442C3.0039 13.7996 2.82567 11.99 3.17294 10.2442C3.5202 8.49836 4.37737 6.89471 5.63604 5.63604C6.89472 4.37737 8.49836 3.5202 10.2442 3.17293C11.99 2.82567 13.7996 3.0039 15.4442 3.68508C17.0887 4.36627 18.4943 5.51983 19.4832 6.99987C20.4722 8.47991 21 10.22 21 12C20.9974 14.3861 20.0483 16.6738 18.361 18.361C16.6738 20.0483 14.3861 20.9974 12 21ZM6.73001 10.076L16.5 7.5L13.95 17.27C13.8914 17.4796 13.7659 17.6643 13.5928 17.7961C13.4197 17.9279 13.2083 17.9997 12.9907 18.0005C12.773 18.0013 12.5611 17.931 12.387 17.8005C12.2129 17.6699 12.0862 17.4861 12.026 17.277L10.5 13.5L6.72301 12C6.51388 11.9398 6.33009 11.8131 6.19952 11.639C6.06896 11.4649 5.99875 11.253 5.99954 11.0354C6.00033 10.8177 6.07208 10.6063 6.20391 10.4332C6.33574 10.2601 6.52045 10.1347 6.73001 10.076Z" fill="#2B3B63"/></svg>' +
+                    'Delivery: <strong class="recap-location-name">Change Location</strong>' +
                 '</div>' +
-                '<button id="v2-price-recap-submit">Submit Quote</button>' +
-                '<div><span class="v2-mobile-recap-save">Save Model</span></div>' +
+                '<button class="btn btn-primary w-100" id="v2-price-recap-submit" style="height: 44px; display: flex; align-items: center; justify-content: center; padding: 0; font-weight: 700; border-radius: 6px; margin: 0;">Submit Quote</button>' +
             '</div>';
             $('.v2-mobile-details-section').after(recapHtml);
 
+            // Sync values from main wrap-price-add-to-cart every 500ms
+            setInterval(function() {
+                var topPrice = $('.wrap-price-add-to-cart .price .woocommerce-Price-amount').first().html();
+                var topMonthly = $('#amount-monthly-payment').html();
+                var topLocation = $('.location-name').first().html();
+                
+                if (topPrice) $('#recap-price-amount').html(topPrice);
+                if (topMonthly) $('#recap-amount-monthly-payment').html(topMonthly);
+                if (topLocation) $('.recap-location-name').html(topLocation);
+            }, 500);
+
             // Bind buttons
             $('#v2-price-recap-submit').on('click', function() {
-                $('.group-button').trigger('click');
+                $('#mobile-submit-quote-btn').trigger('click');
             });
-            $('.v2-mobile-recap-save').on('click', function() {
-                $('.ssb-save-btn').trigger('click');
+            $('.recap-change-location-trigger').on('click', function() {
+                $('#change-location-trigger').trigger('click');
             });
-            $('.v2-mobile-recap-see-details').on('click', function() {
-                $('#see-monthly-payment .see-details').trigger('click');
+            $('.recap-see-details').on('click', function() {
+                $('.wrap-price-add-to-cart .see-details').first().trigger('click');
             });
-            
-            // Price recap is now a static element at the bottom of the page (no scroll show/hide)
         }
 
         // ============================================================
