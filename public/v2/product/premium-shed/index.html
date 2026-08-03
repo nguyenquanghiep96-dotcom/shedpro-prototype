@@ -1031,10 +1031,12 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
             border: none !important;
         }
 
-        /* 9. Hide model options after first 2 rows (assuming 3 per row = 6 items max) */
+        /* 9. Show all model options on desktop (previously limited to 6) */
+        /*
         .ssb-configurator-style-sub-cat > li:nth-child(n+7) {
             display: none !important;
         }
+        */
 
         /* 10. Override Accordion Icons and States */
         /* Change blue line to orange bottom line for active accordion */
@@ -4606,27 +4608,6 @@ document.addEventListener("DOMContentLoaded", function() {
         function populateStyleGrid() {
             var gridHtml = '';
             $('#ssb-configurator-accordion-style .ssb-option.display-thumbnail').each(function(index) {
-                var name = $(this).find('.ssb-option-name').text();
-                var imgSrc = $(this).find('img').attr('src');
-                var isActive = $(this).hasClass('active');
-                gridHtml += '<div class="v2-mobile-style-card ' + (isActive ? 'active' : '') + '" data-index="' + index + '">' +
-                    '<img src="' + imgSrc + '" alt="' + name + '">' +
-                    '<span>' + name + '</span>' +
-                '</div>';
-            });
-            $('#v2-tab-Style .v2-style-grid').html(gridHtml);
-        }
-
-        function populateStyleGrid(filterTypeId) {
-            if (!filterTypeId) filterTypeId = 'all';
-            var gridHtml = '';
-            $('#ssb-configurator-accordion-style .ssb-option.display-thumbnail').each(function(index) {
-                var catIds = $(this).attr('data-category-ids');
-                if (filterTypeId !== 'all') {
-                    if (!catIds || catIds.split(',').indexOf(filterTypeId.toString()) === -1) {
-                        return; // skip this item
-                    }
-                }
                 var name = $(this).find('.ssb-option-name').text();
                 var imgSrc = $(this).find('img').attr('src');
                 var isActive = $(this).hasClass('active');
