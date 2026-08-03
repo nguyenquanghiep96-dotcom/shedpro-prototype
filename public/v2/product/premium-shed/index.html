@@ -1257,7 +1257,12 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
     #js-wrap-zip-code-popup.force-show {
         display: block !important;
     }
+    .material-symbols-outlined {
+        font-family: 'Material Symbols Outlined' !important;
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
 </style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body class="wp-singular product-template-default single single-product postid-6857 wp-custom-logo wp-embed-responsive wp-theme-seadev wp-child-theme-seadev-child-vendor theme-seadev woocommerce woocommerce-page woocommerce-no-js ssb-page ssb-shed-product-single ssb-request-a-quote-mode show-price no-logged not-view-building-type save-customized-shed show-position-components enable-dealer-params enabling-simplify-checkout-both seadev-site-id-4">
 <div id="global-page-loader">
@@ -1566,7 +1571,7 @@ function switchVersion(version) {
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C9.62663 0 7.30655 0.703788 5.33316 2.02236C3.35977 3.34094 1.8217 5.21509 0.913451 7.4078C0.00519943 9.60051 -0.232441 12.0133 0.230582 14.3411C0.693605 16.6689 1.83649 18.8071 3.51472 20.4853C5.19295 22.1635 7.33115 23.3064 9.65892 23.7694C11.9867 24.2324 14.3995 23.9948 16.5922 23.0866C18.7849 22.1783 20.6591 20.6402 21.9776 18.6668C23.2962 16.6935 24 14.3734 24 12C23.9966 8.81846 22.7312 5.76821 20.4815 3.51852C18.2318 1.26883 15.1815 0.00344108 12 0ZM12 21C10.22 21 8.47992 20.4722 6.99987 19.4832C5.51983 18.4943 4.36628 17.0887 3.68509 15.4442C3.0039 13.7996 2.82567 11.99 3.17294 10.2442C3.5202 8.49836 4.37737 6.89471 5.63604 5.63604C6.89472 4.37737 8.49836 3.5202 10.2442 3.17293C11.99 2.82567 13.7996 3.0039 15.4442 3.68508C17.0887 4.36627 18.4943 5.51983 19.4832 6.99987C20.4722 8.47991 21 10.22 21 12C20.9974 14.3861 20.0483 16.6738 18.361 18.361C16.6738 20.0483 14.3861 20.9974 12 21ZM6.73001 10.076L16.5 7.5L13.95 17.27C13.8914 17.4796 13.7659 17.6643 13.5928 17.7961C13.4197 17.9279 13.2083 17.9997 12.9907 18.0005C12.773 18.0013 12.5611 17.931 12.387 17.8005C12.2129 17.6699 12.0862 17.4861 12.026 17.277L10.5 13.5L6.72301 12C6.51388 11.9398 6.33009 11.8131 6.19952 11.639C6.06896 11.4649 5.99875 11.253 5.99954 11.0354C6.00033 10.8177 6.07208 10.6063 6.20391 10.4332C6.33574 10.2601 6.52045 10.1347 6.73001 10.076Z" fill="#2B3B63"/></svg>
 <span class="location-name">Change Location</span>
 </div>
-<button class="btn btn-primary w-100" id="mobile-submit-quote-btn" style="display: none; height: 44px; display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 6px;">Submit Quote</button>
+<button class="btn btn-primary w-100" id="mobile-submit-quote-btn" style="display: none; height: 44px; display: flex; align-items: center; justify-content: center; font-weight: 600; border-radius: 6px;">Submit Quote</button>
 <div id="dialog-monthly-payment" style="display: none" title-dialog="Monthly Payment">
 <div class="custom-number-month-select">
 <p class="title-select-option">Select a financing option</p>
@@ -3677,7 +3682,7 @@ new Promise( ( resolve ) => {
 <div class="footer-price" style="color: var(--gray-1); font-size: 12px; line-height: 1.2;">
             Est Price:<br/><span id="sticky-est-price" style="color: var(--primary); font-size: 18px; font-weight: 700;">$0.00</span>
 </div>
-<button class="btn btn-primary" id="sticky-submit-quote-btn" style="height: 44px; padding: 0 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 6px;">Submit Quote</button>
+<button class="btn btn-primary" id="sticky-submit-quote-btn" style="height: 44px; padding: 0 24px; display: flex; align-items: center; justify-content: center; font-weight: 600; border-radius: 6px;">Submit Quote</button>
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -3942,7 +3947,8 @@ document.addEventListener("DOMContentLoaded", function() {
         margin-bottom: 2px !important;
     }
     .wrap-price-add-to-cart .product_title.entry-title {
-        font-size: 16px !important;
+        font-size: 18px !important;
+        font-weight: 600 !important;
         margin: 0 !important;
         padding: 0 !important;
         line-height: 1.3 !important;
@@ -3960,16 +3966,16 @@ document.addEventListener("DOMContentLoaded", function() {
         display: block !important;
         margin: 0 !important;
         padding: 0 !important;
-        font-size: 14px !important;
+        font-size: 16px !important;
         text-align: left !important;
     }
     .wrap-price-add-to-cart .price-label {
-        font-size: 13px !important;
+        font-size: 16px !important;
         color: #5E6578 !important;
     }
     .wrap-price-add-to-cart .price .woocommerce-Price-amount,
     .wrap-price-add-to-cart .price .woocommerce-Price-amount bdi {
-        font-size: 15px !important;
+        font-size: 16px !important;
         font-weight: 700 !important;
         color: #FF7048 !important;
     }
@@ -3979,7 +3985,8 @@ document.addEventListener("DOMContentLoaded", function() {
     /* Row 3: Pay as low as - block, left-aligned */
     .wrap-price-add-to-cart #see-monthly-payment {
         display: block !important;
-        font-size: 13px !important;
+        font-size: 14px !important;
+        color: #5E6578 !important;
         margin-left: 0 !important;
         margin-top: 2px !important;
     }
@@ -3987,14 +3994,18 @@ document.addEventListener("DOMContentLoaded", function() {
         display: block !important;
     }
     .wrap-price-add-to-cart #see-monthly-payment b {
-        color: #FF7048 !important;
-        font-size: 13px !important;
+        color: #2b3b73 !important;
+        font-size: 14px !important;
+    }
+    .wrap-price-add-to-cart #see-monthly-payment .see-details {
+        font-size: 14px !important;
     }
     /* Row 4: Change Location - compact, left-aligned */
     .wrap-price-add-to-cart #change-location-trigger {
         margin-top: 4px !important;
         margin-bottom: 6px !important;
-        font-size: 13px !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
     }
     /* Show Submit Quote button in this section */
     .wrap-price-add-to-cart #mobile-submit-quote-btn {
@@ -4087,7 +4098,7 @@ document.addEventListener("DOMContentLoaded", function() {
     /* Style Tab - Grid */
     .v2-mobile-grid-4 {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 8px;
     }
     .v2-mobile-style-card {
@@ -4105,20 +4116,14 @@ document.addEventListener("DOMContentLoaded", function() {
         padding: 3px;
     }
     .v2-mobile-style-card.active::after {
-        content: '\2713';
+        content: '';
         position: absolute;
         top: 4px;
         right: 4px;
-        background: #FF7048;
-        color: white;
-        border-radius: 50%;
-        width: 18px;
-        height: 18px;
-        font-size: 11px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        line-height: 1;
+        background: url('/v2/icons/Verify-circle.svg') no-repeat center center;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
     }
     .v2-mobile-style-card img {
         width: 100%;
@@ -4173,7 +4178,7 @@ document.addEventListener("DOMContentLoaded", function() {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 14px 16px;
+        padding: 6px 12px 6px 6px;
         border: 1px solid #E0E0E0;
         border-radius: 8px;
         margin-bottom: 8px;
@@ -4191,17 +4196,39 @@ document.addEventListener("DOMContentLoaded", function() {
         min-width: 0;
     }
     .v2-mobile-list-swatch {
-        width: 32px;
-        height: 32px;
+        width: 44px;
+        height: 44px;
         border-radius: 6px;
         border: 1px solid #E0E0E0;
         background-size: cover;
         background-position: center;
         flex-shrink: 0;
     }
+    .v2-color-swatch-box {
+        border-radius: 10px;
+        cursor: pointer;
+        width: 100%;
+        aspect-ratio: 1/1;
+        border: 2px solid transparent;
+        padding: 0;
+        box-sizing: border-box;
+        transition: all 0.15s ease-out;
+    }
+    .v2-color-swatch-box.active {
+        border: 2px solid #FF7048;
+        padding: 4px;
+    }
+    .v2-color-swatch-box .v2-mobile-list-swatch {
+        width: 100%;
+        height: 100%;
+        border-radius: 6px;
+        background-size: cover;
+        background-position: center;
+        box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
+    }
     .v2-mobile-list-icon {
-        width: 32px;
-        height: 32px;
+        width: 44px;
+        height: 44px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -4238,7 +4265,7 @@ document.addEventListener("DOMContentLoaded", function() {
     .v2-mobile-bottom-sheet-overlay {
         position: fixed;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(0,0,0,0.5);
+        background: transparent;
         z-index: 99998;
         opacity: 0;
         pointer-events: none;
@@ -4246,7 +4273,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     .v2-mobile-bottom-sheet-overlay.active {
         opacity: 1;
-        pointer-events: auto;
+        pointer-events: none; /* Allow interaction with canvas */
     }
     .v2-mobile-bottom-sheet {
         position: fixed;
@@ -4255,7 +4282,7 @@ document.addEventListener("DOMContentLoaded", function() {
         background: #fff;
         border-radius: 16px 16px 0 0;
         z-index: 99999;
-        max-height: 85vh;
+        height: calc(75vh - 16px);
         display: flex;
         flex-direction: column;
         transform: translateY(100%);
@@ -4263,9 +4290,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     .v2-mobile-bottom-sheet.active {
         transform: translateY(0);
+        box-shadow: 0 -8px 24px rgba(0,0,0,0.12);
     }
     .v2-mobile-bs-header {
-        padding: 16px;
+        padding: 0 16px;
+        height: 54px;
         border-bottom: 1px solid #E0E0E0;
         display: flex;
         justify-content: space-between;
@@ -4380,8 +4409,8 @@ document.addEventListener("DOMContentLoaded", function() {
         align-items: center;
         padding: 16px 0;
         cursor: pointer;
-        font-size: 15px;
-        font-weight: 600;
+        font-size: 18px;
+        font-weight: 400;
         color: #2B3B63;
     }
     .v2-mobile-detail-header .v2-detail-icon {
@@ -4403,11 +4432,11 @@ document.addEventListener("DOMContentLoaded", function() {
     /* Phase 6: Price Recap (static section at bottom of page) */
     .v2-mobile-recap-section {
         position: relative;
-        background-color: #FFFFFF;
-        box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
-        padding: 16px 20px 24px 20px;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
         text-align: center;
-        border-radius: 16px 16px 0 0;
+        border-radius: 0;
         border-top: none;
         margin-top: 16px;
     }
@@ -4549,13 +4578,29 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         function openBottomSheet(id) {
-            $('.v2-mobile-bottom-sheet-overlay').addClass('active');
+            $('.v2-mobile-bottom-sheet').removeClass('active');
             $('#v2-bs-' + id).addClass('active');
+            $('.v2-mobile-bottom-sheet-overlay').addClass('active');
+            
+            // Re-apply is-scrolled to ensure canvas is at 25vh when bs is open
+            $('body').addClass('v2-bs-open is-scrolled');
+            
+            // Trigger window resize to recalculate canvas layout
+            setTimeout(function(){ window.dispatchEvent(new Event('resize')); }, 350);
         }
 
         function closeBottomSheet() {
-            $('.v2-mobile-bottom-sheet-overlay').removeClass('active');
             $('.v2-mobile-bottom-sheet').removeClass('active');
+            $('.v2-mobile-bottom-sheet-overlay').removeClass('active');
+            $('body').removeClass('v2-bs-open');
+            
+            // Let the scroll handler decide if is-scrolled should be removed
+            var scrollY = $('.summary.entry-summary').scrollTop() || 0;
+            var shrinkThreshold = $('.wrap-price-add-to-cart').outerHeight() || 150;
+            if (scrollY <= shrinkThreshold) {
+                $('body').removeClass('is-scrolled');
+            }
+            setTimeout(function(){ window.dispatchEvent(new Event('resize')); }, 350);
         }
 
         $('body').on('click', '.v2-open-bs', function() {
@@ -4625,51 +4670,56 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // --- SIZE TAB ---
         function buildSizeTab() {
-            var widthMap = {};
+            var desiredSizes = ['10x16', '12x16', '12x20', '12x28', '12x30', '12x32', '14x16', '14x18', '14x20', '14x28', '16x16', '16x18', '16x20', '16x28'];
+            var sizeItems = [];
+            var foundSizes = {};
+            
+            // Collect real sizes from the DOM
             $('#ssb-configurator-size-area option').each(function() {
-                var w = $(this).data('size-width');
-                if (w) {
-                    if (!widthMap[w]) widthMap[w] = [];
-                    widthMap[w].push({
-                        val: $(this).val(),
-                        text: $(this).text(),
-                        selected: $(this).is(':selected')
+                var text = $.trim($(this).text());
+                foundSizes[text] = {
+                    val: $(this).val(),
+                    selected: $(this).is(':selected')
+                };
+            });
+            
+            // Build items keeping the desired order and injecting mock ones
+            desiredSizes.forEach(function(sizeStr) {
+                if (foundSizes[sizeStr]) {
+                    sizeItems.push({
+                        val: foundSizes[sizeStr].val,
+                        text: sizeStr,
+                        selected: foundSizes[sizeStr].selected,
+                        isMock: false
+                    });
+                } else {
+                    sizeItems.push({
+                        val: 'mock-' + sizeStr,
+                        text: sizeStr,
+                        selected: false,
+                        isMock: true
                     });
                 }
             });
-
-            var widths = Object.keys(widthMap).sort(function(a, b) { return a - b; });
-            var firstWidth = widths[0];
-
-            var sizeHtml = '<div class="v2-mobile-filter-row">';
-            widths.forEach(function(w, i) {
-                sizeHtml += '<div class="v2-mobile-filter-pill ' + (i === 0 ? 'active' : '') + '" data-width="' + w + '">' + w + ' Wide</div>';
+            
+            var sizeHtml = '<div class="v2-mobile-size-grid" id="v2-size-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 15px;">';
+            sizeItems.forEach(function(item) {
+                sizeHtml += '<div class="v2-mobile-size-card ' + (item.selected ? 'active' : '') + (item.isMock ? ' mock-size' : '') + '" data-val="' + item.val + '" style="font-size: 13px; padding: 10px 4px;">' + item.text + '</div>';
             });
-            sizeHtml += '</div><div class="v2-mobile-size-grid" id="v2-size-grid"></div>';
+            sizeHtml += '</div>';
             $('#v2-tab-Size').html(sizeHtml);
 
-            function renderSizeGrid(width) {
-                var items = widthMap[width] || [];
-                var gridHtml = '';
-                items.forEach(function(item) {
-                    gridHtml += '<div class="v2-mobile-size-card ' + (item.selected ? 'active' : '') + '" data-val="' + item.val + '">' + item.text + '</div>';
-                });
-                $('#v2-size-grid').html(gridHtml);
-            }
-
-            if (firstWidth) renderSizeGrid(firstWidth);
-
-            $('#v2-tab-Size').on('click', '.v2-mobile-filter-pill', function() {
-                $('#v2-tab-Size .v2-mobile-filter-pill').removeClass('active');
-                $(this).addClass('active');
-                renderSizeGrid($(this).data('width'));
-            });
-
             $('#v2-tab-Size').on('click', '.v2-mobile-size-card', function() {
-                var val = $(this).data('val');
-                $('#ssb-configurator-size-area').val(val).trigger('change');
-                $('.v2-mobile-size-card').removeClass('active');
-                $(this).addClass('active');
+                if ($(this).hasClass('mock-size')) {
+                    // For mock sizes, just visually activate them
+                    $('.v2-mobile-size-card').removeClass('active');
+                    $(this).addClass('active');
+                } else {
+                    var val = $(this).data('val');
+                    $('#ssb-configurator-size-area').val(val).trigger('change');
+                    $('.v2-mobile-size-card').removeClass('active');
+                    $(this).addClass('active');
+                }
             });
         }
 
@@ -4682,19 +4732,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 var $active = $(this).find('.ssb-option.active, .ssb-option input:checked').closest('.ssb-option').first();
                 var activeName = $active.length ? $active.find('.ssb-option-name').text() : 'Default';
                 var $thumb = $active.find('.ssb-thumbnail img, .ssb-option-swatch');
-                var swatchStyle = '';
-                if ($thumb.is('img')) {
-                    swatchStyle = 'background-image: url(' + $thumb.attr('src') + '); background-size: cover;';
-                } else if ($thumb.length) {
-                    swatchStyle = $thumb.attr('style') || '';
-                }
+                var thumbSrc = $thumb.is('img') ? $thumb.attr('src') : '';
 
-                matHtml += '<div class="v2-mobile-list-row v2-open-bs" data-bs-target="mat-' + gIdx + '">' +
+                matHtml += '<div class="v2-mobile-list-row v2-open-bs" data-bs-target="mat-' + gIdx + '" style="padding: 6px 12px 6px 6px;">' +
                     '<div class="v2-mobile-list-left">' +
-                        '<div class="v2-mobile-list-swatch" style="' + swatchStyle + '"></div>' +
-                        '<div class="v2-mobile-list-text">' + title + ': ' + activeName + '</div>' +
+                        (thumbSrc ? '<div class="v2-mobile-list-swatch" style="background-image:url(\'' + thumbSrc + '\'); width:44px; height:44px;"></div>' : '<div class="v2-mobile-list-icon" style="width:44px; height:44px;">' + title.charAt(0) + '</div>') +
+                        '<div class="v2-mobile-list-text" style="font-weight:600;">' + title + ': <span style="font-weight:400;">' + activeName + '</span></div>' +
                     '</div>' +
-                    '<span class="v2-mobile-list-chevron">\u203A</span>' +
+                    '<span class="v2-mobile-list-chevron material-symbols-outlined" style="font-size: 16px;">arrow_forward_ios</span>' +
                 '</div>';
 
                 var bsContent = '<div class="v2-mobile-grid-4">';
@@ -4722,9 +4767,101 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
 
+        // --- COLOR WIZARD LOGIC ---
+        window.v2ColorWizardSteps = [];
+        window.v2CurrentColorStep = 0;
+
+        function renderColorWizardHeader() {
+            if (v2ColorWizardSteps.length === 0) return;
+            var step = v2ColorWizardSteps[v2CurrentColorStep];
+            var prevStep = v2CurrentColorStep > 0 ? v2ColorWizardSteps[v2CurrentColorStep - 1].title.split(' ')[0] : null;
+            var nextStep = v2CurrentColorStep < v2ColorWizardSteps.length - 1 ? v2ColorWizardSteps[v2CurrentColorStep + 1].title.split(' ')[0] : null;
+
+            var html = '<div style="display: flex; justify-content: space-between; align-items: center; width: 100%; height: 54px; padding: 0; position: relative; font-family: \'Proxima Nova\', sans-serif;">';
+            
+            // Absolute Center Title
+            html += '<div style="position: absolute; left: 0; right: 0; text-align: center; font-weight: 700; font-size: 16px; color: #2B3B63; pointer-events: none;">' + step.title + '</div>';
+
+            // Left: Prev Arrow
+            html += '<div style="z-index: 1; display: flex; align-items: center;">';
+            if (v2CurrentColorStep > 0) {
+                html += '<div class="v2-cw-prev" style="cursor:pointer; display:flex; align-items:center; color: #2B3B63; padding: 8px;"><span class="material-symbols-outlined" style="font-size:20px;">arrow_back_ios</span></div>';
+            }
+            html += '</div>';
+            
+            // Right: Next Arrow & Done Button
+            html += '<div style="z-index: 1; display: flex; align-items: center;">';
+            if (v2CurrentColorStep < v2ColorWizardSteps.length - 1) {
+                html += '<div class="v2-cw-next" style="cursor:pointer; display:flex; align-items:center; color: #2B3B63; padding: 8px;"><span class="material-symbols-outlined" style="font-size:20px;">arrow_forward_ios</span></div>';
+            }
+            html += '<div class="v2-mobile-bs-close" style="cursor:pointer; border-radius: 18px; background-color: #F3F4F6; display: flex; align-items: center; justify-content: center; margin-left: 8px; padding: 6px 14px; font-weight: 600; font-size: 14px; color: #2B3B63;">Done</div>';
+            html += '</div>';
+
+            html += '</div>';
+
+            $('#v2-bs-global-color-wizard .v2-mobile-bs-header').html(html);
+            $('#v2-bs-global-color-wizard .v2-mobile-bs-body').html(step.bsContent);
+        }
+
+        $('body').off('click', '.v2-open-color-wizard').on('click', '.v2-open-color-wizard', function() {
+            v2CurrentColorStep = parseInt($(this).data('step-index'));
+            renderColorWizardHeader();
+            openBottomSheet('global-color-wizard');
+        });
+
+        $('body').off('click', '.v2-cw-prev').on('click', '.v2-cw-prev', function() {
+            if (v2CurrentColorStep > 0) {
+                v2CurrentColorStep--;
+                renderColorWizardHeader();
+            }
+        });
+
+        $('body').off('click', '.v2-cw-next').on('click', '.v2-cw-next', function() {
+            if (v2CurrentColorStep < v2ColorWizardSteps.length - 1) {
+                v2CurrentColorStep++;
+                renderColorWizardHeader();
+            } else {
+                closeBottomSheet();
+            }
+        });
+
+        $('body').off('click', '.v2-mobile-bs-close').on('click', '.v2-mobile-bs-close', function() {
+            closeBottomSheet();
+        });
+
+        $('body').off('click', '.v2-bs-col-opt').on('click', '.v2-bs-col-opt', function() {
+            var gIdx = $(this).data('group');
+            var oIdx = $(this).data('opt');
+            
+            var $target = $('#ssb-configurator-accordion-colors .ssb-configurator-group').eq(gIdx).find('.ssb-option').eq(oIdx);
+            $target.find('input, label, a').first().trigger('click');
+            
+            $('#v2-bs-global-color-wizard .v2-bs-col-opt').removeClass('active');
+            $(this).addClass('active');
+            
+            var optName = $(this).find('span').text();
+            if (v2ColorWizardSteps[v2CurrentColorStep]) {
+                v2ColorWizardSteps[v2CurrentColorStep].activeName = optName;
+                $('.v2-color-wizard-active-name').text(optName);
+            }
+            
+            setTimeout(buildColorTab, 500); 
+        });
+
         // --- COLOR TAB ---
         function buildColorTab() {
             var colHtml = '';
+            var stepIndexCounter = 0;
+            window.v2ColorWizardSteps = [];
+            
+            if ($('#v2-bs-global-color-wizard').length === 0) {
+                var globalBs = '<div class="v2-mobile-bottom-sheet" id="v2-bs-global-color-wizard">' +
+                    '<div class="v2-mobile-bs-header" style="padding: 16px; border-bottom: 1px solid #E0E0E0;"></div>' +
+                    '<div class="v2-mobile-bs-body"></div>' +
+                '</div>';
+                $('#v2-bs-container').append(globalBs);
+            }
+
             $('#ssb-configurator-accordion-colors .ssb-configurator-group').each(function(gIdx) {
                 var $titleEl = $(this).find('.ssb-configurator-group-name');
                 var title = $.trim($titleEl.clone().children().remove().end().text()) || $.trim($titleEl.text());
@@ -4736,47 +4873,74 @@ document.addEventListener("DOMContentLoaded", function() {
                 var bgImage = $swatch.length ? ($swatch.css('background-image') || '') : '';
                 var swatchStyle = bgImage && bgImage !== 'none' ? 'background-image:' + bgImage + ';background-size:cover;' : 'background-color:' + bgColor + ';';
 
-                colHtml += '<div class="v2-mobile-list-row v2-open-bs" data-bs-target="col-' + gIdx + '">' +
+                var activeIndex = $(this).find('.ssb-option').index($active);
+                var activeIsPremium = (activeIndex % 3 === 2);
+                var activeDisplayName = activeName + (activeIsPremium ? ' (Premium)' : '');
+
+                colHtml += '<div class="v2-mobile-list-row v2-open-color-wizard" data-step-index="' + stepIndexCounter + '" style="padding: 6px 12px 6px 6px;">' +
                     '<div class="v2-mobile-list-left">' +
-                        '<div class="v2-mobile-list-swatch" style="' + swatchStyle + '"></div>' +
-                        '<div class="v2-mobile-list-text">' + title + ': ' + activeName + '</div>' +
+                        '<div class="v2-mobile-list-swatch" style="' + swatchStyle + 'width:44px; height:44px;"></div>' +
+                        '<div class="v2-mobile-list-text" style="display:flex; flex-direction:column; justify-content:center;">' +
+                            '<div style="font-size:12px; font-weight:600; color:#5E6578; margin-bottom: 2px;">' + title + ':</div>' +
+                            '<div style="font-size:14px; font-weight:600; color:#2B3B63;">' + activeDisplayName + '</div>' +
+                        '</div>' +
                     '</div>' +
-                    '<span class="v2-mobile-list-chevron">\u203A</span>' +
+                    '<span class="v2-mobile-list-chevron material-symbols-outlined" style="font-size: 16px;">arrow_forward_ios</span>' +
                 '</div>';
 
-                var bsContent = '<div class="v2-mobile-filter-row">' +
+                var bsContent = '<div class="v2-mobile-filter-row" style="font-family: \'Proxima Nova\', sans-serif;">' +
                     '<div class="v2-mobile-filter-pill active" data-color-filter="all">All</div>' +
                     '<div class="v2-mobile-filter-pill" data-color-filter="normal">Normal</div>' +
                     '<div class="v2-mobile-filter-pill" data-color-filter="premium">Premium</div>' +
                 '</div>';
-                bsContent += '<div class="v2-mobile-grid-4 v2-color-grid" data-group="' + gIdx + '">';
+                
+                bsContent += '<div class="v2-cw-active-row" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0 16px 0; font-family: \'Proxima Nova\', sans-serif;">' +
+                    '<div style="font-size: 16px; font-weight: 700; color: #2B3B63;"><span class="v2-color-wizard-active-name">' + activeName + '</span></div>' +
+                    '<div style="font-size: 14px; color: #5E6578;">Included</div>' +
+                '</div>';
+
+                bsContent += '<div class="v2-mobile-grid-5 v2-color-grid" data-group="' + gIdx + '" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;">';
                 $(this).find('.ssb-option').each(function(oIdx) {
                     var optName = $(this).find('.ssb-option-name').text();
                     var $oSwatch = $(this).find('.ssb-option-swatch');
                     var oBg = $oSwatch.length ? ($oSwatch.css('background-color') || '#ccc') : '#ccc';
                     var oBgImg = $oSwatch.length ? ($oSwatch.css('background-image') || '') : '';
-                    var oStyle = oBgImg && oBgImg !== 'none' ? 'background-image:' + oBgImg + ';background-size:cover;' : 'background-color:' + oBg + ';';
+                    var oStyle = oBgImg && oBgImg !== 'none' ? 'background-image:' + oBgImg.replace(/"/g, "'") + ';' : 'background-color:' + oBg + ';';
                     var isOActive = $(this).hasClass('active') || $(this).find('input:checked').length > 0;
 
-                    bsContent += '<div class="v2-mobile-style-card v2-bs-col-opt ' + (isOActive ? 'active' : '') + '" data-group="' + gIdx + '" data-opt="' + oIdx + '">' +
-                        '<div class="v2-mobile-list-swatch" style="width:100%;height:40px;border-radius:4px;' + oStyle + '"></div>' +
-                        '<span>' + optName + '</span>' +
+                    var isPremium = (oIdx % 3 === 2);
+                    var filterType = isPremium ? 'premium' : 'normal';
+
+                    bsContent += '<div class="v2-color-swatch-box v2-bs-col-opt ' + (isOActive ? 'active' : '') + '" data-group="' + gIdx + '" data-opt="' + oIdx + '" data-type="' + filterType + '">' +
+                        '<div class="v2-mobile-list-swatch" style="' + oStyle + '"></div>' +
+                        '<span style="display:none;">' + optName + (isPremium ? ' (Premium)' : '') + '</span>' +
                     '</div>';
                 });
                 bsContent += '</div>';
-                createBottomSheet('col-' + gIdx, title, bsContent, activeName);
+                
+                v2ColorWizardSteps.push({
+                    gIdx: gIdx,
+                    title: title,
+                    activeName: activeName,
+                    bsContent: bsContent
+                });
+                stepIndexCounter++;
             });
             $('#v2-tab-Color').html(colHtml || '<div class="v2-mobile-placeholder">No color options available</div>');
-
-            $('body').on('click', '.v2-bs-col-opt', function() {
-                var gIdx = $(this).data('group');
-                var oIdx = $(this).data('opt');
-                var $target = $('#ssb-configurator-accordion-colors .ssb-configurator-group').eq(gIdx).find('.ssb-option').eq(oIdx);
-                $target.find('input, label, a').first().trigger('click');
-                closeBottomSheet();
-                setTimeout(buildColorTab, 500);
-            });
         }
+
+        $(document).on('click', '.v2-mobile-filter-pill', function() {
+            var filter = $(this).attr('data-color-filter');
+            $(this).siblings().removeClass('active');
+            $(this).addClass('active');
+            var $grid = $(this).closest('.v2-mobile-bs-body').find('.v2-color-grid');
+            if (filter === 'all') {
+                $grid.find('.v2-color-swatch-box').show();
+            } else {
+                $grid.find('.v2-color-swatch-box').hide();
+                $grid.find('.v2-color-swatch-box[data-type="' + filter + '"]').show();
+            }
+        });
 
         // --- EXTERIOR TAB ---
         function buildExteriorTab() {
@@ -4787,14 +4951,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 var count = $(this).find('.ssb-option').length;
                 var $countBadge = $titleEl.find('.ssb-option-upgrade-count');
                 var badgeNum = $countBadge.length ? $countBadge.text() : count;
+                var badgeHtml = '<span class="v2-mobile-list-badge">' + badgeNum + '</span>';
 
-                extHtml += '<div class="v2-mobile-list-row v2-open-bs" data-bs-target="ext-' + gIdx + '">' +
+                extHtml += '<div class="v2-mobile-list-row v2-open-bs" data-bs-target="ext-' + gIdx + '" style="padding: 6px 12px 6px 6px;">' +
                     '<div class="v2-mobile-list-left">' +
-                        '<div class="v2-mobile-list-icon"><i class="icon ic-door" style="width:20px;height:20px;"></i></div>' +
-                        '<div class="v2-mobile-list-text">' + title + '</div>' +
-                        '<span class="v2-mobile-list-badge">' + badgeNum + '</span>' +
+                        '<div class="v2-mobile-list-icon" style="width:44px; height:44px; display:flex; align-items:center; justify-content:center;"><i class="icon ic-door"></i></div>' +
+                        '<div class="v2-mobile-list-text" style="font-weight:600;">' + title + '</div>' +
+                        badgeHtml +
                     '</div>' +
-                    '<span class="v2-mobile-list-chevron">\u203A</span>' +
+                    '<span class="v2-mobile-list-chevron material-symbols-outlined" style="font-size: 16px;">arrow_forward_ios</span>' +
                 '</div>';
 
                 var bsContent = '<div class="v2-mobile-grid-4">';
@@ -4841,7 +5006,7 @@ document.addEventListener("DOMContentLoaded", function() {
             var detailsHtml = '<div class="v2-mobile-details-section">' +
                 '<h2 class="v2-mobile-section-title">Your Shed Details</h2>' +
                 '<div style="margin-bottom:16px;">' +
-                    '<button class="ssb-2d-floor-plan v2-btn-secondary" style="width: 100%; border: 1px solid var(--secondary); border-radius: 8px; padding: 12px; background: white; color: var(--secondary); font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: all 0.2s;">' +
+                    '<button class="ssb-2d-floor-plan v2-btn-secondary" style="width: 100%; height: 44px; border: none; border-radius: 8px; padding: 0; background: #EDEDED; color: #5E6578; font-size: 16px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: all 0.2s;">' +
                         '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>' +
                         'View 2D Floorplan' +
                     '</button>' +
@@ -4888,14 +5053,18 @@ document.addEventListener("DOMContentLoaded", function() {
         // PHASE 6: PRICE RECAP
         // ============================================================
         function buildPriceRecap() {
-            var recapHtml = '<div class="v2-mobile-recap-section wrap-price-add-to-cart" id="v2-price-recap" style="margin: 24px 0 0 0 !important; padding: 15px 20px !important;">' +
-                '<p class="price" style="margin-bottom: 4px !important; text-align: center !important;"><span class="price-label" style="font-size: 16px !important; font-weight: 400 !important; color: #5E6578 !important;">Est Price </span><span class="woocommerce-Price-amount amount" id="recap-price-amount" style="font-size: 18px !important; font-weight: 700 !important; color: #FF7048 !important;"><bdi><span class="woocommerce-Price-currencySymbol">$</span>0.00</bdi></span></p>' +
-                '<div class="see-monthly-payment" style="display: block !important; margin-bottom: 12px !important; margin-left: 0 !important; font-size: 14px !important; color: #5E6578 !important; text-align: center !important;"><div>Pay as low as <b><span id="recap-amount-monthly-payment" style="font-size: 16px !important; color: #FF7048 !important;"></span><span style="font-size: 16px !important; color: #FF7048 !important;">/mo.</span></b>, <span class="see-details recap-see-details" style="font-size: 16px !important; color: #007bff !important; cursor: pointer;">see details.</span></div></div>' +
-                '<div class="recap-change-location-trigger" style="color: #2B3B63; font-family: \'Proxima Nova\', sans-serif; font-size: 16px !important; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: flex-start; gap: 8px; margin-bottom: 15px;">' +
+            var recapHtml = '<style>' +
+                '#v2-price-recap .woocommerce-Price-amount, #v2-price-recap .woocommerce-Price-amount bdi { font-size: 16px !important; color: #2B3B63 !important; }' +
+                '#v2-price-recap .recap-location-hover:hover { text-decoration: underline; }' +
+                '</style>' +
+                '<div class="v2-mobile-recap-section wrap-price-add-to-cart" id="v2-price-recap" style="margin: 24px 0 0 0 !important; padding: 0 !important;">' +
+                '<p class="price" style="margin-bottom: 0 !important; text-align: center !important;"><span class="price-label" style="font-size: 16px !important; font-weight: 400 !important; color: #5E6578 !important;">Est Price </span><span class="woocommerce-Price-amount amount" id="recap-price-amount" style="font-size: 16px !important; font-weight: 700 !important; color: #2B3B63 !important;"><bdi><span class="woocommerce-Price-currencySymbol">$</span>0.00</bdi></span></p>' +
+                '<div class="see-monthly-payment" style="display: block !important; margin-bottom: 12px !important; margin-left: 0 !important; font-size: 14px !important; color: #5E6578 !important; text-align: center !important;"><div>Pay as low as <b><span id="recap-amount-monthly-payment" style="font-size: 14px !important; color: #2B3B63 !important;"></span><span style="font-size: 14px !important; color: #2B3B63 !important;">/mo.</span></b>, <span class="see-details recap-see-details" style="font-size: 14px !important; color: #1D64B5 !important; cursor: pointer;">see details.</span></div></div>' +
+                '<div class="recap-change-location-trigger recap-location-hover" style="color: #2B3B63; font-family: \'Proxima Nova\', sans-serif; font-size: 16px !important; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 15px;">' +
                     '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C9.62663 0 7.30655 0.703788 5.33316 2.02236C3.35977 3.34094 1.8217 5.21509 0.913451 7.4078C0.00519943 9.60051 -0.232441 12.0133 0.230582 14.3411C0.693605 16.6689 1.83649 18.8071 3.51472 20.4853C5.19295 22.1635 7.33115 23.3064 9.65892 23.7694C11.9867 24.2324 14.3995 23.9948 16.5922 23.0866C18.7849 22.1783 20.6591 20.6402 21.9776 18.6668C23.2962 16.6935 24 14.3734 24 12C23.9966 8.81846 22.7312 5.76821 20.4815 3.51852C18.2318 1.26883 15.1815 0.00344108 12 0ZM12 21C10.22 21 8.47992 20.4722 6.99987 19.4832C5.51983 18.4943 4.36628 17.0887 3.68509 15.4442C3.0039 13.7996 2.82567 11.99 3.17294 10.2442C3.5202 8.49836 4.37737 6.89471 5.63604 5.63604C6.89472 4.37737 8.49836 3.5202 10.2442 3.17293C11.99 2.82567 13.7996 3.0039 15.4442 3.68508C17.0887 4.36627 18.4943 5.51983 19.4832 6.99987C20.4722 8.47991 21 10.22 21 12C20.9974 14.3861 20.0483 16.6738 18.361 18.361C16.6738 20.0483 14.3861 20.9974 12 21ZM6.73001 10.076L16.5 7.5L13.95 17.27C13.8914 17.4796 13.7659 17.6643 13.5928 17.7961C13.4197 17.9279 13.2083 17.9997 12.9907 18.0005C12.773 18.0013 12.5611 17.931 12.387 17.8005C12.2129 17.6699 12.0862 17.4861 12.026 17.277L10.5 13.5L6.72301 12C6.51388 11.9398 6.33009 11.8131 6.19952 11.639C6.06896 11.4649 5.99875 11.253 5.99954 11.0354C6.00033 10.8177 6.07208 10.6063 6.20391 10.4332C6.33574 10.2601 6.52045 10.1347 6.73001 10.076Z" fill="#2B3B63"/></svg>' +
-                    'Delivery: <strong class="recap-location-name">Change Location</strong>' +
+                    '<span class="recap-location-name" style="font-weight: 600;">Change Location</span>' +
                 '</div>' +
-                '<button class="btn btn-primary w-100" id="v2-price-recap-submit" style="height: 44px; display: flex; align-items: center; justify-content: center; padding: 0; font-weight: 700; border-radius: 6px; margin: 0;">Submit Quote</button>' +
+                '<button class="btn btn-primary w-100" id="v2-price-recap-submit" style="height: 44px; display: flex; align-items: center; justify-content: center; padding: 0; font-weight: 600; border-radius: 6px; margin: 0;">Submit Quote</button>' +
             '</div>';
             $('.v2-mobile-details-section').after(recapHtml);
 
@@ -4973,7 +5142,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         setTimeout(function(){ window.dispatchEvent(new Event('resize')); }, 300);
                     }
                 } else {
-                    if ($body.hasClass('is-scrolled')) {
+                    if ($body.hasClass('is-scrolled') && !$body.hasClass('v2-bs-open')) {
                         $body.removeClass('is-scrolled');
                         setTimeout(function(){ window.dispatchEvent(new Event('resize')); }, 300);
                     }
