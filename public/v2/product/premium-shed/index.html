@@ -1488,7 +1488,8 @@ function switchVersion(version) {
     /* Unhid title, price, and monthly payment so user can scroll to them */
 
     .canvas-top-right-buttons .full-screen-wrapper #fullscreen,
-    .canvas-top-right-buttons .center-item-wrapper #center-item-icon {
+    .canvas-top-right-buttons .center-item-wrapper #center-item-icon,
+    .canvas-top-right-buttons .reset-wrapper #reset-button {
         width: 36px !important;
         height: 36px !important;
         min-width: 36px !important;
@@ -1497,6 +1498,12 @@ function switchVersion(version) {
         align-items: center;
         justify-content: center;
     }
+}
+@media (min-width: 992px) {
+    /* Hide mobile-only elements on desktop */
+    .reset-wrapper { display: none !important; }
+    #mobile-heart-submit-wrapper { display: none !important; }
+    #mobile-submit-quote-btn { display: none !important; }
 }
 </style>
 <div class="location-wrapper">
@@ -1536,6 +1543,10 @@ function switchVersion(version) {
 </div>
 <a class="shed-link desktop-only" href="https://shedpro.co/"><img alt="3D Configurator - Prototype Design" src="../../../dxm5q5264srx2.cloudfront.net/wp-content/uploads/sites/4/2023/04/Powered-by-ShedPro.svg"/></a><div id="text-size-canvas"></div>
 <div class="canvas-top-right-buttons">
+<div class="reset-wrapper">
+<div id="reset-button" style="background-color: #F2F3F5; border-radius: 8px; cursor: pointer;"><span class="material-symbols-outlined" style="font-size: 20px; font-weight: 400;">replay</span></div>
+<span class="description">Reset</span>
+</div>
 <div class="full-screen-wrapper">
 <div id="fullscreen">
 <i class="icon ic-zoom-out"></i>
@@ -1569,9 +1580,12 @@ function switchVersion(version) {
 <div><div class="see-monthly-payment" id="see-monthly-payment"><div>Pay as low as <b><span id="amount-monthly-payment"></span>/mo.</b>, <span class="see-details">see details.</span></div></div>
 <div id="change-location-trigger" style="color: #2B3B63; font-family: 'Proxima Nova', sans-serif; font-size: 14px; font-style: normal; font-weight: 700; line-height: 16px; cursor: pointer; display: flex; align-items: center; gap: 8px; margin-top: 10px; margin-bottom: 15px;">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C9.62663 0 7.30655 0.703788 5.33316 2.02236C3.35977 3.34094 1.8217 5.21509 0.913451 7.4078C0.00519943 9.60051 -0.232441 12.0133 0.230582 14.3411C0.693605 16.6689 1.83649 18.8071 3.51472 20.4853C5.19295 22.1635 7.33115 23.3064 9.65892 23.7694C11.9867 24.2324 14.3995 23.9948 16.5922 23.0866C18.7849 22.1783 20.6591 20.6402 21.9776 18.6668C23.2962 16.6935 24 14.3734 24 12C23.9966 8.81846 22.7312 5.76821 20.4815 3.51852C18.2318 1.26883 15.1815 0.00344108 12 0ZM12 21C10.22 21 8.47992 20.4722 6.99987 19.4832C5.51983 18.4943 4.36628 17.0887 3.68509 15.4442C3.0039 13.7996 2.82567 11.99 3.17294 10.2442C3.5202 8.49836 4.37737 6.89471 5.63604 5.63604C6.89472 4.37737 8.49836 3.5202 10.2442 3.17293C11.99 2.82567 13.7996 3.0039 15.4442 3.68508C17.0887 4.36627 18.4943 5.51983 19.4832 6.99987C20.4722 8.47991 21 10.22 21 12C20.9974 14.3861 20.0483 16.6738 18.361 18.361C16.6738 20.0483 14.3861 20.9974 12 21ZM6.73001 10.076L16.5 7.5L13.95 17.27C13.8914 17.4796 13.7659 17.6643 13.5928 17.7961C13.4197 17.9279 13.2083 17.9997 12.9907 18.0005C12.773 18.0013 12.5611 17.931 12.387 17.8005C12.2129 17.6699 12.0862 17.4861 12.026 17.277L10.5 13.5L6.72301 12C6.51388 11.9398 6.33009 11.8131 6.19952 11.639C6.06896 11.4649 5.99875 11.253 5.99954 11.0354C6.00033 10.8177 6.07208 10.6063 6.20391 10.4332C6.33574 10.2601 6.52045 10.1347 6.73001 10.076Z" fill="#2B3B63"/></svg>
-<span class="location-name">Change Location</span>
+<span class="location-name">Enter Location</span>
 </div>
-<button class="btn btn-primary w-100" id="mobile-submit-quote-btn" style="display: none; height: 44px; display: flex; align-items: center; justify-content: center; font-weight: 600; border-radius: 6px;">Submit Quote</button>
+<div id="mobile-heart-submit-wrapper" style="display:flex; gap:8px; align-items:center;">
+<button class="btn" style="height: 48px; width: 48px; padding: 0; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: 600; border-radius: 6px; border: none; background: #EDEDED; color: #5E6578;"><span class="material-symbols-outlined" style="font-size:20px;">favorite</span></button>
+<button class="btn btn-primary w-100" id="mobile-submit-quote-btn" style="display: none; height: 48px; display: flex; align-items: center; justify-content: center; font-weight: 600; border-radius: 6px;">Submit Quote</button>
+</div>
 <div id="dialog-monthly-payment" style="display: none" title-dialog="Monthly Payment">
 <div class="custom-number-month-select">
 <p class="title-select-option">Select a financing option</p>
@@ -3678,11 +3692,14 @@ new Promise( ( resolve ) => {
 </div>
 </div>
 </div>
-<div id="mobile-sticky-footer" style="display: none;">
+<div id="mobile-sticky-footer" style="display: none; align-items: center; justify-content: space-between;">
 <div class="footer-price" style="color: var(--gray-1); font-size: 12px; line-height: 1.2;">
             Est Price:<br/><span id="sticky-est-price" style="color: var(--primary); font-size: 18px; font-weight: 700;">$0.00</span>
 </div>
-<button class="btn btn-primary" id="sticky-submit-quote-btn" style="height: 44px; padding: 0 24px; display: flex; align-items: center; justify-content: center; font-weight: 600; border-radius: 6px;">Submit Quote</button>
+<div style="display: flex; gap: 8px;">
+    <button class="btn" style="height: 44px; width: 44px; padding: 0; display: flex; align-items: center; justify-content: center; font-weight: 600; border-radius: 6px; border: none; background: #EDEDED; color: #5E6578;"><span class="material-symbols-outlined" style="font-size:20px;">favorite</span></button>
+    <button class="btn btn-primary" id="sticky-submit-quote-btn" style="height: 48px; padding: 0 24px; display: flex; align-items: center; justify-content: center; font-weight: 600; border-radius: 6px;">Submit Quote</button>
+</div>
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -3839,14 +3856,14 @@ document.addEventListener("DOMContentLoaded", function() {
         width: 100vw !important;
         height: 40vh !important;
         z-index: 100 !important;
-        background-color: #edf2f6 !important;
+        background-color: #f5f5f5 !important;
         transition: height 0.3s ease !important;
     }
     
     #ssb-builder, 
     #ssb-builder .ssb-model-canvas-wrapper,
     #ssb-builder canvas {
-        background-color: #edf2f6 !important;
+        background-color: #f5f5f5 !important;
     }
 
     /* Hide canvas overlay text - info is now in compact bar below canvas */
@@ -4094,6 +4111,9 @@ document.addEventListener("DOMContentLoaded", function() {
         color: #fff;
         border-color: #2B3B63;
     }
+    .v2-mobile-filter-pill.active img {
+        filter: brightness(0) invert(1);
+    }
 
     /* Style Tab - Grid */
     .v2-mobile-grid-4 {
@@ -4106,20 +4126,20 @@ document.addEventListener("DOMContentLoaded", function() {
         border-radius: 8px;
         overflow: hidden;
         text-align: center;
-        padding: 4px;
+        padding: 6px;
         position: relative;
         cursor: pointer;
         background: #fff;
     }
     .v2-mobile-style-card.active {
         border: 2px solid #FF7048;
-        padding: 3px;
+        padding: 5px;
     }
     .v2-mobile-style-card.active::after {
         content: '';
         position: absolute;
-        top: 4px;
-        right: 4px;
+        top: 6px;
+        right: 6px;
         background: url('/v2/icons/Verify-circle.svg') no-repeat center center;
         background-size: contain;
         width: 20px;
@@ -4133,8 +4153,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     .v2-mobile-style-card span {
         display: block;
-        font-size: 10px;
-        font-weight: 600;
+        font-size: 13px !important;
+        font-weight: 500 !important;
         color: #5E6578;
         margin-top: 4px;
         line-height: 1.2;
@@ -4220,7 +4240,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     .v2-color-swatch-box .v2-mobile-list-swatch {
         width: 100%;
-        height: 100%;
+        padding-bottom: 100%;
+        height: 0;
         border-radius: 6px;
         background-size: cover;
         background-position: center;
@@ -4282,11 +4303,16 @@ document.addEventListener("DOMContentLoaded", function() {
         background: #fff;
         border-radius: 16px 16px 0 0;
         z-index: 99999;
-        height: calc(75vh - 16px);
+        top: calc(var(--mobile-nav-height, 16px) + 40vh) !important;
+        height: auto;
         display: flex;
         flex-direction: column;
         transform: translateY(100%);
         transition: transform 0.3s ease;
+        font-family: 'Proxima Nova', sans-serif;
+    }
+    body.is-scrolled .v2-mobile-bottom-sheet {
+        top: calc(var(--mobile-nav-height, 16px) + 25vh) !important;
     }
     .v2-mobile-bottom-sheet.active {
         transform: translateY(0);
@@ -4331,7 +4357,7 @@ document.addEventListener("DOMContentLoaded", function() {
         font-size: 18px;
         font-weight: 700;
         color: #2B3B63;
-        margin-bottom: 8px;
+        margin-bottom: 24px;
     }
 
     /* Phase 7: Sticky Scroll UX */
@@ -4349,7 +4375,7 @@ document.addEventListener("DOMContentLoaded", function() {
         will-change: height;
     }
     .is-scrolled #text-size-canvas {
-        display: none !important;
+        display: block !important;
     }
     .ssb-model-inner {
         transition: height 0.3s ease !important;
@@ -4371,6 +4397,8 @@ document.addEventListener("DOMContentLoaded", function() {
         z-index: 1000;
         transform: translateY(100%);
         transition: transform 0.3s ease;
+        font-family: 'Proxima Nova', sans-serif;
+
     }
     .v2-sticky-bottom-bar.active {
         transform: translateY(0);
@@ -4410,7 +4438,7 @@ document.addEventListener("DOMContentLoaded", function() {
         padding: 16px 0;
         cursor: pointer;
         font-size: 18px;
-        font-weight: 400;
+        font-weight: 600;
         color: #2B3B63;
     }
     .v2-mobile-detail-header .v2-detail-icon {
@@ -4566,13 +4594,17 @@ document.addEventListener("DOMContentLoaded", function() {
         // ============================================================
         $('body').append('<div id="v2-bs-container"><div class="v2-mobile-bottom-sheet-overlay"></div></div>');
 
-        function createBottomSheet(id, title, content, value) {
-            var bs = '<div class="v2-mobile-bottom-sheet" id="v2-bs-' + id + '">' +
-                '<div class="v2-mobile-bs-header">' +
-                    '<div class="v2-mobile-bs-back">\u2190 ' + title + '</div>' +
-                    '<span class="v2-mobile-bs-value">' + (value || '') + '</span>' +
+        function createBottomSheet(id, title, content, value, footer) {
+            var bs = '<div class="v2-mobile-bottom-sheet" id="v2-bs-' + id + '" style="display:flex; flex-direction:column;">' +
+                '<div class="v2-mobile-bs-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%; height: 54px; padding: 0; position: relative; border-bottom: 1px solid #E0E0E0; font-family: \'Proxima Nova\', sans-serif; flex-shrink: 0;">' +
+                    '<div style="position: absolute; left: 0; right: 0; text-align: center; font-weight: 700; font-size: 16px; color: #2B3B63; pointer-events: none;">' + title + '</div>' +
+                    '<div style="flex: 1;"></div>' +
+                    '<div style="z-index: 1; display: flex; align-items: center;">' +
+                        (footer ? '' : '<div class="v2-mobile-bs-close" style="cursor:pointer; border-radius: 18px; background-color: #F3F4F6; display: flex; align-items: center; justify-content: center; margin-right: 16px; padding: 6px 14px; font-weight: 600; font-size: 14px; color: #2B3B63;">Done</div>') +
+                    '</div>' +
                 '</div>' +
-                '<div class="v2-mobile-bs-body">' + content + '</div>' +
+                '<div class="v2-mobile-bs-body" style="flex: 1; overflow-y: auto;">' + content + '</div>' +
+                (footer ? '<div class="v2-mobile-bs-footer" style="padding: 16px; border-top: 1px solid #E0E0E0; background: white; flex-shrink: 0;">' + footer + '</div>' : '') +
             '</div>';
             $('#v2-bs-container').append(bs);
         }
@@ -4648,7 +4680,10 @@ document.addEventListener("DOMContentLoaded", function() {
             $('#v2-tab-Style').on('click', '.v2-mobile-style-card', function() {
                 var idx = $(this).data('index');
                 var $opt = $('#ssb-configurator-accordion-style .ssb-option.display-thumbnail').eq(idx);
-                $opt.find('a, span, img').first().trigger('click');
+                // Only toggle active state; prevent any anchor navigation
+                $opt.find('input[type="radio"]').prop('checked', true).trigger('change');
+                $opt.siblings().removeClass('active');
+                $opt.addClass('active');
                 $('.v2-mobile-style-card').removeClass('active');
                 $(this).addClass('active');
             });
@@ -4702,7 +4737,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
             
-            var sizeHtml = '<div class="v2-mobile-size-grid" id="v2-size-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 15px;">';
+            var sizeHtml = '<div class="v2-mobile-size-grid" id="v2-size-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 0;">';
             sizeItems.forEach(function(item) {
                 sizeHtml += '<div class="v2-mobile-size-card ' + (item.selected ? 'active' : '') + (item.isMock ? ' mock-size' : '') + '" data-val="' + item.val + '" style="font-size: 13px; padding: 10px 4px;">' + item.text + '</div>';
             });
@@ -4723,48 +4758,167 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
 
+        // --- MATERIAL WIZARD LOGIC ---
+        window.v2MaterialWizardSteps = [];
+        window.v2CurrentMaterialStep = 0;
+
+        function renderMaterialWizardHeader() {
+            if (v2MaterialWizardSteps.length === 0) return;
+            var step = v2MaterialWizardSteps[v2CurrentMaterialStep];
+            
+            var html = '<div style="display: flex; justify-content: space-between; align-items: center; width: 100%; height: 54px; padding: 0; position: relative; font-family: \'Proxima Nova\', sans-serif;">';
+            
+            // Absolute Center Title
+            html += '<div style="position: absolute; left: 0; right: 0; text-align: center; font-weight: 700; font-size: 16px; color: #2B3B63; pointer-events: none;">' + step.title + '</div>';
+
+            // Left: Prev Arrow
+            html += '<div style="z-index: 1; display: flex; align-items: center;">';
+            if (v2CurrentMaterialStep > 0) {
+                html += '<div class="v2-mw-prev" style="cursor:pointer; display:flex; align-items:center; color: #2B3B63; padding: 8px;"><span class="material-symbols-outlined" style="font-size:20px;">arrow_back_ios</span></div>';
+            }
+            html += '</div>';
+            
+            // Right: Next Arrow only (Done moved to footer)
+            html += '<div style="z-index: 1; display: flex; align-items: center;">';
+            if (v2CurrentMaterialStep < v2MaterialWizardSteps.length - 1) {
+                html += '<div class="v2-mw-next" style="cursor:pointer; display:flex; align-items:center; color: #2B3B63; padding: 8px;"><span class="material-symbols-outlined" style="font-size:20px;">arrow_forward_ios</span></div>';
+            }
+            html += '</div>';
+
+            html += '</div>';
+
+            var footerHtml = '<button class="v2-mobile-bs-close" style="width: 100%; height: 48px; background: #2B3B63; color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 16px; cursor: pointer;">Done</button>';
+
+            $('#v2-bs-global-material-wizard .v2-mobile-bs-header').html(html);
+            $('#v2-bs-global-material-wizard .v2-mobile-bs-body').html(step.bsContent);
+            if ($('#v2-bs-global-material-wizard .v2-mobile-bs-footer').length === 0) {
+                $('#v2-bs-global-material-wizard').append('<div class="v2-mobile-bs-footer" style="padding: 16px; border-top: 1px solid #E0E0E0; background: white; flex-shrink: 0;"></div>');
+            }
+            $('#v2-bs-global-material-wizard .v2-mobile-bs-footer').html(footerHtml);
+        }
+
+        $('body').off('click', '.v2-open-material-wizard').on('click', '.v2-open-material-wizard', function() {
+            v2CurrentMaterialStep = parseInt($(this).data('step-index'));
+            renderMaterialWizardHeader();
+            openBottomSheet('global-material-wizard');
+        });
+
+        $('body').off('click', '.v2-mw-prev').on('click', '.v2-mw-prev', function() {
+            if (v2CurrentMaterialStep > 0) {
+                v2CurrentMaterialStep--;
+                renderMaterialWizardHeader();
+            }
+        });
+
+        $('body').off('click', '.v2-mw-next').on('click', '.v2-mw-next', function() {
+            if (v2CurrentMaterialStep < v2MaterialWizardSteps.length - 1) {
+                v2CurrentMaterialStep++;
+                renderMaterialWizardHeader();
+            } else {
+                closeBottomSheet();
+            }
+        });
+
+        $('body').off('click', '.v2-bs-mat-opt').on('click', '.v2-bs-mat-opt', function() {
+            var gIdx = $(this).data('group');
+            var oIdx = $(this).data('opt');
+            
+            var $target = $('#ssb-configurator-accordion-materials .ssb-configurator-group').eq(gIdx).find('.ssb-option').eq(oIdx);
+            $target.find('input, label, a, img').first().trigger('click');
+            
+            $('#v2-bs-global-material-wizard .v2-bs-mat-opt[data-group="'+gIdx+'"]').removeClass('active');
+            $(this).addClass('active');
+            
+            var optName = $(this).find('span').text();
+            if (v2MaterialWizardSteps[v2CurrentMaterialStep]) {
+                v2MaterialWizardSteps[v2CurrentMaterialStep].activeName = optName;
+                $('.v2-material-wizard-active-name').text(optName);
+            }
+            
+            setTimeout(buildMaterialTab, 500); 
+        });
+
         // --- MATERIAL TAB ---
         function buildMaterialTab() {
             var matHtml = '';
+            var stepIndexCounter = 0;
+            window.v2MaterialWizardSteps = [];
+
+            if ($('#v2-bs-global-material-wizard').length === 0) {
+                var globalBs = '<div class="v2-mobile-bottom-sheet" id="v2-bs-global-material-wizard">' +
+                    '<div class="v2-mobile-bs-header" style="padding: 16px; border-bottom: 1px solid #E0E0E0;"></div>' +
+                    '<div class="v2-mobile-bs-body"></div>' +
+                '</div>';
+                $('#v2-bs-container').append(globalBs);
+            }
+
             $('#ssb-configurator-accordion-materials .ssb-configurator-group').each(function(gIdx) {
                 var title = $.trim($(this).find('.ssb-configurator-group-name').text());
                 var $opts = $(this).find('.ssb-option');
                 var $active = $(this).find('.ssb-option.active, .ssb-option input:checked').closest('.ssb-option').first();
                 var activeName = $active.length ? $active.find('.ssb-option-name').text() : 'Default';
                 var $thumb = $active.find('.ssb-thumbnail img, .ssb-option-swatch');
-                var thumbSrc = $thumb.is('img') ? $thumb.attr('src') : '';
+                var thumbSrc = '';
+                if ($thumb.is('img')) {
+                    thumbSrc = $thumb.attr('src');
+                } else if ($thumb.is('.ssb-option-swatch')) {
+                    var bg = $thumb.css('background-image');
+                    if (bg && bg !== 'none') {
+                        thumbSrc = bg.replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '');
+                    }
+                }
 
-                matHtml += '<div class="v2-mobile-list-row v2-open-bs" data-bs-target="mat-' + gIdx + '" style="padding: 6px 12px 6px 6px;">' +
+                matHtml += '<div class="v2-mobile-list-row v2-open-material-wizard" data-step-index="' + stepIndexCounter + '" style="padding: 6px 12px 6px 6px;">' +
                     '<div class="v2-mobile-list-left">' +
-                        (thumbSrc ? '<div class="v2-mobile-list-swatch" style="background-image:url(\'' + thumbSrc + '\'); width:44px; height:44px;"></div>' : '<div class="v2-mobile-list-icon" style="width:44px; height:44px;">' + title.charAt(0) + '</div>') +
-                        '<div class="v2-mobile-list-text" style="font-weight:600;">' + title + ': <span style="font-weight:400;">' + activeName + '</span></div>' +
+                        (thumbSrc ? '<div class="v2-mobile-list-swatch" style="background-image:url(\'' + thumbSrc + '\'); width:44px; height:44px; background-size: cover; border-radius: 8px;"></div>' : '<div class="v2-mobile-list-icon" style="width:44px; height:44px;">' + title.charAt(0) + '</div>') +
+                        '<div class="v2-mobile-list-text" style="display:flex; flex-direction:column; justify-content:center;">' +
+                            '<div style="font-size:12px; font-weight:600; color:#5E6578; margin-bottom: 2px;">' + title + ':</div>' +
+                            '<div style="font-size:14px; font-weight:600; color:#2B3B63;">' + activeName + '</div>' +
+                        '</div>' +
                     '</div>' +
                     '<span class="v2-mobile-list-chevron material-symbols-outlined" style="font-size: 16px;">arrow_forward_ios</span>' +
                 '</div>';
 
-                var bsContent = '<div class="v2-mobile-grid-4">';
+                var isSidingGroup = title.toLowerCase().indexOf('siding') !== -1 && title.toLowerCase().indexOf('trim') !== -1;
+                var pricedOpts = ['Board & Batten (16)'];
+
+                var bsContent = '<div class="v2-cw-active-row" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0 16px 0; font-family: \'Proxima Nova\', sans-serif;">' +
+                    '<div style="font-size: 16px; font-weight: 700; color: #2B3B63;"><span class="v2-material-wizard-active-name">' + activeName + '</span></div>' +
+                    '<div class="v2-mat-price-label" style="font-size: 14px; color: #5E6578;">Included</div>' +
+                '</div>';
+
+                bsContent += '<div class="v2-mobile-grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">';
                 $opts.each(function(oIdx) {
                     var optName = $(this).find('.ssb-option-name').text();
-                    var $oThumb = $(this).find('.ssb-thumbnail img');
-                    var imgSrc = $oThumb.length ? $oThumb.attr('src') : '';
-                    bsContent += '<div class="v2-mobile-style-card v2-bs-mat-opt" data-group="' + gIdx + '" data-opt="' + oIdx + '">' +
-                        (imgSrc ? '<img src="' + imgSrc + '" alt="' + optName + '">' : '<div class="v2-mobile-list-swatch" style="width:100%;height:50px;border-radius:4px;"></div>') +
+                    var $oThumb = $(this).find('.ssb-thumbnail img, .ssb-option-swatch');
+                    var imgSrc = '';
+                    if ($oThumb.is('img')) {
+                        imgSrc = $oThumb.attr('src');
+                    } else if ($oThumb.is('.ssb-option-swatch')) {
+                        var bg = $oThumb.css('background-image');
+                        if (bg && bg !== 'none') {
+                            imgSrc = bg.replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '');
+                        }
+                    }
+                    var isActive = $(this).hasClass('active');
+                    var isOptPriced = isSidingGroup && pricedOpts.some(function(p) { return optName.indexOf(p) !== -1; });
+                    bsContent += '<div class="v2-mobile-style-card v2-bs-mat-opt ' + (isActive ? 'active' : '') + '" data-group="' + gIdx + '" data-opt="' + oIdx + '">' +
+                        (imgSrc ? '<img src="' + imgSrc + '" alt="' + optName + '" style="aspect-ratio: 1; object-fit: cover;">' : '<div class="v2-mobile-list-swatch" style="width:100%; aspect-ratio: 1; border-radius:4px;"></div>') +
                         '<span>' + optName + '</span>' +
+                        (isOptPriced ? '<span style="font-size:11px; font-weight:700; color:#FF7048;">+$500</span>' : '') +
                     '</div>';
                 });
                 bsContent += '</div>';
-                createBottomSheet('mat-' + gIdx, title, bsContent, activeName);
+                
+                v2MaterialWizardSteps.push({
+                    gIdx: gIdx,
+                    title: title,
+                    activeName: activeName,
+                    bsContent: bsContent
+                });
+                stepIndexCounter++;
             });
             $('#v2-tab-Material').html(matHtml || '<div class="v2-mobile-placeholder">No material options available</div>');
-
-            $('body').on('click', '.v2-bs-mat-opt', function() {
-                var gIdx = $(this).data('group');
-                var oIdx = $(this).data('opt');
-                var $target = $('#ssb-configurator-accordion-materials .ssb-configurator-group').eq(gIdx).find('.ssb-option').eq(oIdx);
-                $target.find('input, label, a, img').first().trigger('click');
-                closeBottomSheet();
-                setTimeout(buildMaterialTab, 500);
-            });
         }
 
         // --- COLOR WIZARD LOGIC ---
@@ -4789,18 +4943,23 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             html += '</div>';
             
-            // Right: Next Arrow & Done Button
+            // Right: Next Arrow only (Done moved to footer)
             html += '<div style="z-index: 1; display: flex; align-items: center;">';
             if (v2CurrentColorStep < v2ColorWizardSteps.length - 1) {
                 html += '<div class="v2-cw-next" style="cursor:pointer; display:flex; align-items:center; color: #2B3B63; padding: 8px;"><span class="material-symbols-outlined" style="font-size:20px;">arrow_forward_ios</span></div>';
             }
-            html += '<div class="v2-mobile-bs-close" style="cursor:pointer; border-radius: 18px; background-color: #F3F4F6; display: flex; align-items: center; justify-content: center; margin-left: 8px; padding: 6px 14px; font-weight: 600; font-size: 14px; color: #2B3B63;">Done</div>';
             html += '</div>';
 
             html += '</div>';
+
+            var colorFooterHtml = '<button class="v2-mobile-bs-close" style="width: 100%; height: 48px; background: #2B3B63; color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 16px; cursor: pointer;">Done</button>';
 
             $('#v2-bs-global-color-wizard .v2-mobile-bs-header').html(html);
             $('#v2-bs-global-color-wizard .v2-mobile-bs-body').html(step.bsContent);
+            if ($('#v2-bs-global-color-wizard .v2-mobile-bs-footer').length === 0) {
+                $('#v2-bs-global-color-wizard').append('<div class="v2-mobile-bs-footer" style="padding: 16px; border-top: 1px solid #E0E0E0; background: white; flex-shrink: 0;"></div>');
+            }
+            $('#v2-bs-global-color-wizard .v2-mobile-bs-footer').html(colorFooterHtml);
         }
 
         $('body').off('click', '.v2-open-color-wizard').on('click', '.v2-open-color-wizard', function() {
@@ -4899,7 +5058,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     '<div style="font-size: 14px; color: #5E6578;">Included</div>' +
                 '</div>';
 
-                bsContent += '<div class="v2-mobile-grid-5 v2-color-grid" data-group="' + gIdx + '" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;">';
+                bsContent += '<div class="v2-mobile-grid-5 v2-color-grid" data-group="' + gIdx + '" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px;">';
                 $(this).find('.ssb-option').each(function(oIdx) {
                     var optName = $(this).find('.ssb-option-name').text();
                     var $oSwatch = $(this).find('.ssb-option-swatch');
@@ -4944,54 +5103,227 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // --- EXTERIOR TAB ---
         function buildExteriorTab() {
+            var mockData = {
+                'Front': {
+                    'Door': ['72" Garden Shed Double Slab Door (with glass)']
+                },
+                'Inner Front': {
+                    'Door': ['36" Garden Shed Slab Door (with glass)'],
+                    'Window': ['30" Transom Window', '30" Transom Window', '30"x36" Window', '30"x36" Window']
+                },
+                'Right': {
+                    'Window': ['30"x36" Window', '30"x36" Window', '30" Transom Window', '30" Transom Window']
+                },
+                'Back': {
+                    'Window': ['30"x36" Window', '30"x36" Window', '30"x36" Window', '30"x36" Window', '30"x36" Window', '30"x36" Window', '30" Transom Window', '30" Transom Window', '30" Transom Window', '30" Transom Window', '30" Transom Window', '30" Transom Window']
+                },
+                'Left': {
+                    'Window': ['30"x36" Window', '30"x36" Window', '30"x36" Window', '30"x36" Window', '30" Transom Window', '30" Transom Window', '30" Transom Window', '30" Transom Window']
+                }
+            };
+            var mockSides = ['Inner Front', 'Right', 'Back', 'Left', 'Front'];
+            
             var extHtml = '';
-            $('#ssb-configurator-accordion-upgrades .ssb-configurator-group').each(function(gIdx) {
-                var $titleEl = $(this).find('.ssb-configurator-group-name');
-                var title = $.trim($titleEl.clone().children().remove().end().text()) || $.trim($titleEl.text());
-                var count = $(this).find('.ssb-option').length;
-                var $countBadge = $titleEl.find('.ssb-option-upgrade-count');
-                var badgeNum = $countBadge.length ? $countBadge.text() : count;
-                var badgeHtml = '<span class="v2-mobile-list-badge">' + badgeNum + '</span>';
+            
+            // 1. Build Filter Row in Main Tab
+            extHtml += '<div class="v2-mobile-filter-row v2-ext-main-filter" style="font-family: \'Proxima Nova\', sans-serif; overflow-x: auto; white-space: nowrap;">';
+            $.each(mockSides, function(sIdx, sideName) {
+                var isActive = sIdx === 0 ? 'active' : ''; // Default to Inner Front
+                extHtml += '<div class="v2-mobile-filter-pill ' + isActive + '" data-side="' + sideName + '" style="display:inline-block;">' + sideName + '</div>';
+            });
+            extHtml += '</div>';
 
-                extHtml += '<div class="v2-mobile-list-row v2-open-bs" data-bs-target="ext-' + gIdx + '" style="padding: 6px 12px 6px 6px;">' +
-                    '<div class="v2-mobile-list-left">' +
-                        '<div class="v2-mobile-list-icon" style="width:44px; height:44px; display:flex; align-items:center; justify-content:center;"><i class="icon ic-door"></i></div>' +
-                        '<div class="v2-mobile-list-text" style="font-weight:600;">' + title + '</div>' +
-                        badgeHtml +
-                    '</div>' +
-                    '<span class="v2-mobile-list-chevron material-symbols-outlined" style="font-size: 16px;">arrow_forward_ios</span>' +
+            // 2. Build Side Containers
+            extHtml += '<div class="v2-ext-main-content">';
+            $.each(mockSides, function(sIdx, sideName) {
+                var isSideActive = sIdx === 0 ? 'block' : 'none'; // Default to Inner Front
+                extHtml += '<div class="v2-ext-side-container" data-side="' + sideName + '" style="display: ' + isSideActive + ';">';
+                
+                var sideData = mockData[sideName] || {};
+                var categories = Object.keys(sideData);
+                
+                if (categories.length === 0) {
+                    extHtml += '<div class="v2-mobile-placeholder">No items on this side</div>';
+                }
+                
+                $.each(categories, function(cIdx, category) {
+                    // Category Header
+                    extHtml += '<div style="display:flex; justify-content:space-between; align-items:center; padding: 16px 0 8px 0; font-family: \'Proxima Nova\', sans-serif;">' +
+                        '<div style="font-size: 16px; font-weight: 600; color: #2B3B63;">' + category + '</div>' +
+                        '<div class="v2-ext-action-btn" data-action="add" data-cat="' + category + '" style="font-size: 14px; font-weight: 700; color: #FF7048; cursor: pointer; display:flex; align-items:center;"><span class="material-symbols-outlined" style="font-size:20px; margin-right:4px;">add</span> Add</div>' +
+                    '</div>';
+                    
+                    var items = sideData[category];
+                    // List rows for items
+                    $.each(items, function(iIdx, itemTitle) {
+                        var thumbSrc = category === 'Door'
+                            ? '/assets/images/materials/Exterior/thumbnails.jpg'
+                            : '/assets/images/materials/Exterior/w-thumbnails.jpg';
+                        
+                        extHtml += '<div class="v2-mobile-list-row v2-ext-action-btn" data-action="edit" data-cat="' + category + '" style="padding: 6px 12px 6px 6px; cursor: pointer; margin-bottom: 8px;">' +
+                            '<div class="v2-mobile-list-left">' +
+                                '<div class="v2-mobile-list-swatch" style="background-image:url(\'' + thumbSrc + '\'); width:44px; height:44px; background-size: cover; background-position: center; border-radius: 8px; flex-shrink: 0;"></div>' +
+                                '<div class="v2-mobile-list-text" style="display:flex; flex-direction:column; justify-content:center; margin-left:12px;">' +
+                                    '<div style="font-size:12px; font-weight:600; color:#5E6578; margin-bottom: 2px;">' + category + '</div>' +
+                                    '<div style="font-size:14px; font-weight:600; color:#2B3B63; white-space: normal; line-height: 1.2;">' + itemTitle + '</div>' +
+                                '</div>' +
+                            '</div>' +
+                            '<div style="display:flex; align-items:center; color:#5E6578;">' +
+                                '<span class="material-symbols-outlined" style="font-size: 20px;">chevron_right</span>' +
+                            '</div>' +
+                        '</div>';
+                    });
+                });
+                
+                extHtml += '</div>'; // End v2-ext-side-container
+            });
+            extHtml += '</div>'; // End v2-ext-main-content
+            
+            $('#v2-tab-Exterior').html(extHtml);
+            
+            // Build Bottom Sheets for Categories (Door, Window, Vent)
+            var bsCategories = ['Door', 'Window', 'Vent'];
+            var mockColors = ['#FFFFFF', '#E5E7EB', '#9CA3AF', '#4B5563', '#1F2937', '#DC2626', '#EA580C', '#D97706', '#65A30D', '#2563EB'];
+            var mockColorNames = ['White', 'Light Gray', 'Gray', 'Dark Gray', 'Black', 'Red', 'Orange', 'Amber', 'Green', 'Blue'];
+            
+            $.each(bsCategories, function(cIdx, category) {
+                var bsContent = '';
+                
+                // Sheet Filter Row
+                bsContent += '<div class="v2-mobile-filter-row v2-ext-bs-filter" style="font-family: \'Proxima Nova\', sans-serif; overflow-x: auto; white-space: nowrap;">';
+                if (category === 'Door') {
+                    var mockDoorTypes = [
+                        { name: 'Fiberglass', icon: '/assets/images/materials/Exterior/Component Fiberglass Door.svg' },
+                        { name: 'Wood', icon: '/assets/images/materials/Exterior/Component Wood.svg' },
+                        { name: 'Garage', icon: '/assets/images/materials/Exterior/Component Garage Door.svg' },
+                        { name: 'Rollup', icon: '/assets/images/materials/Exterior/Component Rollup Door.svg' }
+                    ];
+                    $.each(mockDoorTypes, function(sIdx, typeObj) {
+                        var isActive = typeObj.name === 'Fiberglass' ? 'active' : '';
+                        bsContent += '<div class="v2-mobile-filter-pill ' + isActive + '" data-side="' + typeObj.name + '" style="display:inline-flex; align-items:center; gap:5px;">' +
+                            '<img src="' + typeObj.icon + '" alt="' + typeObj.name + '" style="width:20px; height:20px; object-fit:contain; flex-shrink:0;">' +
+                            typeObj.name +
+                        '</div>';
+                    });
+                } else {
+                    $.each(mockSides, function(sIdx, sideName) {
+                        var isActive = sIdx === 0 ? 'active' : ''; // Inner Front default
+                        bsContent += '<div class="v2-mobile-filter-pill ' + isActive + '" data-side="' + sideName + '" style="display:inline-block;">' + sideName + '</div>';
+                    });
+                }
+                bsContent += '</div>';
+
+                // Sheet Options Grid
+                bsContent += '<div class="v2-cw-active-row" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0 16px 0; font-family: \'Proxima Nova\', sans-serif;">' +
+                    '<div style="font-size: 16px; font-weight: 700; color: #2B3B63;">Options</div>' +
+                    '<div style="font-size: 14px; color: #5E6578;">Included</div>' +
                 '</div>';
 
-                var bsContent = '<div class="v2-mobile-grid-4">';
-                $(this).find('.ssb-option').each(function(oIdx) {
-                    var optName = $(this).find('.ssb-option-name').text();
-                    var $thumb = $(this).find('.ssb-thumbnail img');
-                    var imgSrc = $thumb.length ? $thumb.attr('src') : '';
-                    var isActive = $(this).hasClass('active');
-                    bsContent += '<div class="v2-mobile-style-card v2-bs-ext-opt ' + (isActive ? 'active' : '') + '" data-group="' + gIdx + '" data-opt="' + oIdx + '">' +
-                        (imgSrc ? '<img src="' + imgSrc + '" alt="' + optName + '">' : '') +
+                bsContent += '<div class="v2-mobile-grid-3 v2-ext-options-grid" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 24px;">';
+                
+                var mockOpts = category === 'Door'
+                    ? ['36" Garden Shed Slab Door (with glass)', '72" Garden Shed Double Slab Door (with glass)']
+                    : ['30" Transom Window', '30"x36" Window', '24"x24" Window'];
+                var thumbSrc = category === 'Door'
+                    ? '/assets/images/materials/Exterior/thumbnails.jpg'
+                    : '/assets/images/materials/Exterior/w-thumbnails.jpg';
+                
+                $.each(mockOpts, function(oIdx, optName) {
+                    bsContent += '<div class="v2-mobile-style-card v2-bs-ext-opt ' + (oIdx === 0 ? 'active' : '') + '">' +
+                        '<img src="' + thumbSrc + '" alt="' + optName + '" style="aspect-ratio: 1; object-fit: cover;">' +
                         '<span>' + optName + '</span>' +
                     '</div>';
                 });
                 bsContent += '</div>';
-                createBottomSheet('ext-' + gIdx, title, bsContent);
-            });
-            $('#v2-tab-Exterior').html(extHtml || '<div class="v2-mobile-placeholder">No exterior options available</div>');
 
-            $('body').on('click', '.v2-bs-ext-opt', function() {
-                var gIdx = $(this).data('group');
-                var oIdx = $(this).data('opt');
-                var $target = $('#ssb-configurator-accordion-upgrades .ssb-configurator-group').eq(gIdx).find('.ssb-option').eq(oIdx);
-                $target.find('input, label, a, .ssb-thumbnail').first().trigger('click');
-                closeBottomSheet();
-                setTimeout(buildExteriorTab, 500);
+                // Colors Section
+                bsContent += '<div class="v2-cw-active-row v2-ext-color-title" style="display: flex; align-items: center; padding: 0 0 16px 0; font-family: \'Proxima Nova\', sans-serif;">' +
+                    '<div style="font-size: 16px; font-weight: 700; color: #2B3B63;">Colors: <span class="v2-ext-color-name" style="font-weight:400;">White</span></div>' +
+                '</div>';
+
+                bsContent += '<div class="v2-mobile-grid-5 v2-ext-colors-grid" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px;">';
+                for (var i = 0; i < 10; i++) {
+                    var isColorActive = (i === 0) ? 'active' : '';
+                    bsContent += '<div class="v2-color-swatch-box v2-ext-mock-color ' + isColorActive + '" data-cname="' + mockColorNames[i] + '">' +
+                        '<div class="v2-mobile-list-swatch" style="background-color: ' + mockColors[i] + ';"></div>' +
+                    '</div>';
+                }
+                bsContent += '</div>';
+
+                // Footer Content
+                var footerHtml = '<div class="v2-ext-footer-add" style="width: 100%; display: none; gap: 8px;">' +
+                    '<button class="v2-ext-btn-cancel v2-mobile-bs-close" style="flex: 1; height: 48px; display: flex; align-items: center; justify-content: center; background: #EDEDED; color: #5E6578; border: none; border-radius: 8px; font-weight: 600; font-size: 16px; cursor:pointer;">Cancel</button>' +
+                    '<button class="v2-ext-btn-add v2-mobile-bs-close" style="flex: 1; height: 48px; display: flex; align-items: center; justify-content: center; background: #2B3B63; color: white; border: none; border-radius: 8px; font-weight: 600; font-size: 16px; cursor:pointer;">Add</button>' +
+                '</div>' +
+                '<div class="v2-ext-footer-edit" style="width: 100%; display: none; gap: 8px;">' +
+                    '<button class="v2-ext-btn-clone v2-mobile-bs-close" style="flex: 1; height: 48px; display: flex; align-items: center; justify-content: center; background: #EDEDED; color: #5E6578; border: none; border-radius: 8px; font-weight: 600; font-size: 16px; cursor:pointer;">Clone</button>' +
+                    '<button class="v2-ext-btn-remove v2-mobile-bs-close" style="flex: 1; height: 48px; display: flex; align-items: center; justify-content: center; background: #EDEDED; color: #5E6578; border: none; border-radius: 8px; font-weight: 600; font-size: 16px; cursor:pointer;">Remove</button>' +
+                    '<button class="v2-ext-btn-done v2-mobile-bs-close" style="flex: 1; height: 48px; display: flex; align-items: center; justify-content: center; background: #2B3B63; color: white; border: none; border-radius: 8px; font-weight: 600; font-size: 16px; cursor:pointer;">Done</button>' +
+                '</div>';
+
+                createBottomSheet('ext-' + category, category, bsContent, null, footerHtml);
+            });
+
+            // Action Handlers
+            
+            // Main Tab Side Filter Click
+            $('body').off('click', '.v2-ext-main-filter .v2-mobile-filter-pill').on('click', '.v2-ext-main-filter .v2-mobile-filter-pill', function() {
+                $('.v2-ext-main-filter .v2-mobile-filter-pill').removeClass('active');
+                $(this).addClass('active');
+                
+                var targetSide = $(this).data('side');
+                $('.v2-ext-side-container').hide();
+                $('.v2-ext-side-container[data-side="' + targetSide + '"]').show();
+            });
+
+            // Bottom Sheet Side Filter Click
+            $('body').off('click', '.v2-ext-bs-filter .v2-mobile-filter-pill').on('click', '.v2-ext-bs-filter .v2-mobile-filter-pill', function() {
+                var $bs = $(this).closest('.v2-mobile-bottom-sheet');
+                $bs.find('.v2-mobile-filter-pill').removeClass('active');
+                $(this).addClass('active');
+            });
+
+            // Add/Edit buttons
+            $('body').off('click', '.v2-ext-action-btn').on('click', '.v2-ext-action-btn', function() {
+                var action = $(this).data('action');
+                var category = $(this).data('cat');
+                var $bs = $('#v2-bs-ext-' + category);
+
+                if (action === 'add') {
+                    $bs.find('.v2-ext-footer-edit').hide();
+                    $bs.find('.v2-ext-footer-add').css('display', 'flex');
+                } else if (action === 'edit') {
+                    $bs.find('.v2-ext-footer-add').hide();
+                    $bs.find('.v2-ext-footer-edit').css('display', 'flex');
+                }
+                
+                openBottomSheet('ext-' + category);
+            });
+
+            // Option selection inside Bottom Sheet
+            $('body').off('click', '.v2-bs-ext-opt').on('click', '.v2-bs-ext-opt', function() {
+                $(this).siblings().removeClass('active');
+                $(this).addClass('active');
+            });
+
+            // Color selection inside Bottom Sheet
+            $('body').off('click', '.v2-ext-mock-color').on('click', '.v2-ext-mock-color', function() {
+                $(this).siblings().removeClass('active');
+                $(this).addClass('active');
+                var cname = $(this).data('cname');
+                $(this).closest('.v2-mobile-bottom-sheet').find('.v2-ext-color-name').text(cname);
             });
         }
 
         // --- INTERIOR TAB ---
         function buildInteriorTab() {
-            var content = $('#ssb-configurator-accordion-interior .ssb-configurator-panel-content').html();
-            $('#v2-tab-Interior').html(content || '<div class="v2-mobile-placeholder">No interior options available</div>');
+            $('#v2-tab-Interior').html(
+                '<div style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding: 48px 24px; text-align:center; font-family: \'Proxima Nova\', sans-serif;">' +
+                    '<span class="material-symbols-outlined" style="font-size:48px; color:#D1D5DB; margin-bottom:16px;">construction</span>' +
+                    '<div style="font-size:18px; font-weight:700; color:#2B3B63; margin-bottom:8px;">Coming Soon</div>' +
+                    '<div style="font-size:14px; color:#9CA3AF;">Interior customization options are being prepared and will be available shortly.</div>' +
+                '</div>'
+            );
         }
 
         // --- UPGRADES TAB ---
@@ -5006,7 +5338,7 @@ document.addEventListener("DOMContentLoaded", function() {
             var detailsHtml = '<div class="v2-mobile-details-section">' +
                 '<h2 class="v2-mobile-section-title">Your Shed Details</h2>' +
                 '<div style="margin-bottom:16px;">' +
-                    '<button class="ssb-2d-floor-plan v2-btn-secondary" style="width: 100%; height: 44px; border: none; border-radius: 8px; padding: 0; background: #EDEDED; color: #5E6578; font-size: 16px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: all 0.2s;">' +
+                    '<button class="ssb-2d-floor-plan v2-btn-secondary" style="width: 100%; height: 48px; border: none; border-radius: 6px; padding: 0; background: #EDEDED; color: #5E6578; font-size: 16px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: all 0.2s;">' +
                         '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>' +
                         'View 2D Floorplan' +
                     '</button>' +
@@ -5026,20 +5358,33 @@ document.addEventListener("DOMContentLoaded", function() {
             '</div>';
             $('.v2-mobile-tab-contents').after(detailsHtml);
 
-            // Clone data from original shed details
-            var $origDetail = $('#ssb-shed-detail .ssb-configurator-panel-content');
-            if ($origDetail.length) {
-                var structureHtml = '';
-                $origDetail.find('#js-layout-content, #js-size-content, #js-siding-trim-content, #js-roof-content, #js-porch-content').each(function() {
-                    structureHtml += $(this).prop('outerHTML');
+            // Function to clone data
+            function updateMobileShedDetails() {
+                var $origDetail = $('#ssb-shed-detail .ssb-configurator-panel-content');
+                if ($origDetail.length) {
+                    var structureHtml = '';
+                    $origDetail.find('#js-layout-content, #js-size-content, #js-siding-trim-content, #js-roof-content, #js-porch-content').each(function() {
+                        structureHtml += $(this).prop('outerHTML');
+                    });
+                    $('#v2-detail-structure').html(structureHtml || 'Loading...');
+                    $('#v2-detail-exteriors').html($origDetail.find('#js-exterior-content').html() || 'Loading...');
+                    $('#v2-detail-upgrades').html(
+                        ($origDetail.find('#js-interior-content').html() || '') +
+                        ($origDetail.find('#js-credit-content').html() || '')
+                        || 'Loading...'
+                    );
+                }
+            }
+            
+            updateMobileShedDetails();
+
+            // Set up MutationObserver to sync automatically
+            var targetNode = document.getElementById('ssb-shed-detail');
+            if (targetNode) {
+                var observer = new MutationObserver(function() {
+                    updateMobileShedDetails();
                 });
-                $('#v2-detail-structure').html(structureHtml || 'Loading...');
-                $('#v2-detail-exteriors').html($origDetail.find('#js-exterior-content').html() || 'Loading...');
-                $('#v2-detail-upgrades').html(
-                    ($origDetail.find('#js-interior-content').html() || '') +
-                    ($origDetail.find('#js-credit-content').html() || '')
-                    || 'Loading...'
-                );
+                observer.observe(targetNode, { childList: true, subtree: true, characterData: true });
             }
 
             // Accordion toggle
@@ -5062,9 +5407,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 '<div class="see-monthly-payment" style="display: block !important; margin-bottom: 12px !important; margin-left: 0 !important; font-size: 14px !important; color: #5E6578 !important; text-align: center !important;"><div>Pay as low as <b><span id="recap-amount-monthly-payment" style="font-size: 14px !important; color: #2B3B63 !important;"></span><span style="font-size: 14px !important; color: #2B3B63 !important;">/mo.</span></b>, <span class="see-details recap-see-details" style="font-size: 14px !important; color: #1D64B5 !important; cursor: pointer;">see details.</span></div></div>' +
                 '<div class="recap-change-location-trigger recap-location-hover" style="color: #2B3B63; font-family: \'Proxima Nova\', sans-serif; font-size: 16px !important; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 15px;">' +
                     '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C9.62663 0 7.30655 0.703788 5.33316 2.02236C3.35977 3.34094 1.8217 5.21509 0.913451 7.4078C0.00519943 9.60051 -0.232441 12.0133 0.230582 14.3411C0.693605 16.6689 1.83649 18.8071 3.51472 20.4853C5.19295 22.1635 7.33115 23.3064 9.65892 23.7694C11.9867 24.2324 14.3995 23.9948 16.5922 23.0866C18.7849 22.1783 20.6591 20.6402 21.9776 18.6668C23.2962 16.6935 24 14.3734 24 12C23.9966 8.81846 22.7312 5.76821 20.4815 3.51852C18.2318 1.26883 15.1815 0.00344108 12 0ZM12 21C10.22 21 8.47992 20.4722 6.99987 19.4832C5.51983 18.4943 4.36628 17.0887 3.68509 15.4442C3.0039 13.7996 2.82567 11.99 3.17294 10.2442C3.5202 8.49836 4.37737 6.89471 5.63604 5.63604C6.89472 4.37737 8.49836 3.5202 10.2442 3.17293C11.99 2.82567 13.7996 3.0039 15.4442 3.68508C17.0887 4.36627 18.4943 5.51983 19.4832 6.99987C20.4722 8.47991 21 10.22 21 12C20.9974 14.3861 20.0483 16.6738 18.361 18.361C16.6738 20.0483 14.3861 20.9974 12 21ZM6.73001 10.076L16.5 7.5L13.95 17.27C13.8914 17.4796 13.7659 17.6643 13.5928 17.7961C13.4197 17.9279 13.2083 17.9997 12.9907 18.0005C12.773 18.0013 12.5611 17.931 12.387 17.8005C12.2129 17.6699 12.0862 17.4861 12.026 17.277L10.5 13.5L6.72301 12C6.51388 11.9398 6.33009 11.8131 6.19952 11.639C6.06896 11.4649 5.99875 11.253 5.99954 11.0354C6.00033 10.8177 6.07208 10.6063 6.20391 10.4332C6.33574 10.2601 6.52045 10.1347 6.73001 10.076Z" fill="#2B3B63"/></svg>' +
-                    '<span class="recap-location-name" style="font-weight: 600;">Change Location</span>' +
+                    '<span class="recap-location-name" style="font-weight: 600;">Enter Location</span>' +
                 '</div>' +
-                '<button class="btn btn-primary w-100" id="v2-price-recap-submit" style="height: 44px; display: flex; align-items: center; justify-content: center; padding: 0; font-weight: 600; border-radius: 6px; margin: 0;">Submit Quote</button>' +
+                '<button class="btn btn-primary w-100" id="v2-price-recap-submit" style="height: 48px; display: flex; align-items: center; justify-content: center; padding: 0; font-weight: 600; border-radius: 6px; margin: 0;">Submit Quote</button>' +
+                '<div style="display:flex; gap:8px; margin-top:12px;">' +
+                    '<button class="btn" style="flex:1; height: 48px; display: flex; align-items: center; justify-content: center; font-weight: 600; border-radius: 6px; border: none; background: #EDEDED; color: #5E6578; gap: 8px;"><span class="material-symbols-outlined" style="font-size:20px;">favorite</span> Save for later</button>' +
+                    '<button class="btn" style="flex:1; height: 48px; display: flex; align-items: center; justify-content: center; font-weight: 600; border-radius: 6px; border: none; background: #EDEDED; color: #5E6578; gap: 8px;"><span class="material-symbols-outlined" style="font-size:20px;">ios_share</span> Share</button>' +
+                '</div>' +
             '</div>';
             $('.v2-mobile-details-section').after(recapHtml);
 
