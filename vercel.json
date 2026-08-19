@@ -44,6 +44,22 @@
   ],
   "rewrites": [
     {
+      "source": "/configurator-cdn.shedpro.co/:path*",
+      "destination": "/v1/configurator-cdn.shedpro.co/:path*"
+    },
+    {
+      "source": "/dxm5q5264srx2.cloudfront.net/:path*",
+      "destination": "/v1/dxm5q5264srx2.cloudfront.net/:path*"
+    },
+    {
+      "source": "/www.google.com/:path*",
+      "destination": "/v1/www.google.com/:path*"
+    },
+    {
+      "source": "/js.stripe.com/:path*",
+      "destination": "/v1/js.stripe.com/:path*"
+    },
+    {
       "source": "/v1/product/premium-shed",
       "destination": "/v1/shedpro-design/product/garden-shed/index.html"
     },

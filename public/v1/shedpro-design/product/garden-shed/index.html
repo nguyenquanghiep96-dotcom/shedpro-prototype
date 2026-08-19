@@ -4,7 +4,11 @@
 <script>
 (function() {
     var base = document.createElement('base');
-    if (window.location.href.indexOf('/public/') !== -1) {
+    if (window.location.protocol === 'file:') {
+        var publicIndex = window.location.pathname.indexOf('/public/');
+        var projectPath = publicIndex === -1 ? '' : window.location.pathname.slice(0, publicIndex);
+        base.href = 'file://' + projectPath + '/public/v1/shedpro-design/product/garden-shed/';
+    } else if (window.location.href.indexOf('/public/') !== -1) {
         base.href = '/public/v1/shedpro-design/product/garden-shed/';
     } else {
         base.href = '/v1/shedpro-design/product/garden-shed/';
@@ -294,73 +298,73 @@ html :where(.is-position-sticky){
 :root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
 /*# sourceURL=global-styles-inline-css */
 </style>
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/css/photoswipe/photoswipe.min_ver%3D10.6.1.css" id="photoswipe-css" media="all" rel="stylesheet" type="text/css"/>
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/css/photoswipe/default-skin/default-skin.min_ver%3D10.6.1.css" id="photoswipe-default-skin-css" media="all" rel="stylesheet" type="text/css"/>
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/css/woocommerce-layout_ver%3D10.6.1.css" id="woocommerce-layout-css" media="all" rel="stylesheet" type="text/css"/>
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen_ver%3D10.6.1.css" id="woocommerce-smallscreen-css" media="only screen and (max-width: 768px)" rel="stylesheet" type="text/css"/>
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/css/woocommerce_ver%3D10.6.1.css" id="woocommerce-general-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/assets/cdn/production/wp-content/plugins/woocommerce/assets/css/photoswipe/photoswipe.min_ver%3D10.6.1.css" id="photoswipe-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/assets/cdn/production/wp-content/plugins/woocommerce/assets/css/photoswipe/default-skin/default-skin.min_ver%3D10.6.1.css" id="photoswipe-default-skin-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/assets/cdn/production/wp-content/plugins/woocommerce/assets/css/woocommerce-layout_ver%3D10.6.1.css" id="woocommerce-layout-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/assets/cdn/production/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen_ver%3D10.6.1.css" id="woocommerce-smallscreen-css" media="only screen and (max-width: 768px)" rel="stylesheet" type="text/css"/>
+<link href="/assets/cdn/production/wp-content/plugins/woocommerce/assets/css/woocommerce_ver%3D10.6.1.css" id="woocommerce-general-css" media="all" rel="stylesheet" type="text/css"/>
 <style id="woocommerce-inline-inline-css" type="text/css">
 .woocommerce form .form-row .required { visibility: visible; }
 /*# sourceURL=woocommerce-inline-inline-css */
 </style>
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/contact-form-7/includes/css/styles_ver%3D6.1.5.css" id="contact-form-7-css" media="all" rel="stylesheet" type="text/css"/>
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/css/select2_ver%3D10.6.1.css" id="select2-css" media="all" rel="stylesheet" type="text/css"/>
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/seadev-shed-builder-beta/public/css/color_picker_ver%3D1.0.15.css" id="color-picker-css" media="all" rel="stylesheet" type="text/css"/>
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/seadev-shed-builder-beta/public/css/fas.min_ver%3D1779954338.css" id="ssb-fas-css" media="all" rel="stylesheet" type="text/css"/>
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/seadev-shed-builder-beta/public/css/ssb_styles_ver%3D1779954338.css" id="ssb-styles-css" media="all" rel="stylesheet" type="text/css"/>
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/seadev-shed-builder-beta/public/webfonts/icomoon-v1.0/style_ver%3D1779954338.css" id="ssb-icomoon-css" media="all" rel="stylesheet" type="text/css"/>
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce-deposits/assets/css/frontend_ver%3D1.5.6.css" id="wc-deposits-frontend-css" media="all" rel="stylesheet" type="text/css"/>
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/themes/seadev/assets/slick/slick.css" id="slick-styles-css" media="all" rel="stylesheet" type="text/css"/>
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/themes/seadev/assets/slick/slick-theme.css" id="slick-theme-styles-css" media="all" rel="stylesheet" type="text/css"/>
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/themes/seadev-child-vendor/css/introjs.min_ver%3D1779954339.css" id="seadev-child-introjs-css" media="all" rel="stylesheet" type="text/css"/>
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/themes/seadev-child-vendor/css/jquery.fancybox_ver%3D1779954339.css" id="seadev-child-fancybox-css" media="all" rel="stylesheet" type="text/css"/>
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/themes/seadev-child-vendor/css/theme.min_ver%3D1779954339.css" id="seadev-child-styles-css" media="all" rel="stylesheet" type="text/css"/>
-<script id="jquery-core-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/jquery/jquery_ver%3D3.7.1.js" type="text/javascript"></script>
-<script id="jquery-migrate-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/jquery/jquery-migrate_ver%3D3.4.1.js" type="text/javascript"></script>
-<script data-wp-strategy="defer" defer="defer" id="wc-jquery-blockui-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI_ver%3D2.7.0-wc.10.6.1.js" type="text/javascript"></script>
+<link href="/assets/cdn/production/wp-content/plugins/contact-form-7/includes/css/styles_ver%3D6.1.5.css" id="contact-form-7-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/assets/cdn/production/wp-content/plugins/woocommerce/assets/css/select2_ver%3D10.6.1.css" id="select2-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/assets/cdn/production/wp-content/plugins/seadev-shed-builder-beta/public/css/color_picker_ver%3D1.0.15.css" id="color-picker-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/assets/cdn/production/wp-content/plugins/seadev-shed-builder-beta/public/css/fas.min_ver%3D1779954338.css" id="ssb-fas-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/assets/cdn/production/wp-content/plugins/seadev-shed-builder-beta/public/css/ssb_styles_ver%3D1779954338.css" id="ssb-styles-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/assets/cdn/production/wp-content/plugins/seadev-shed-builder-beta/public/webfonts/icomoon-v1.0/style_ver%3D1779954338.css" id="ssb-icomoon-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/assets/cdn/production/wp-content/plugins/woocommerce-deposits/assets/css/frontend_ver%3D1.5.6.css" id="wc-deposits-frontend-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/assets/cdn/production/wp-content/themes/seadev/assets/slick/slick.css" id="slick-styles-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/assets/cdn/production/wp-content/themes/seadev/assets/slick/slick-theme.css" id="slick-theme-styles-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/assets/cdn/production/wp-content/themes/seadev-child-vendor/css/introjs.min_ver%3D1779954339.css" id="seadev-child-introjs-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/assets/cdn/production/wp-content/themes/seadev-child-vendor/css/jquery.fancybox_ver%3D1779954339.css" id="seadev-child-fancybox-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/assets/cdn/production/wp-content/themes/seadev-child-vendor/css/theme.min_ver%3D1779954339.css" id="seadev-child-styles-css" media="all" rel="stylesheet" type="text/css"/>
+<script id="jquery-core-js" src="/assets/cdn/production/wp-includes/js/jquery/jquery_ver%3D3.7.1.js" type="text/javascript"></script>
+<script id="jquery-migrate-js" src="/assets/cdn/production/wp-includes/js/jquery/jquery-migrate_ver%3D3.4.1.js" type="text/javascript"></script>
+<script data-wp-strategy="defer" defer="defer" id="wc-jquery-blockui-js" src="/assets/cdn/production/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI_ver%3D2.7.0-wc.10.6.1.js" type="text/javascript"></script>
 <script id="wc-add-to-cart-js-extra" type="text/javascript">
 /* <![CDATA[ */
 var wc_add_to_cart_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"https://demo.shedpro.co/checkout/","is_cart":"","cart_redirect_after_add":"yes"};
 //# sourceURL=wc-add-to-cart-js-extra
 /* ]]> */
 </script>
-<script data-wp-strategy="defer" defer="defer" id="wc-add-to-cart-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart_ver%3D10.6.1.js" type="text/javascript"></script>
-<script data-wp-strategy="defer" defer="defer" id="wc-zoom-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/js/zoom/jquery.zoom_ver%3D1.7.21-wc.10.6.1.js" type="text/javascript"></script>
-<script data-wp-strategy="defer" defer="defer" id="wc-flexslider-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/js/flexslider/jquery.flexslider_ver%3D2.7.2-wc.10.6.1.js" type="text/javascript"></script>
-<script data-wp-strategy="defer" defer="defer" id="wc-photoswipe-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe_ver%3D4.1.1-wc.10.6.1.js" type="text/javascript"></script>
-<script data-wp-strategy="defer" defer="defer" id="wc-photoswipe-ui-default-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe-ui-default_ver%3D4.1.1-wc.10.6.1.js" type="text/javascript"></script>
+<script data-wp-strategy="defer" defer="defer" id="wc-add-to-cart-js" src="/assets/cdn/production/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart_ver%3D10.6.1.js" type="text/javascript"></script>
+<script data-wp-strategy="defer" defer="defer" id="wc-zoom-js" src="/assets/cdn/production/wp-content/plugins/woocommerce/assets/js/zoom/jquery.zoom_ver%3D1.7.21-wc.10.6.1.js" type="text/javascript"></script>
+<script data-wp-strategy="defer" defer="defer" id="wc-flexslider-js" src="/assets/cdn/production/wp-content/plugins/woocommerce/assets/js/flexslider/jquery.flexslider_ver%3D2.7.2-wc.10.6.1.js" type="text/javascript"></script>
+<script data-wp-strategy="defer" defer="defer" id="wc-photoswipe-js" src="/assets/cdn/production/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe_ver%3D4.1.1-wc.10.6.1.js" type="text/javascript"></script>
+<script data-wp-strategy="defer" defer="defer" id="wc-photoswipe-ui-default-js" src="/assets/cdn/production/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe-ui-default_ver%3D4.1.1-wc.10.6.1.js" type="text/javascript"></script>
 <script id="wc-single-product-js-extra" type="text/javascript">
 /* <![CDATA[ */
 var wc_single_product_params = {"i18n_required_rating_text":"Please select a rating","i18n_rating_options":["1 of 5 stars","2 of 5 stars","3 of 5 stars","4 of 5 stars","5 of 5 stars"],"i18n_product_gallery_trigger_text":"View full-screen image gallery","review_rating_required":"yes","flexslider":{"rtl":false,"animation":"slide","smoothHeight":true,"directionNav":false,"controlNav":"thumbnails","slideshow":false,"animationSpeed":500,"animationLoop":false,"allowOneSlide":false},"zoom_enabled":"1","zoom_options":[],"photoswipe_enabled":"1","photoswipe_options":{"shareEl":false,"closeOnScroll":false,"history":false,"hideAnimationDuration":0,"showAnimationDuration":0},"flexslider_enabled":"1"};
 //# sourceURL=wc-single-product-js-extra
 /* ]]> */
 </script>
-<script data-wp-strategy="defer" defer="defer" id="wc-single-product-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/js/frontend/single-product_ver%3D10.6.1.js" type="text/javascript"></script>
-<script data-wp-strategy="defer" defer="defer" id="wc-js-cookie-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie_ver%3D2.1.4-wc.10.6.1.js" type="text/javascript"></script>
+<script data-wp-strategy="defer" defer="defer" id="wc-single-product-js" src="/assets/cdn/production/wp-content/plugins/woocommerce/assets/js/frontend/single-product_ver%3D10.6.1.js" type="text/javascript"></script>
+<script data-wp-strategy="defer" defer="defer" id="wc-js-cookie-js" src="/assets/cdn/production/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie_ver%3D2.1.4-wc.10.6.1.js" type="text/javascript"></script>
 <script id="woocommerce-js-extra" type="text/javascript">
 /* <![CDATA[ */
 var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/?wc-ajax=%%endpoint%%","i18n_password_show":"Show password","i18n_password_hide":"Hide password"};
 //# sourceURL=woocommerce-js-extra
 /* ]]> */
 </script>
-<script data-wp-strategy="defer" defer="defer" id="woocommerce-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce_ver%3D10.6.1.js" type="text/javascript"></script>
-<script data-wp-strategy="defer" defer="defer" id="wc-select2-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/js/select2/select2.full_ver%3D4.0.3-wc.10.6.1.js" type="text/javascript"></script>
-<script id="ssb-selectWoo-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/js/selectWoo/selectWoo.full_ver%3D6.9.4.js" type="text/javascript"></script>
-<script id="ssb-google-recaptcha-js" src="../../../www.google.com/recaptcha/api_render%3D6Lf3rEoaAAAAAAEy8uRMH09XGeQVV1vp8OWCqrjQ%26ver%3D6.9.4.js" type="text/javascript"></script>
+<script data-wp-strategy="defer" defer="defer" id="woocommerce-js" src="/assets/cdn/production/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce_ver%3D10.6.1.js" type="text/javascript"></script>
+<script data-wp-strategy="defer" defer="defer" id="wc-select2-js" src="/assets/cdn/production/wp-content/plugins/woocommerce/assets/js/select2/select2.full_ver%3D4.0.3-wc.10.6.1.js" type="text/javascript"></script>
+<script id="ssb-selectWoo-js" src="/assets/cdn/production/wp-content/plugins/woocommerce/assets/js/selectWoo/selectWoo.full_ver%3D6.9.4.js" type="text/javascript"></script>
+<script id="ssb-google-recaptcha-js" src="/assets/google/recaptcha/api_render%3D6Lf3rEoaAAAAAAEy8uRMH09XGeQVV1vp8OWCqrjQ%26ver%3D6.9.4.js" type="text/javascript"></script>
 <script id="wc-country-select-js-extra" type="text/javascript">
 /* <![CDATA[ */
 var wc_country_select_params = {"countries":"{\"CA\":{\"AB\":\"Alberta\",\"BC\":\"British Columbia\",\"MB\":\"Manitoba\",\"NB\":\"New Brunswick\",\"NL\":\"Newfoundland and Labrador\",\"NT\":\"Northwest Territories\",\"NS\":\"Nova Scotia\",\"NU\":\"Nunavut\",\"ON\":\"Ontario\",\"PE\":\"Prince Edward Island\",\"QC\":\"Quebec\",\"SK\":\"Saskatchewan\",\"YT\":\"Yukon Territory\"},\"US\":{\"AL\":\"Alabama\",\"AK\":\"Alaska\",\"AZ\":\"Arizona\",\"AR\":\"Arkansas\",\"CA\":\"California\",\"CO\":\"Colorado\",\"CT\":\"Connecticut\",\"DE\":\"Delaware\",\"DC\":\"District of Columbia\",\"FL\":\"Florida\",\"GA\":\"Georgia\",\"HI\":\"Hawaii\",\"ID\":\"Idaho\",\"IL\":\"Illinois\",\"IN\":\"Indiana\",\"IA\":\"Iowa\",\"KS\":\"Kansas\",\"KY\":\"Kentucky\",\"LA\":\"Louisiana\",\"ME\":\"Maine\",\"MD\":\"Maryland\",\"MA\":\"Massachusetts\",\"MI\":\"Michigan\",\"MN\":\"Minnesota\",\"MS\":\"Mississippi\",\"MO\":\"Missouri\",\"MT\":\"Montana\",\"NE\":\"Nebraska\",\"NV\":\"Nevada\",\"NH\":\"New Hampshire\",\"NJ\":\"New Jersey\",\"NM\":\"New Mexico\",\"NY\":\"New York\",\"NC\":\"North Carolina\",\"ND\":\"North Dakota\",\"OH\":\"Ohio\",\"OK\":\"Oklahoma\",\"OR\":\"Oregon\",\"PA\":\"Pennsylvania\",\"RI\":\"Rhode Island\",\"SC\":\"South Carolina\",\"SD\":\"South Dakota\",\"TN\":\"Tennessee\",\"TX\":\"Texas\",\"UT\":\"Utah\",\"VT\":\"Vermont\",\"VA\":\"Virginia\",\"WA\":\"Washington\",\"WV\":\"West Virginia\",\"WI\":\"Wisconsin\",\"WY\":\"Wyoming\",\"AA\":\"Armed Forces (AA)\",\"AE\":\"Armed Forces (AE)\",\"AP\":\"Armed Forces (AP)\"},\"VN\":[]}","i18n_select_state_text":"Select an option\u2026","i18n_no_matches":"No matches found","i18n_ajax_error":"Loading failed","i18n_input_too_short_1":"Please enter 1 or more characters","i18n_input_too_short_n":"Please enter %qty% or more characters","i18n_input_too_long_1":"Please delete 1 character","i18n_input_too_long_n":"Please delete %qty% characters","i18n_selection_too_long_1":"You can only select 1 item","i18n_selection_too_long_n":"You can only select %qty% items","i18n_load_more":"Loading more results\u2026","i18n_searching":"Searching\u2026"};
 //# sourceURL=wc-country-select-js-extra
 /* ]]> */
 </script>
-<script data-wp-strategy="defer" defer="defer" id="wc-country-select-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/js/frontend/country-select_ver%3D10.6.1.js" type="text/javascript"></script>
+<script data-wp-strategy="defer" defer="defer" id="wc-country-select-js" src="/assets/cdn/production/wp-content/plugins/woocommerce/assets/js/frontend/country-select_ver%3D10.6.1.js" type="text/javascript"></script>
 <script id="wc-address-i18n-js-extra" type="text/javascript">
 /* <![CDATA[ */
 var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Postal code\",\"required\":true},\"state\":{\"label\":\"Province\"}},\"US\":{\"postcode\":{\"label\":\"ZIP Code\",\"required\":true},\"state\":{\"label\":\"State\"}},\"VN\":{\"state\":{\"required\":false,\"hidden\":true},\"postcode\":{\"priority\":65,\"required\":true,\"hidden\":false},\"address_2\":{\"required\":false,\"hidden\":false}},\"default\":{\"first_name\":{\"label\":\"First name\",\"required\":true,\"class\":[\"form-row-first\"],\"autocomplete\":\"given-name\",\"priority\":10},\"last_name\":{\"label\":\"Last name\",\"required\":true,\"class\":[\"form-row-last\"],\"autocomplete\":\"family-name\",\"priority\":20},\"company\":{\"label\":\"Company name\",\"class\":[\"form-row-wide\"],\"autocomplete\":\"organization\",\"priority\":30,\"required\":false},\"country\":{\"type\":\"country\",\"label\":\"Country / Region\",\"required\":true,\"class\":[\"form-row-wide\",\"address-field\",\"update_totals_on_change\"],\"autocomplete\":\"country\",\"priority\":40},\"address_1\":{\"label\":\"Street address\",\"placeholder\":\"House number and street name\",\"required\":true,\"class\":[\"form-row-wide\",\"address-field\"],\"autocomplete\":\"address-line1\",\"priority\":50},\"address_2\":{\"label\":\"Apartment, suite, unit, etc.\",\"label_class\":[\"screen-reader-text\"],\"placeholder\":\"Apartment, suite, unit, etc. (optional)\",\"class\":[\"form-row-wide\",\"address-field\"],\"autocomplete\":\"address-line2\",\"priority\":60,\"required\":false},\"city\":{\"label\":\"Town / City\",\"required\":true,\"class\":[\"form-row-wide\",\"address-field\"],\"autocomplete\":\"address-level2\",\"priority\":70},\"state\":{\"type\":\"state\",\"label\":\"State / County\",\"required\":true,\"class\":[\"form-row-wide\",\"address-field\"],\"validate\":[\"state\"],\"autocomplete\":\"address-level1\",\"priority\":80},\"postcode\":{\"label\":\"Postcode / ZIP\",\"required\":true,\"class\":[\"form-row-wide\",\"address-field\"],\"validate\":[\"postcode\"],\"autocomplete\":\"postal-code\",\"priority\":90}}}","locale_fields":"{\"address_1\":\"#billing_address_1_field, #shipping_address_1_field\",\"address_2\":\"#billing_address_2_field, #shipping_address_2_field\",\"state\":\"#billing_state_field, #shipping_state_field, #calc_shipping_state_field\",\"postcode\":\"#billing_postcode_field, #shipping_postcode_field, #calc_shipping_postcode_field\",\"city\":\"#billing_city_field, #shipping_city_field, #calc_shipping_city_field\"}","i18n_required_text":"required","i18n_optional_text":"optional"};
 //# sourceURL=wc-address-i18n-js-extra
 /* ]]> */
 </script>
-<script data-wp-strategy="defer" defer="defer" id="wc-address-i18n-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/js/frontend/address-i18n_ver%3D10.6.1.js" type="text/javascript"></script>
+<script data-wp-strategy="defer" defer="defer" id="wc-address-i18n-js" src="/assets/cdn/production/wp-content/plugins/woocommerce/assets/js/frontend/address-i18n_ver%3D10.6.1.js" type="text/javascript"></script>
 <link href="https://demo.shedpro.co/wp-json/" rel="https://api.w.org/"/><link href="https://demo.shedpro.co/wp-json/wp/v2/product/6857" rel="alternate" title="JSON" type="application/json"/><link href="https://demo.shedpro.co/xmlrpc.php?rsd" rel="EditURI" title="RSD" type="application/rsd+xml"/>
 <meta content="WordPress 6.9.4" name="generator"/>
 <meta content="WooCommerce 10.6.1" name="generator"/>
@@ -418,8 +422,8 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer', 'GTM-MLV8BDD');</script>
 <!-- End Google Tag Manager -->
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce-gateway-stripe/build/upe-blocks_ver%3Dd4977b317f665a4df60d.css" id="wc-stripe-blocks-checkout-style-css" media="all" rel="stylesheet" type="text/css"/>
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks_ver%3D1779954338.css" id="wc-blocks-style-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/assets/cdn/production/wp-content/plugins/woocommerce-gateway-stripe/build/upe-blocks_ver%3Dd4977b317f665a4df60d.css" id="wc-stripe-blocks-checkout-style-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/assets/cdn/production/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks_ver%3D1779954338.css" id="wc-blocks-style-css" media="all" rel="stylesheet" type="text/css"/>
 <style id="core-block-supports-inline-css" type="text/css">
 /**
  * Core styles: block-supports
@@ -427,8 +431,8 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
 
 /*# sourceURL=core-block-supports-inline-css */
 </style>
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce-gateway-stripe/build/upe-classic_ver%3D8b9ce56b2c43829375e2.css" id="wc-stripe-upe-classic-css" media="all" rel="stylesheet" type="text/css"/>
-<link href="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce-gateway-stripe/assets/css/stripe-link_ver%3D10.5.2.css" id="stripelink_styles-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/assets/cdn/production/wp-content/plugins/woocommerce-gateway-stripe/build/upe-classic_ver%3D8b9ce56b2c43829375e2.css" id="wc-stripe-upe-classic-css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/assets/cdn/production/wp-content/plugins/woocommerce-gateway-stripe/assets/css/stripe-link_ver%3D10.5.2.css" id="stripelink_styles-css" media="all" rel="stylesheet" type="text/css"/>
 <style id="custom-theme-overrides">
         /* Mobile Customize Panel Styles */
         
@@ -1354,13 +1358,24 @@ var wc_address_i18n_params = {"locale":"{\"CA\":{\"postcode\":{\"label\":\"Posta
 </button>
 <script>
 function switchVersion(version) {
-    if (window.location.href.includes('/public/')) {
-        if (version === 'v1') window.location.href = '/public/v1/shedpro-design/product/garden-shed/index.html';
-        if (version === 'v2') window.location.href = '/public/v2/product/premium-shed/index.html';
-    } else {
-        if (version === 'v1') window.location.href = '/v1/product/premium-shed/';
-        if (version === 'v2') window.location.href = '/v2/product/premium-shed/';
+    var targets = {
+        v1: '/v1/shedpro-design/product/garden-shed/index.html',
+        v2: '/v2/product/premium-shed/index.html'
+    };
+
+    if (!targets[version]) return;
+
+    // Local previews use file:// and do not have Vercel's /v1 and /v2 rewrites.
+    // Build the target from this project's public directory instead of assuming
+    // that /public is the browser's web root.
+    if (window.location.protocol === 'file:') {
+        var publicIndex = window.location.pathname.indexOf('/public/');
+        var projectPath = publicIndex === -1 ? '' : window.location.pathname.slice(0, publicIndex);
+        window.location.assign('file://' + projectPath + '/public' + targets[version]);
+        return;
     }
+
+    window.location.assign(version === 'v1' ? '/v1/product/premium-shed/' : '/v2/product/premium-shed/');
 }
 </script>
 </nav><!-- .site-navigation -->
@@ -1489,7 +1504,7 @@ function switchVersion(version) {
 <canvas custom-items="null" data-cnd-url="https://d1v3nro70bdf57.cloudfront.net/production" data-component-dir="https://demo.shedpro.co/wp-content/uploads/sites/4/ssb_component" data-component-path="https://d1v3nro70bdf57.cloudfront.net/production/component/" data-debug-mode="false" data-decking-direction="false" data-enable-brace="false" data-enable-door-slab="1" data-enable-loft="0" data-enable-manufacturer="false" data-enable-position-component="true" data-enable-vertical-distribute-porch-size="false" data-horizontal-distributed="" data-horizontal-offset="0" data-horizontal-spacing="0" data-image-path="https://demo.shedpro.co/wp-content/plugins/seadev-shed-builder-beta/public/img/" data-is-manufacture-edit-order="false" data-is-multi-model="false" data-loft-height-from-top="0" data-material-cdn="https://d1v3nro70bdf57.cloudfront.net/production/materials/" data-model-brand="62J7J6" data-model-enable-ar="" data-model-enable-porch="" data-model-enable-railing="" data-model-hinge-type="normal" data-model-id="6850" data-model-porch-external="eyJsb2NhdGlvbiI6ImZyb250IiwiZGlzdGFuY2UiOiIiLCJwb3JjaF9wcmljZV90eXBlIjoiZml4ZWQiLCJwb3JjaF9wcmljZSI6IiIsInJhaWxpbmdfcHJpY2VfdHlwZSI6bnVsbCwicmFpbGluZ19wcmljZSI6bnVsbCwicG9zdF9wcmljZV90eXBlIjpudWxsLCJwb3N0X3ByaWNlIjpudWxsLCJzdHlsZSI6InBvcmNoX2V4dF8xMGR4N2hfNGlub3ZoXzMxMnBpdGNoIn0=" data-model-porch-has-size-options="false" data-model-porch-size-single-option="1" data-model-roof-angle="30.26" data-model-roof-angle-lower="" data-model-roof-angle-upper="" data-model-roof-shape="box_gable" data-model-size-error-value="0.30" data-opening-available-on="false" data-place-place-component-on-2nd-floor="false" data-porch-custom-opening-size="false" data-porch-opening-size="0" data-porch-style="side-right" data-porch-wraparound-siding="" data-second-floor-height="" data-set-price-manual="false" data-shed-chicken-coop="" data-shed-path="https://d1v3nro70bdf57.cloudfront.net/production/shed/structure_aframe_single_gable/" data-shed-type="structure_aframe_single_gable" data-shed-type-version="structure_gardenshed_pergolaroof" data-show-credit-info="true" data-show-net-price="false" data-show-upgrade-charge-info="true" data-side-gable="end_gable" data-tack-door="no" id="ssb-canvas" is-enable-kick-board="false" is-exclude-freight-charge="false" is_expired_price="" touch-action="none">
 </canvas>
 </div>
-<a class="shed-link desktop-only" href="https://shedpro.co/"><img alt="3D Configurator - Prototype Design" src="../../../dxm5q5264srx2.cloudfront.net/wp-content/uploads/sites/4/2023/04/Powered-by-ShedPro.svg"/></a><div id="text-size-canvas"></div>
+<a class="shed-link desktop-only" href="https://shedpro.co/"><img alt="3D Configurator - Prototype Design" src="/assets/cloudfront/wp-content/uploads/sites/4/2023/04/Powered-by-ShedPro.svg"/></a><div id="text-size-canvas"></div>
 <div class="canvas-top-right-buttons">
 <div class="full-screen-wrapper">
 <div id="fullscreen">
@@ -1712,25 +1727,25 @@ function switchVersion(version) {
 <ul class="ssb-configurator-options ssb-configurator-style-sub-cat has-default">
 <li class="ssb-option display-thumbnail" data-href="../chalet/index.html">
 <div class="ssb-thumbnail">
-<img alt="" src="../../../dxm5q5264srx2.cloudfront.net/wp-content/uploads/sites/4/2023/09/Chalet.jpg"/>
+<img alt="" src="/assets/cloudfront/wp-content/uploads/sites/4/2023/09/Chalet.jpg"/>
 </div>
 <span class="ssb-option-name">Chalet</span>
 </li>
 <li class="ssb-option display-thumbnail" data-href="https://demo.shedpro.co/product/aframe/">
 <div class="ssb-thumbnail">
-<img alt="" src="../../../dxm5q5264srx2.cloudfront.net/wp-content/uploads/sites/4/2023/09/Aframe.jpg"/>
+<img alt="" src="/assets/cloudfront/wp-content/uploads/sites/4/2023/09/Aframe.jpg"/>
 </div>
 <span class="ssb-option-name">Aframe</span>
 </li>
 <li class="ssb-option display-thumbnail active" data-href="https://demo.shedpro.co/product/garden-shed/">
 <div class="ssb-thumbnail">
-<img alt="" src="../../../dxm5q5264srx2.cloudfront.net/wp-content/uploads/sites/4/2026/03/Thumbnail-Garden-Shed-e1774972270853.png"/>
+<img alt="" src="/assets/cloudfront/wp-content/uploads/sites/4/2026/03/Thumbnail-Garden-Shed-e1774972270853.png"/>
 </div>
 <span class="ssb-option-name">Premium Shed</span>
 </li>
 <li class="ssb-option display-thumbnail" data-href="#" style="pointer-events:none; cursor:not-allowed;">
 <div class="ssb-thumbnail">
-<img alt="" src="../../../dxm5q5264srx2.cloudfront.net/wp-content/uploads/sites/4/2023/09/Log-Cabin.jpg"/>
+<img alt="" src="/assets/cloudfront/wp-content/uploads/sites/4/2023/09/Log-Cabin.jpg"/>
 </div>
 <span class="ssb-option-name">Log Cabin</span>
 </li>
@@ -2732,15 +2747,15 @@ function switchVersion(version) {
 </div>
 </div>
 </div>
-<script id="wp-hooks-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/hooks_ver%3D220ff17f5667d013d468.js" type="text/javascript"></script>
-<script id="wp-i18n-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/i18n_ver%3D6b3ae5bd3b8d9598492d.js" type="text/javascript"></script>
+<script id="wp-hooks-js" src="/assets/cdn/production/wp-includes/js/dist/hooks_ver%3D220ff17f5667d013d468.js" type="text/javascript"></script>
+<script id="wp-i18n-js" src="/assets/cdn/production/wp-includes/js/dist/i18n_ver%3D6b3ae5bd3b8d9598492d.js" type="text/javascript"></script>
 <script id="wp-i18n-js-after" type="text/javascript">
 /* <![CDATA[ */
 wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
 //# sourceURL=wp-i18n-js-after
 /* ]]> */
 </script>
-<script id="swv-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/contact-form-7/includes/swv/js/index_ver%3D6.1.5.js" type="text/javascript"></script>
+<script id="swv-js" src="/assets/cdn/production/wp-content/plugins/contact-form-7/includes/swv/js/index_ver%3D6.1.5.js" type="text/javascript"></script>
 <script id="contact-form-7-js-before" type="text/javascript">
 /* <![CDATA[ */
 var wpcf7 = {
@@ -2752,7 +2767,7 @@ var wpcf7 = {
 //# sourceURL=contact-form-7-js-before
 /* ]]> */
 </script>
-<script id="contact-form-7-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/contact-form-7/includes/js/index_ver%3D6.1.5.js" type="text/javascript"></script>
+<script id="contact-form-7-js" src="/assets/cdn/production/wp-content/plugins/contact-form-7/includes/js/index_ver%3D6.1.5.js" type="text/javascript"></script>
 <script id="fr-script-js-extra" type="text/javascript">
 /* <![CDATA[ */
 var fr_shedpro = {"ajax_url":"https://demo.shedpro.co/wp-admin/admin-ajax.php","ssb_phone_number_format":"domestic","location_configs":{"param_zip_code":"zipcode","cookie_zip_code":"zip-code","param_use_location":"use_location","param_and_cookie_lot":"lot","param_and_cookie_dealer":"dealer","param_and_cookie_location":"location"}};
@@ -2760,15 +2775,15 @@ var ssbgRecaptcha = {"site_key":"6Lf3rEoaAAAAAAEy8uRMH09XGeQVV1vp8OWCqrjQ"};
 //# sourceURL=fr-script-js-extra
 /* ]]> */
 </script>
-<script id="fr-script-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/seadev-shed-builder-beta/public/js/fr_script_ver%3D1779954338.js" type="text/javascript"></script>
-<script id="earcut-js-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/seadev-shed-builder-beta/public/js/earcut.min_ver%3D1779954338.js" type="text/javascript"></script>
+<script id="fr-script-js" src="/assets/cdn/production/wp-content/plugins/seadev-shed-builder-beta/public/js/fr_script_ver%3D1779954338.js" type="text/javascript"></script>
+<script id="earcut-js-js" src="/assets/cdn/production/wp-content/plugins/seadev-shed-builder-beta/public/js/earcut.min_ver%3D1779954338.js" type="text/javascript"></script>
 <script id="ssb-custom-script-js-extra" type="text/javascript">
 /* <![CDATA[ */
 var custom_script = {"location_configs":{"param_zip_code":"zipcode","cookie_zip_code":"zip-code","param_use_location":"use_location","param_and_cookie_lot":"lot","param_and_cookie_dealer":"dealer","param_and_cookie_location":"location"}};
 //# sourceURL=ssb-custom-script-js-extra
 /* ]]> */
 </script>
-<script id="ssb-custom-script-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/seadev-shed-builder-beta/public/js/ssb_custom_script_ver%3D1779954338.js" type="text/javascript"></script>
+<script id="ssb-custom-script-js" src="/assets/cdn/production/wp-content/plugins/seadev-shed-builder-beta/public/js/ssb_custom_script_ver%3D1779954338.js" type="text/javascript"></script>
 <script id="ssb-scripts-js-extra" type="text/javascript">
 /* <![CDATA[ */
 var ssb = {"ajax_url":"https://demo.shedpro.co/wp-admin/admin-ajax.php","viewer_show_price":"1","viewer_rto_integrate":"1","network_url":"https://admin.shedpro.co","rton_client_id":"91","upgrade_to_2d":"1","cdn_url":"https://d1v3nro70bdf57.cloudfront.net/production","is_smithbuilt":"","enable_line_item_cost":"1","QA_domain":"","is_manufacturer_feature":"","lotID":"","simplify_checkout":"both","dealer_in_param":"1","enable_runner_direction":"","show_gridlines":"","enable_tax":"yes","user_can_custom_line_items":"","roof_materials":["corrugatedaluminum","flat_tile","metal","metal_horizontal","metal_lap","mill_finish","permatile_metal","polycarbonate","polycarbonatecorrugated","polycarbonatecorrugated_3d","polycarbonate_vertical_9in6","roofpolycarbonate_8mm","shingle_3tab","shingle","standing_seam","standing_seam_metal","Steel","double_s_shape"],"create_shareable_link":"https://demo.shedpro.co/wp-content/plugins/seadev-shed-builder-beta/includes/ajax/create-shareable-link.php","model_id":"6850","viewer_enable_shedpro_rto":"","sentry_dsn":"https://f2e0eff9789c70025d44fa2b9e17d3c0@o4511329376403456.ingest.us.sentry.io/4511329392590848"};
@@ -2778,8 +2793,8 @@ var model = {"sizes":[{"width":"10","depth":"16","data":[{"height":"7.3","prices
 //# sourceURL=ssb-scripts-js-extra
 /* ]]> */
 </script>
-<script id="ssb-scripts-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/seadev-shed-builder-beta/public/dist/ssb_scripts_ver%3D1779954408.js" type="text/javascript"></script>
-<script id="sourcebuster-js-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster_ver%3D10.6.1.js" type="text/javascript"></script>
+<script id="ssb-scripts-js" src="/assets/cdn/production/wp-content/plugins/seadev-shed-builder-beta/public/dist/ssb_scripts_ver%3D1779954408.js" type="text/javascript"></script>
+<script id="sourcebuster-js-js" src="/assets/cdn/production/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster_ver%3D10.6.1.js" type="text/javascript"></script>
 <script id="wc-order-attribution-js-extra" type="text/javascript">
 /* <![CDATA[ */
 var wc_order_attribution = {"params":{"lifetime":1.0e-5,"session":30,"base64":false,"ajaxurl":"https://demo.shedpro.co/wp-admin/admin-ajax.php","prefix":"_wc_order_attribution_","allowTracking":true},"fields":["source_type","utm_source","utm_medium","utm_campaign","utm_content","utm_term","utm_id","utm_source_platform","utm_creative_format","utm_marketing_tactic","referrer","session_entry","session_start_time","session_pages","session_count","user_agent"]};
@@ -2787,13 +2802,13 @@ var wc_order_attribution = {"params":{"lifetime":1.0e-5,"session":30,"base64":fa
 //# sourceURL=wc-order-attribution-js-extra
 /* ]]> */
 </script>
-<script id="wc-order-attribution-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution_ver%3D10.6.1.js" type="text/javascript"></script>
-<script id="ssb-popup-checkout-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/seadev-shed-builder-beta/includes/popup-checkout/script_ver%3D1779954338.js" type="text/javascript"></script>
-<script id="slick-scripts-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/themes/seadev/assets/slick/slick.min.js" type="text/javascript"></script>
-<script id="seadev-scripts-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/themes/seadev/js/theme.min_ver%3D0.5.5.1779954339.js" type="text/javascript"></script>
-<script id="seadev-custom-scripts-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/themes/seadev/js/scripts_ver%3D0.5.5.1779954339.js" type="text/javascript"></script>
-<script id="google-recaptcha-js" src="../../../www.google.com/recaptcha/api_render%3D6Lf3rEoaAAAAAAEy8uRMH09XGeQVV1vp8OWCqrjQ%26ver%3D3.0.js" type="text/javascript"></script>
-<script id="wp-polyfill-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/vendor/wp-polyfill_ver%3D3.15.0.js" type="text/javascript"></script>
+<script id="wc-order-attribution-js" src="/assets/cdn/production/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution_ver%3D10.6.1.js" type="text/javascript"></script>
+<script id="ssb-popup-checkout-js" src="/assets/cdn/production/wp-content/plugins/seadev-shed-builder-beta/includes/popup-checkout/script_ver%3D1779954338.js" type="text/javascript"></script>
+<script id="slick-scripts-js" src="/assets/cdn/production/wp-content/themes/seadev/assets/slick/slick.min.js" type="text/javascript"></script>
+<script id="seadev-scripts-js" src="/assets/cdn/production/wp-content/themes/seadev/js/theme.min_ver%3D0.5.5.1779954339.js" type="text/javascript"></script>
+<script id="seadev-custom-scripts-js" src="/assets/cdn/production/wp-content/themes/seadev/js/scripts_ver%3D0.5.5.1779954339.js" type="text/javascript"></script>
+<script id="google-recaptcha-js" src="/assets/google/recaptcha/api_render%3D6Lf3rEoaAAAAAAEy8uRMH09XGeQVV1vp8OWCqrjQ%26ver%3D3.0.js" type="text/javascript"></script>
+<script id="wp-polyfill-js" src="/assets/cdn/production/wp-includes/js/dist/vendor/wp-polyfill_ver%3D3.15.0.js" type="text/javascript"></script>
 <script id="wpcf7-recaptcha-js-before" type="text/javascript">
 /* <![CDATA[ */
 var wpcf7_recaptcha = {
@@ -2806,16 +2821,16 @@ var wpcf7_recaptcha = {
 //# sourceURL=wpcf7-recaptcha-js-before
 /* ]]> */
 </script>
-<script id="wpcf7-recaptcha-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/contact-form-7/modules/recaptcha/index_ver%3D6.1.5.js" type="text/javascript"></script>
-<script id="seadev-fancybox-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/themes/seadev-child-vendor/js/jquery.fancybox.min_ver%3D1779954339.js" type="text/javascript"></script>
+<script id="wpcf7-recaptcha-js" src="/assets/cdn/production/wp-content/plugins/contact-form-7/modules/recaptcha/index_ver%3D6.1.5.js" type="text/javascript"></script>
+<script id="seadev-fancybox-js" src="/assets/cdn/production/wp-content/themes/seadev-child-vendor/js/jquery.fancybox.min_ver%3D1779954339.js" type="text/javascript"></script>
 <script id="seadev-child-scripts-js-extra" type="text/javascript">
 /* <![CDATA[ */
 var shedpro_data = {"ajax_url":"https://demo.shedpro.co/wp-admin/admin-ajax.php","location_configs":{"param_zip_code":"zipcode","cookie_zip_code":"zip-code","param_use_location":"use_location","param_and_cookie_lot":"lot","param_and_cookie_dealer":"dealer","param_and_cookie_location":"location"}};
 //# sourceURL=seadev-child-scripts-js-extra
 /* ]]> */
 </script>
-<script id="seadev-child-scripts-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/themes/seadev-child-vendor/js/scripts_ver%3D1779954339.js" type="text/javascript"></script>
-<script id="seadev-child-intro-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/themes/seadev-child-vendor/js/intro.min_ver%3D1779954339.js" type="text/javascript"></script>
+<script id="seadev-child-scripts-js" src="/assets/cdn/production/wp-content/themes/seadev-child-vendor/js/scripts_ver%3D1779954339.js" type="text/javascript"></script>
+<script id="seadev-child-intro-js" src="/assets/cdn/production/wp-content/themes/seadev-child-vendor/js/intro.min_ver%3D1779954339.js" type="text/javascript"></script>
 <script id="seadev-product-tour-js-extra" type="text/javascript">
 /* <![CDATA[ */
 var ssb_product_tour = {"disable_first_load_product_tour":"1"};
@@ -2823,23 +2838,23 @@ var steps = [{"intro":"\u003Ch2 class=\"introjs-tooltip-title\"\u003EReady to bu
 //# sourceURL=seadev-product-tour-js-extra
 /* ]]> */
 </script>
-<script id="seadev-product-tour-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/themes/seadev-child-vendor/js/product-tour_ver%3D1779954339.js" type="text/javascript"></script>
-<script id="wc-deposits-frontend-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce-deposits/assets/js/frontend_ver%3D1.5.6.js" type="text/javascript"></script>
-<script id="stripe-js" src="../../../js.stripe.com/clover/stripe.js" type="text/javascript"></script>
-<script data-wp-strategy="defer" id="wc-custom-place-order-button-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/js/frontend/utils/custom-place-order-button_ver%3D10.6.1.js" type="text/javascript"></script>
+<script id="seadev-product-tour-js" src="/assets/cdn/production/wp-content/themes/seadev-child-vendor/js/product-tour_ver%3D1779954339.js" type="text/javascript"></script>
+<script id="wc-deposits-frontend-js" src="/assets/cdn/production/wp-content/plugins/woocommerce-deposits/assets/js/frontend_ver%3D1.5.6.js" type="text/javascript"></script>
+<script id="stripe-js" src="/assets/stripe/clover/stripe.js" type="text/javascript"></script>
+<script data-wp-strategy="defer" id="wc-custom-place-order-button-js" src="/assets/cdn/production/wp-content/plugins/woocommerce/assets/js/frontend/utils/custom-place-order-button_ver%3D10.6.1.js" type="text/javascript"></script>
 <script id="wc-checkout-js-extra" type="text/javascript">
 /* <![CDATA[ */
 var wc_checkout_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/?wc-ajax=%%endpoint%%","update_order_review_nonce":"107875f1e2","apply_coupon_nonce":"81794de0bc","remove_coupon_nonce":"281c0f5d80","option_guest_checkout":"yes","checkout_url":"/?wc-ajax=checkout","is_checkout":"0","debug_mode":"","i18n_checkout_error":"There was an error processing your request. Please check for any charges in your payment method and review your \u003Ca href=\"https://demo.shedpro.co/my-account/orders/\"\u003Erequest history\u003C/a\u003E before placing the request again.","gateways_with_custom_place_order_button":[]};
 //# sourceURL=wc-checkout-js-extra
 /* ]]> */
 </script>
-<script data-wp-strategy="defer" id="wc-checkout-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce/assets/js/frontend/checkout_ver%3D10.6.1.js" type="text/javascript"></script>
-<script id="wp-react-refresh-runtime-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/development/react-refresh-runtime_ver%3D8f1acdfb845f670b0ef2.js" type="text/javascript"></script>
-<script id="wp-react-refresh-entry-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/development/react-refresh-entry_ver%3Da100113810d2b7fe3a75.js" type="text/javascript"></script>
-<script id="react-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/vendor/react_ver%3D18.3.1.1.js" type="text/javascript"></script>
-<script id="react-dom-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/vendor/react-dom_ver%3D18.3.1.1.js" type="text/javascript"></script>
-<script id="wp-url-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/url_ver%3D6bc6a4c3049d91342459.js" type="text/javascript"></script>
-<script id="wp-api-fetch-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/api-fetch_ver%3Ddde45ae4bb2923c6d069.js" type="text/javascript"></script>
+<script data-wp-strategy="defer" id="wc-checkout-js" src="/assets/cdn/production/wp-content/plugins/woocommerce/assets/js/frontend/checkout_ver%3D10.6.1.js" type="text/javascript"></script>
+<script id="wp-react-refresh-runtime-js" src="/assets/cdn/production/wp-includes/js/dist/development/react-refresh-runtime_ver%3D8f1acdfb845f670b0ef2.js" type="text/javascript"></script>
+<script id="wp-react-refresh-entry-js" src="/assets/cdn/production/wp-includes/js/dist/development/react-refresh-entry_ver%3Da100113810d2b7fe3a75.js" type="text/javascript"></script>
+<script id="react-js" src="/assets/cdn/production/wp-includes/js/dist/vendor/react_ver%3D18.3.1.1.js" type="text/javascript"></script>
+<script id="react-dom-js" src="/assets/cdn/production/wp-includes/js/dist/vendor/react-dom_ver%3D18.3.1.1.js" type="text/javascript"></script>
+<script id="wp-url-js" src="/assets/cdn/production/wp-includes/js/dist/url_ver%3D6bc6a4c3049d91342459.js" type="text/javascript"></script>
+<script id="wp-api-fetch-js" src="/assets/cdn/production/wp-includes/js/dist/api-fetch_ver%3Ddde45ae4bb2923c6d069.js" type="text/javascript"></script>
 <script id="wp-api-fetch-js-after" type="text/javascript">
 /* <![CDATA[ */
 wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( "https://demo.shedpro.co/wp-json/" ) );
@@ -2850,18 +2865,18 @@ wp.apiFetch.nonceEndpoint = "https://demo.shedpro.co/wp-admin/admin-ajax.php?act
 //# sourceURL=wp-api-fetch-js-after
 /* ]]> */
 </script>
-<script id="react-jsx-runtime-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/vendor/react-jsx-runtime_ver%3D18.3.1.js" type="text/javascript"></script>
-<script id="wp-deprecated-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/deprecated_ver%3D6c0519d363872604d48f.js" type="text/javascript"></script>
-<script id="wp-dom-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/dom_ver%3Dce91312aee495c65e891.js" type="text/javascript"></script>
-<script id="wp-escape-html-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/escape-html_ver%3D6cade854f375b3091114.js" type="text/javascript"></script>
-<script id="wp-element-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/element_ver%3Da63ee6ce984c02a99fa7.js" type="text/javascript"></script>
-<script id="wp-is-shallow-equal-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/is-shallow-equal_ver%3D4554764360b974e32f5d.js" type="text/javascript"></script>
-<script id="wp-keycodes-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/keycodes_ver%3D0ae26254e495f9f44348.js" type="text/javascript"></script>
-<script id="wp-priority-queue-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/priority-queue_ver%3Db617c70465159c57937b.js" type="text/javascript"></script>
-<script id="wp-compose-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/compose_ver%3D7c895b31cd7a903b5229.js" type="text/javascript"></script>
-<script id="wp-private-apis-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/private-apis_ver%3Dd7d926d9becc3eef5e24.js" type="text/javascript"></script>
-<script id="wp-redux-routine-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/redux-routine_ver%3D58e4c7cd114da148c2c4.js" type="text/javascript"></script>
-<script id="wp-data-js" src="../../../configurator-cdn.shedpro.co/production/wp-includes/js/dist/data_ver%3Dc64d89d47908ae6c6928.js" type="text/javascript"></script>
+<script id="react-jsx-runtime-js" src="/assets/cdn/production/wp-includes/js/dist/vendor/react-jsx-runtime_ver%3D18.3.1.js" type="text/javascript"></script>
+<script id="wp-deprecated-js" src="/assets/cdn/production/wp-includes/js/dist/deprecated_ver%3D6c0519d363872604d48f.js" type="text/javascript"></script>
+<script id="wp-dom-js" src="/assets/cdn/production/wp-includes/js/dist/dom_ver%3Dce91312aee495c65e891.js" type="text/javascript"></script>
+<script id="wp-escape-html-js" src="/assets/cdn/production/wp-includes/js/dist/escape-html_ver%3D6cade854f375b3091114.js" type="text/javascript"></script>
+<script id="wp-element-js" src="/assets/cdn/production/wp-includes/js/dist/element_ver%3Da63ee6ce984c02a99fa7.js" type="text/javascript"></script>
+<script id="wp-is-shallow-equal-js" src="/assets/cdn/production/wp-includes/js/dist/is-shallow-equal_ver%3D4554764360b974e32f5d.js" type="text/javascript"></script>
+<script id="wp-keycodes-js" src="/assets/cdn/production/wp-includes/js/dist/keycodes_ver%3D0ae26254e495f9f44348.js" type="text/javascript"></script>
+<script id="wp-priority-queue-js" src="/assets/cdn/production/wp-includes/js/dist/priority-queue_ver%3Db617c70465159c57937b.js" type="text/javascript"></script>
+<script id="wp-compose-js" src="/assets/cdn/production/wp-includes/js/dist/compose_ver%3D7c895b31cd7a903b5229.js" type="text/javascript"></script>
+<script id="wp-private-apis-js" src="/assets/cdn/production/wp-includes/js/dist/private-apis_ver%3Dd7d926d9becc3eef5e24.js" type="text/javascript"></script>
+<script id="wp-redux-routine-js" src="/assets/cdn/production/wp-includes/js/dist/redux-routine_ver%3D58e4c7cd114da148c2c4.js" type="text/javascript"></script>
+<script id="wp-data-js" src="/assets/cdn/production/wp-includes/js/dist/data_ver%3Dc64d89d47908ae6c6928.js" type="text/javascript"></script>
 <script id="wp-data-js-after" type="text/javascript">
 /* <![CDATA[ */
 ( function() {
@@ -2879,7 +2894,7 @@ var wc_stripe_upe_params = {"gatewayId":"stripe","title":"Credit / Debit Card","
 //# sourceURL=wc-stripe-upe-classic-js-extra
 /* ]]> */
 </script>
-<script id="wc-stripe-upe-classic-js" src="../../../configurator-cdn.shedpro.co/production/wp-content/plugins/woocommerce-gateway-stripe/build/upe-classic_ver%3D8b9ce56b2c43829375e2.js" type="text/javascript"></script>
+<script id="wc-stripe-upe-classic-js" src="/assets/cdn/production/wp-content/plugins/woocommerce-gateway-stripe/build/upe-classic_ver%3D8b9ce56b2c43829375e2.js" type="text/javascript"></script>
 <script id="wp-emoji-settings" type="application/json">
 {"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"wpemoji":"https://configurator-cdn.shedpro.co/production/wp-includes/js/wp-emoji.js?ver=6.9.4","twemoji":"https://configurator-cdn.shedpro.co/production/wp-includes/js/twemoji.js?ver=6.9.4"}}
 </script>
